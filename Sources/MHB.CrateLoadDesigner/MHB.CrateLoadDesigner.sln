@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHB.CrateLoadDesigner.Desktop", "MHB.CrateLoadDesigner.Desktop\MHB.CrateLoadDesigner.Desktop.csproj", "{2266C956-B2C5-44D6-A0E0-A8964BE491C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WIX Installer", "WIX Installer", "{7002D416-83EB-4E48-8D4F-90FBEFFB0CDD}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "MHB.CrateLoadDesigner.Setup", "WiX\MHB.CrateLoadDesigner.Setup\MHB.CrateLoadDesigner.Setup.wixproj", "{B75CE1E0-C10C-430A-B140-2D0D6FA9B3CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHB.CrateLoadDesigner.Engine", "MHB.CreateLoadDesigner.Engine\MHB.CrateLoadDesigner.Engine.csproj", "{3A7B7420-97A3-444A-A932-4CD1F9C0BED8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2266C956-B2C5-44D6-A0E0-A8964BE491C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2266C956-B2C5-44D6-A0E0-A8964BE491C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2266C956-B2C5-44D6-A0E0-A8964BE491C5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2266C956-B2C5-44D6-A0E0-A8964BE491C5}.Debug|x86.Build.0 = Debug|Any CPU
+		{2266C956-B2C5-44D6-A0E0-A8964BE491C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2266C956-B2C5-44D6-A0E0-A8964BE491C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2266C956-B2C5-44D6-A0E0-A8964BE491C5}.Release|x86.ActiveCfg = Release|Any CPU
+		{2266C956-B2C5-44D6-A0E0-A8964BE491C5}.Release|x86.Build.0 = Release|Any CPU
+		{B75CE1E0-C10C-430A-B140-2D0D6FA9B3CE}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B75CE1E0-C10C-430A-B140-2D0D6FA9B3CE}.Debug|x86.ActiveCfg = Debug|x86
+		{B75CE1E0-C10C-430A-B140-2D0D6FA9B3CE}.Debug|x86.Build.0 = Debug|x86
+		{B75CE1E0-C10C-430A-B140-2D0D6FA9B3CE}.Release|Any CPU.ActiveCfg = Release|x86
+		{B75CE1E0-C10C-430A-B140-2D0D6FA9B3CE}.Release|x86.ActiveCfg = Release|x86
+		{B75CE1E0-C10C-430A-B140-2D0D6FA9B3CE}.Release|x86.Build.0 = Release|x86
+		{3A7B7420-97A3-444A-A932-4CD1F9C0BED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A7B7420-97A3-444A-A932-4CD1F9C0BED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A7B7420-97A3-444A-A932-4CD1F9C0BED8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3A7B7420-97A3-444A-A932-4CD1F9C0BED8}.Debug|x86.Build.0 = Debug|Any CPU
+		{3A7B7420-97A3-444A-A932-4CD1F9C0BED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A7B7420-97A3-444A-A932-4CD1F9C0BED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A7B7420-97A3-444A-A932-4CD1F9C0BED8}.Release|x86.ActiveCfg = Release|Any CPU
+		{3A7B7420-97A3-444A-A932-4CD1F9C0BED8}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B75CE1E0-C10C-430A-B140-2D0D6FA9B3CE} = {7002D416-83EB-4E48-8D4F-90FBEFFB0CDD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9AA36BC-F848-42D8-8058-89DFAAEF060B}
+	EndGlobalSection
+EndGlobal
