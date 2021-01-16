@@ -61,11 +61,65 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Brand.
+        /// </summary>
+        internal static string IDS_BRAND {
+            get {
+                return ResourceManager.GetString("IDS_BRAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string IDS_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("IDS_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Height.
+        /// </summary>
+        internal static string IDS_HEIGHT {
+            get {
+                return ResourceManager.GetString("IDS_HEIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number.
+        /// </summary>
+        internal static string IDS_NUMBER {
+            get {
+                return ResourceManager.GetString("IDS_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A valid file path is needed..
         /// </summary>
         internal static string IDS_VALIDFILEPATHNEEDED {
             get {
                 return ResourceManager.GetString("IDS_VALIDFILEPATHNEEDED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a valid project name..
+        /// </summary>
+        internal static string IDS_VALIDPROJECTNAME {
+            get {
+                return ResourceManager.GetString("IDS_VALIDPROJECTNAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Width.
+        /// </summary>
+        internal static string IDS_WIDTH {
+            get {
+                return ResourceManager.GetString("IDS_WIDTH", resourceCulture);
             }
         }
     }

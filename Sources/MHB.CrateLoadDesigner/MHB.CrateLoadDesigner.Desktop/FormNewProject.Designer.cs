@@ -37,13 +37,37 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.splitHoriz = new System.Windows.Forms.SplitContainer();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPageFrames = new System.Windows.Forms.TabPage();
+            this.tabPageGlass = new System.Windows.Forms.TabPage();
+            this.tabPageCratesFrame = new System.Windows.Forms.TabPage();
+            this.tabPageCrateGlass = new System.Windows.Forms.TabPage();
+            this.tabPageContainers = new System.Windows.Forms.TabPage();
+            this.lbProjectName = new System.Windows.Forms.Label();
+            this.tbProjectName = new System.Windows.Forms.TextBox();
+            this.gridFrames = new SourceGrid.Grid();
+            this.gridGlass = new SourceGrid.Grid();
+            this.gridCratesFrame = new SourceGrid.Grid();
+            this.gridCratesGlass = new SourceGrid.Grid();
+            this.gridContainers = new SourceGrid.Grid();
             this.statusStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitHoriz)).BeginInit();
+            this.splitHoriz.Panel1.SuspendLayout();
+            this.splitHoriz.Panel2.SuspendLayout();
+            this.splitHoriz.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPageFrames.SuspendLayout();
+            this.tabPageGlass.SuspendLayout();
+            this.tabPageCratesFrame.SuspendLayout();
+            this.tabPageCrateGlass.SuspendLayout();
+            this.tabPageContainers.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 15);
+            this.label1.Location = new System.Drawing.Point(12, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 0;
@@ -53,17 +77,17 @@ namespace MHB.CrateLoadDesigner.Desktop
             // 
             this.tbInputFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbInputFilePath.Location = new System.Drawing.Point(90, 11);
+            this.tbInputFilePath.Location = new System.Drawing.Point(98, 5);
             this.tbInputFilePath.Name = "tbInputFilePath";
-            this.tbInputFilePath.Size = new System.Drawing.Size(525, 20);
+            this.tbInputFilePath.Size = new System.Drawing.Size(579, 20);
             this.tbInputFilePath.TabIndex = 1;
-            this.tbInputFilePath.TextChanged += new System.EventHandler(this.OnInputChanged);
+            this.tbInputFilePath.TextChanged += new System.EventHandler(this.OnInputFilePathChanged);
             // 
             // bnOK
             // 
             this.bnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.bnOK.Location = new System.Drawing.Point(713, 8);
+            this.bnOK.Location = new System.Drawing.Point(722, 3);
             this.bnOK.Name = "bnOK";
             this.bnOK.Size = new System.Drawing.Size(75, 23);
             this.bnOK.TabIndex = 2;
@@ -73,7 +97,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             // bnExplore
             // 
             this.bnExplore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bnExplore.Location = new System.Drawing.Point(621, 9);
+            this.bnExplore.Location = new System.Drawing.Point(683, 3);
             this.bnExplore.Name = "bnExplore";
             this.bnExplore.Size = new System.Drawing.Size(33, 23);
             this.bnExplore.TabIndex = 3;
@@ -85,7 +109,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             // 
             this.bnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bnCancel.Location = new System.Drawing.Point(713, 38);
+            this.bnCancel.Location = new System.Drawing.Point(722, 32);
             this.bnCancel.Name = "bnCancel";
             this.bnCancel.Size = new System.Drawing.Size(75, 23);
             this.bnCancel.TabIndex = 4;
@@ -112,6 +136,177 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
+            // splitHoriz
+            // 
+            this.splitHoriz.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitHoriz.Location = new System.Drawing.Point(0, 0);
+            this.splitHoriz.Name = "splitHoriz";
+            this.splitHoriz.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitHoriz.Panel1
+            // 
+            this.splitHoriz.Panel1.Controls.Add(this.tbProjectName);
+            this.splitHoriz.Panel1.Controls.Add(this.lbProjectName);
+            this.splitHoriz.Panel1.Controls.Add(this.tbInputFilePath);
+            this.splitHoriz.Panel1.Controls.Add(this.label1);
+            this.splitHoriz.Panel1.Controls.Add(this.bnExplore);
+            this.splitHoriz.Panel1.Controls.Add(this.bnCancel);
+            this.splitHoriz.Panel1.Controls.Add(this.bnOK);
+            // 
+            // splitHoriz.Panel2
+            // 
+            this.splitHoriz.Panel2.Controls.Add(this.tabControl1);
+            this.splitHoriz.Size = new System.Drawing.Size(800, 428);
+            this.splitHoriz.SplitterDistance = 73;
+            this.splitHoriz.TabIndex = 6;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPageFrames);
+            this.tabControl1.Controls.Add(this.tabPageGlass);
+            this.tabControl1.Controls.Add(this.tabPageCratesFrame);
+            this.tabControl1.Controls.Add(this.tabPageCrateGlass);
+            this.tabControl1.Controls.Add(this.tabPageContainers);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(800, 351);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabPageFrames
+            // 
+            this.tabPageFrames.Controls.Add(this.gridFrames);
+            this.tabPageFrames.Location = new System.Drawing.Point(4, 22);
+            this.tabPageFrames.Name = "tabPageFrames";
+            this.tabPageFrames.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageFrames.Size = new System.Drawing.Size(792, 325);
+            this.tabPageFrames.TabIndex = 0;
+            this.tabPageFrames.Text = "Frames";
+            this.tabPageFrames.UseVisualStyleBackColor = true;
+            // 
+            // tabPageGlass
+            // 
+            this.tabPageGlass.Controls.Add(this.gridGlass);
+            this.tabPageGlass.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGlass.Name = "tabPageGlass";
+            this.tabPageGlass.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGlass.Size = new System.Drawing.Size(792, 325);
+            this.tabPageGlass.TabIndex = 1;
+            this.tabPageGlass.Text = "Glass";
+            this.tabPageGlass.UseVisualStyleBackColor = true;
+            // 
+            // tabPageCratesFrame
+            // 
+            this.tabPageCratesFrame.Controls.Add(this.gridCratesFrame);
+            this.tabPageCratesFrame.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCratesFrame.Name = "tabPageCratesFrame";
+            this.tabPageCratesFrame.Size = new System.Drawing.Size(792, 325);
+            this.tabPageCratesFrame.TabIndex = 2;
+            this.tabPageCratesFrame.Text = "Crates (Frames)";
+            this.tabPageCratesFrame.UseVisualStyleBackColor = true;
+            // 
+            // tabPageCrateGlass
+            // 
+            this.tabPageCrateGlass.Controls.Add(this.gridCratesGlass);
+            this.tabPageCrateGlass.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCrateGlass.Name = "tabPageCrateGlass";
+            this.tabPageCrateGlass.Size = new System.Drawing.Size(792, 325);
+            this.tabPageCrateGlass.TabIndex = 3;
+            this.tabPageCrateGlass.Text = "Crates (Glass)";
+            this.tabPageCrateGlass.UseVisualStyleBackColor = true;
+            // 
+            // tabPageContainers
+            // 
+            this.tabPageContainers.Controls.Add(this.gridContainers);
+            this.tabPageContainers.Location = new System.Drawing.Point(4, 22);
+            this.tabPageContainers.Name = "tabPageContainers";
+            this.tabPageContainers.Size = new System.Drawing.Size(792, 325);
+            this.tabPageContainers.TabIndex = 4;
+            this.tabPageContainers.Text = "Containers";
+            this.tabPageContainers.UseVisualStyleBackColor = true;
+            // 
+            // lbProjectName
+            // 
+            this.lbProjectName.AutoSize = true;
+            this.lbProjectName.Location = new System.Drawing.Point(12, 37);
+            this.lbProjectName.Name = "lbProjectName";
+            this.lbProjectName.Size = new System.Drawing.Size(69, 13);
+            this.lbProjectName.TabIndex = 5;
+            this.lbProjectName.Text = "Project name";
+            // 
+            // tbProjectName
+            // 
+            this.tbProjectName.Location = new System.Drawing.Point(97, 34);
+            this.tbProjectName.Name = "tbProjectName";
+            this.tbProjectName.Size = new System.Drawing.Size(156, 20);
+            this.tbProjectName.TabIndex = 6;
+            // 
+            // gridFrames
+            // 
+            this.gridFrames.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridFrames.EnableSort = false;
+            this.gridFrames.Location = new System.Drawing.Point(3, 3);
+            this.gridFrames.Name = "gridFrames";
+            this.gridFrames.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.gridFrames.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            this.gridFrames.Size = new System.Drawing.Size(786, 319);
+            this.gridFrames.TabIndex = 0;
+            this.gridFrames.TabStop = true;
+            this.gridFrames.ToolTipText = "";
+            // 
+            // gridGlass
+            // 
+            this.gridGlass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridGlass.EnableSort = false;
+            this.gridGlass.Location = new System.Drawing.Point(3, 3);
+            this.gridGlass.Name = "gridGlass";
+            this.gridGlass.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.gridGlass.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            this.gridGlass.Size = new System.Drawing.Size(786, 319);
+            this.gridGlass.TabIndex = 0;
+            this.gridGlass.TabStop = true;
+            this.gridGlass.ToolTipText = "";
+            // 
+            // gridCratesFrame
+            // 
+            this.gridCratesFrame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridCratesFrame.EnableSort = false;
+            this.gridCratesFrame.Location = new System.Drawing.Point(0, 0);
+            this.gridCratesFrame.Name = "gridCratesFrame";
+            this.gridCratesFrame.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.gridCratesFrame.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            this.gridCratesFrame.Size = new System.Drawing.Size(792, 325);
+            this.gridCratesFrame.TabIndex = 0;
+            this.gridCratesFrame.TabStop = true;
+            this.gridCratesFrame.ToolTipText = "";
+            // 
+            // gridCratesGlass
+            // 
+            this.gridCratesGlass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridCratesGlass.EnableSort = false;
+            this.gridCratesGlass.Location = new System.Drawing.Point(0, 0);
+            this.gridCratesGlass.Name = "gridCratesGlass";
+            this.gridCratesGlass.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.gridCratesGlass.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            this.gridCratesGlass.Size = new System.Drawing.Size(792, 325);
+            this.gridCratesGlass.TabIndex = 0;
+            this.gridCratesGlass.TabStop = true;
+            this.gridCratesGlass.ToolTipText = "";
+            // 
+            // gridContainers
+            // 
+            this.gridContainers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridContainers.EnableSort = false;
+            this.gridContainers.Location = new System.Drawing.Point(0, 0);
+            this.gridContainers.Name = "gridContainers";
+            this.gridContainers.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
+            this.gridContainers.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            this.gridContainers.Size = new System.Drawing.Size(792, 325);
+            this.gridContainers.TabIndex = 0;
+            this.gridContainers.TabStop = true;
+            this.gridContainers.ToolTipText = "";
+            // 
             // FormNewProject
             // 
             this.AcceptButton = this.bnOK;
@@ -119,12 +314,8 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bnCancel;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.splitHoriz);
             this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.bnCancel);
-            this.Controls.Add(this.bnExplore);
-            this.Controls.Add(this.bnOK);
-            this.Controls.Add(this.tbInputFilePath);
-            this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormNewProject";
@@ -133,6 +324,17 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.Text = "New project...";
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.splitHoriz.Panel1.ResumeLayout(false);
+            this.splitHoriz.Panel1.PerformLayout();
+            this.splitHoriz.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitHoriz)).EndInit();
+            this.splitHoriz.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPageFrames.ResumeLayout(false);
+            this.tabPageGlass.ResumeLayout(false);
+            this.tabPageCratesFrame.ResumeLayout(false);
+            this.tabPageCrateGlass.ResumeLayout(false);
+            this.tabPageContainers.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,5 +350,19 @@ namespace MHB.CrateLoadDesigner.Desktop
         private System.Windows.Forms.OpenFileDialog inputFileDialog;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        private System.Windows.Forms.SplitContainer splitHoriz;
+        private System.Windows.Forms.TextBox tbProjectName;
+        private System.Windows.Forms.Label lbProjectName;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPageFrames;
+        private SourceGrid.Grid gridFrames;
+        private System.Windows.Forms.TabPage tabPageGlass;
+        private SourceGrid.Grid gridGlass;
+        private System.Windows.Forms.TabPage tabPageCratesFrame;
+        private SourceGrid.Grid gridCratesFrame;
+        private System.Windows.Forms.TabPage tabPageCrateGlass;
+        private SourceGrid.Grid gridCratesGlass;
+        private System.Windows.Forms.TabPage tabPageContainers;
+        private SourceGrid.Grid gridContainers;
     }
 }

@@ -127,8 +127,15 @@ namespace MHB.CrateLoadDesigner.Desktop
             var form = new FormNewProject();
             if (DialogResult.OK == form.ShowDialog())
             {
-                project.GenerateSolution();
+                project = form.Proj;
+                OnShowCrates(sender, e);
             }
+
+        }
+        private void OnShowCrates(object sender, EventArgs e)
+        {
+            var form = new DockContentCrates() { Project = project };
+            form.Show(dockPanel, DockState.Document);
         }
         private void OnOpen(object sender, EventArgs e)
         {
@@ -146,10 +153,19 @@ namespace MHB.CrateLoadDesigner.Desktop
         }
         #endregion
 
+        #region Menu helpers
+        private void UpdateMenu()
+        { 
+        
+        }
+        #endregion
+
         #region Private members
         private DockContentLogConsole _logConsole;
         private DeserializeDockContent _deserializeDockContent;
         private Project project = new Project();
         #endregion
+
+
     }
 }

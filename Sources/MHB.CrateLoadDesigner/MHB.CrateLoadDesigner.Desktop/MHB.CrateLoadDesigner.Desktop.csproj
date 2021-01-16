@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CellBackColorAlternate.cs" />
     <Compile Include="DockContentCrates.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +91,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DockContentCrates.resx">
+      <DependentUpon>DockContentCrates.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockContentLogConsole.resx">
       <DependentUpon>DockContentLogConsole.cs</DependentUpon>
     </EmbeddedResource>

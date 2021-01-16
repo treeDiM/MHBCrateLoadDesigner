@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://MHBNamespace"
+    xmlns="http://MHBNamespace"
+    elementFormDefault="qualified"
+>
+  <xs:simpleType name="enuCrateType">
+    <xs:annotation>
+      <xs:documentation>
+        Crate type (i.e. either CRATE or SKID)
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CRATE">
+        <xs:annotation>
+          <xs:documentation>
+            CRATE: layer are stored horizontally with possibly several unit per layer
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SKID">
+        <xs:annotation>
+          <xs:documentation>
+            SKID: layers are stored at an agle with 1 unit per layer
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ListCrateFrame" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CrateFrame" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="crateName" type="xs:string" use="required"/>
+                  <xs:attribute name="crateDescription" type="xs:string" use="required"/>
+                  <xs:attribute name="crateType" type="enuCrateType" use="required"/>
+                  <xs:attribute name="maxLongSide" type="xs:double" use="required"/>
+                  <xs:attribute name="maxShortSide" type="xs:double" use="required"/>
+                  <xs:attribute name="crateLength" type="xs:double" use="required"/>
+                  <xs:attribute name="crateWidth" type="xs:double" use="required"/>
+                  <xs:attribute name="crateHeight" type="xs:double" use="required"/>
+                  <xs:attribute name="maxQuantityCP80" type="xs:int" use="required"/>
+                  <xs:attribute name="maxQuantityCP100" type="xs:int" use="required"/>
+                  <xs:attribute name="dynMaxLength" type="xs:double" use="optional"/>
+                  <xs:attribute name="dynAdditionalLength" type="xs:double" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ListCrateGlass" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CrateGlass" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="crateName" type="xs:string" use="required"/>
+                  <xs:attribute name="crateDescription" type="xs:string" use="required"/>
+                  <xs:attribute name="crateType" type="xs:string" use="required"/>
+                  <xs:attribute name="maxLongSide" type="xs:double" use="required"/>
+                  <xs:attribute name="maxShortSide" type="xs:double" use="required"/>
+                  <xs:attribute name="crateLength" type="xs:double" use="required"/>
+                  <xs:attribute name="crateWidth" type="xs:double" use="required"/>
+                  <xs:attribute name="crateHeight" type="xs:double" use="required"/>
+                  <xs:attribute name="maxQuantityDoubleGlass" type="xs:int" use="required"/>
+                  <xs:attribute name="maxQuantityTripleGlass" type="xs:int" use="required"/>
+                  <xs:attribute name="dynMaxLength" type="xs:double" use="optional"/>
+                  <xs:attribute name="dynAdditionalLength" type="xs:double" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ListContainer" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Container" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="containerName" type="xs:string" use="required"/>
+                  <xs:attribute name="containerDescription" type="xs:string" use="required"/>
+                  <xs:attribute name="insideLenght" type="xs:double" use="required"/>
+                  <xs:attribute name="insideWidth" type="xs:double" use="required"/>
+                  <xs:attribute name="insideHeight" type="xs:double" use="required"/>
+                  <xs:attribute name="openingWidth" type="xs:double" use="required"/>
+                  <xs:attribute name="openingHeight" type="xs:double" use="required"/>
+                  <xs:attribute name="roofOpeningLenght" type="xs:double" use="required"/>
+                  <xs:attribute name="roofOpeningWidth" type="xs:double" use="required"/>
+                  <xs:attribute name="payload" type="xs:double" use="required"/>
+                  <xs:attribute name="emptyWeight" type="xs:double" use="required"/>
+                  <xs:attribute name="remark" type="xs:string" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+  <Root xsi:schemaLocation="'http://www.treedim.com/MHB' 'D:\GitHub\MHBCrateLoadDesigner\Sources\MHB.CrateLoadDesigner\MHB.CreateLoadDesigner.Engine\Crates.xsd'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.treedim.com/Pic3DExporter" xmlns:exp="http://www.treedim.com/Pic3DExporter">
+  <ListCrateFrame>
+    <CrateFrame crateName="Crate 1" crateDescription="" crateType="CRATE"
+                maxLongSide="3650" maxShortSide="2100"
+                crateLength="3950" crateWidth="2300" crateHeight="2550"
+                maxQuantityCP80="12" maxQuantityCP100="10"
+              />
+    <CrateFrame crateName="Crate 2" crateDescription="" crateType="SKID"
+              maxLongSide="3700" maxShortSide="2790"
+              crateLength="3950" crateWidth="2300" crateHeight="2550"
+              maxQuantityCP80="4" maxQuantityCP100="3"
+              dynMaxLength="5000" dynAdditionalLength="250"/>
+  </ListCrateFrame>
+  <ListCrateGlass>
+
+  </ListCrateGlass>
+  <ListContainer>
+    <Container containerName="20Box" containerDescription="20' Standard"
+                insideLength="5900" insideWidth="2340" insideHeight="2380"
+                openingWidth="2300" openingHeight="2250"
+                roofOpeningLength="0" roofOpeningWidth="0"
+                payload="22000" emptyWeight="2200" remark="Glass crates or manual only"/>
+    <Container containerName="40Box" containerDescription="40' Standard"
+                insideLength="11900" insideWidth="2340" insideHeight="2380"
+                openingWidth="2300" openingHeight="2250"
+                roofOpeningLength="0" roofOpeningWidth="0"
+                payload="27000" emptyWeight="3750" remark="Not used or manual only"/>
+    </ListContainer>
+</Root>

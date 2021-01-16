@@ -29,12 +29,47 @@ namespace MHB.CrateLoadDesigner.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DockContentCrates));
+            this.splitContainerVert = new System.Windows.Forms.SplitContainer();
+            this.lbCrates = new System.Windows.Forms.ListBox();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerVert)).BeginInit();
+            this.splitContainerVert.Panel1.SuspendLayout();
+            this.splitContainerVert.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // splitContainerVert
+            // 
+            resources.ApplyResources(this.splitContainerVert, "splitContainerVert");
+            this.splitContainerVert.Name = "splitContainerVert";
+            // 
+            // splitContainerVert.Panel1
+            // 
+            this.splitContainerVert.Panel1.Controls.Add(this.lbCrates);
+            // 
+            // lbCrates
+            // 
+            resources.ApplyResources(this.lbCrates, "lbCrates");
+            this.lbCrates.FormattingEnabled = true;
+            this.lbCrates.Name = "lbCrates";
+            // 
+            // DockContentCrates
+            // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "DockContentCrates";
+            this.Controls.Add(this.splitContainerVert);
+            this.Name = "DockContentCrates";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.splitContainerVert.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerVert)).EndInit();
+            this.splitContainerVert.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.SplitContainer splitContainerVert;
+        private System.Windows.Forms.ListBox lbCrates;
     }
 }

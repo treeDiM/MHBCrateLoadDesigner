@@ -1,15 +1,8 @@
 ﻿#region Using directives
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 using WeifenLuo.WinFormsUI.Docking;
+
+using MHB.CrateLoadDesigner.Engine;
+using System;
 #endregion
 
 namespace MHB.CrateLoadDesigner.Desktop
@@ -20,5 +13,12 @@ namespace MHB.CrateLoadDesigner.Desktop
         {
             InitializeComponent();
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            Project?.GenerateSolution();
+        }
+        public Project Project { get; set; }
     }
 }

@@ -35,19 +35,19 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMIExit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMIOutputs = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.outputFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMIExit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMIWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.inputsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cratesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.containersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.outputFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,23 +88,35 @@ namespace MHB.CrateLoadDesigner.Desktop
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.newToolStripMenuItem.Text = "New...";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.OnNewFile);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OnOpen);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.OnSave);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(104, 6);
+            // 
+            // toolStripMIExit
+            // 
+            this.toolStripMIExit.Name = "toolStripMIExit";
+            this.toolStripMIExit.Size = new System.Drawing.Size(107, 22);
+            this.toolStripMIExit.Text = "Exit";
+            this.toolStripMIExit.Click += new System.EventHandler(this.OnExit);
             // 
             // toolStripMIOutputs
             // 
@@ -123,29 +135,9 @@ namespace MHB.CrateLoadDesigner.Desktop
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.aboutToolStripMenuItem.Text = "About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.OnAbout);
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.FileName = "openFileDialog";
-            // 
-            // inputFileDialog
-            // 
-            this.inputFileDialog.FileName = "inputFileDialog";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // toolStripMIExit
-            // 
-            this.toolStripMIExit.Name = "toolStripMIExit";
-            this.toolStripMIExit.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMIExit.Text = "Exit";
-            this.toolStripMIExit.Click += new System.EventHandler(this.OnExit);
             // 
             // toolStripMIWindow
             // 
@@ -168,12 +160,21 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.cratesToolStripMenuItem.Name = "cratesToolStripMenuItem";
             this.cratesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cratesToolStripMenuItem.Text = "Crates";
+            this.cratesToolStripMenuItem.Click += new System.EventHandler(this.OnShowCrates);
             // 
             // containersToolStripMenuItem
             // 
             this.containersToolStripMenuItem.Name = "containersToolStripMenuItem";
             this.containersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.containersToolStripMenuItem.Text = "Containers";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            // 
+            // inputFileDialog
+            // 
+            this.inputFileDialog.FileName = "inputFileDialog";
             // 
             // FormMain
             // 
@@ -182,6 +183,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.menuStripMain);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "FormMain";
             this.Text = "MHB Crate load designer";
