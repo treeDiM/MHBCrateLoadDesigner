@@ -1,4 +1,5 @@
 ﻿#region Using directives
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
@@ -24,7 +25,7 @@ namespace MHB.CrateLoadDesigner.Engine
         public Vector2D MaxUnitDimensions { get; set; }
         public Vector3D OuterDimensions { get; set; }
         public List<Layer> Layers { get; }
-
+ 
         public bool PackFrame(DefFrame defFrame, Project.EPackingMethod packingMethod)
         {
             switch (packingMethod)
@@ -73,6 +74,7 @@ namespace MHB.CrateLoadDesigner.Engine
 
         public void SortLayers() { Layers.OrderBy(l => l.Weight); }
         public double Weight => Layers.Select(l => l.Weight).Sum();
+        public int NoFrames => Layers.Select(l => l.Count).Sum();
     }
 
     public class Layer : List<FramePosition>
@@ -120,7 +122,7 @@ namespace MHB.CrateLoadDesigner.Engine
                 int index = 0;
                 foreach (var rect in rects)
                 {
-                    DefFrame f = frames[index];
+                    DefFrame f = frames[index++];
                     FramePosition fp = null;
                     if (rect.Width == (int)f.Width && rect.Height == (int)f.Height)
                     {
@@ -131,7 +133,9 @@ namespace MHB.CrateLoadDesigner.Engine
                         fp = new FramePosition(f, new Vector2D(rect.X + rect.Height, rect.Y), FramePosition.Axis.XP);
                     }
                     else
-                        throw new System.Exception("Pack failed for ");
+                        throw new Exception($"Pack failed for ({rect.Width}, {rect.Height})");
+
+                    Add(fp);
                 }
             }
         }

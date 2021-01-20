@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+<?define InstallLocation = INSTALLFOLDER?>
+<!-- Product name as it appears in Add/Remove Programs-->
+<?define ProductName = "MHB Crate Load Designer" ?>
+<!-- Product version -->
+<?define ProductVersion = "0.1.0.0"?>
+<!-- Product code -->
+<?define ProductCode ="{D360326F-5A81-46CF-AA27-7C5A3A196AEC}"?>
+<!-- Upgrade code -->
+<?define UpgradeCode = "{A91107D7-89D7-4041-949C-CD34716FC28D}"?>
+<!-- Package description -->
+<?define Package_Description = "Installs application MHB crate load designer"?>
+<!-- Package comments -->
+<?define Package_Comments = "MHB crate load designer"?>
+<!-- Keywords -->
+<?define Package_Keywords = "Installer, MHB, Crate, Container"?>
+<Include>
+<!-- Product manufacturer -->
+<?define ProductManufacturer = "MHB"?>
+<!-- var -->
+<?define MHBCrateLoadDesignerBinSourceDir = "..\..\MHB.CrateLoadDesigner.Desktop\bin\Release"?>
+<?define ShortcutFolder="MHB"?>
+</Include>

@@ -58,5 +58,18 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
                 this["OutputFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\GitHub\\MHBCrateLoadDesigner\\Sources\\MHB.CrateLoadDesigner\\MHB.CreateLoadDesign" +
+            "er.Engine\\Crates.xml")]
+        public string CrateFilePath {
+            get {
+                return ((string)(this["CrateFilePath"]));
+            }
+            set {
+                this["CrateFilePath"] = value;
+            }
+        }
     }
 }

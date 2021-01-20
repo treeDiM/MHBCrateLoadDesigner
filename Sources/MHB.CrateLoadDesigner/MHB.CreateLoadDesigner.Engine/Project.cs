@@ -124,7 +124,7 @@ namespace MHB.CrateLoadDesigner.Engine
         private List<DefContainer> ListDefContainers { get; set; } = new List<DefContainer>();
 
         private List<InstContainer> ListContainers { get; set; } = new List<InstContainer>();
-        private List<InstCrateFrame> ListCrateFrame { get; set; } = new List<InstCrateFrame>();
+        public List<InstCrateFrame> ListCrateFrame { get; set; } = new List<InstCrateFrame>();
         private List<InstCrateGlass> ListCrateGlass { get; set; } = new List<InstCrateGlass>();
 
         public enum EPackingMethod { FIRSTFIT, BESTFIT };
@@ -132,8 +132,6 @@ namespace MHB.CrateLoadDesigner.Engine
 
         public EPackingMethod PackingMethod { get; set; } = EPackingMethod.FIRSTFIT;
         public ESortingMethod SortingMethod { get; set; } = ESortingMethod.SORTLONGSHORT;
-
-
         #endregion
     }
 }

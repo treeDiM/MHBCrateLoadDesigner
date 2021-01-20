@@ -1,30 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?include $(sys.CURRENTDIR)\Config.wxi?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="MHB.CrateLoadDesigner.Setup" Language="1033" Version="1.0.0.0" Manufacturer="" UpgradeCode="8c583b98-b7fa-49a2-b2bd-698f8017c53e">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+	<Product	Id="*"
+						Name="$(var.ProductName)"
+						Language="1033"
+						Version="$(var.ProductVersion)"
+						Manufacturer="$(var.ProductManufacturer)"
+						UpgradeCode="$(var.UpgradeCode)"
+					 >
+		<Package	Description="$(var.Package_Description)"
+							Comments="$(var.Package_Comments)"
+							Manufacturer="$(var.ProductManufacturer)"
+							Keywords="$(var.Package_Keywords)"
+							InstallerVersion="500"
+							Compressed="yes"
+							InstallScope="perMachine"
+              ReadOnly="yes"
+              ShortNames="no"
+              SummaryCodepage="1252"
+							/>
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
-
-		<Feature Id="ProductFeature" Title="MHB.CrateLoadDesigner.Setup" Level="1">
+		<MediaTemplate EmbedCab="yes"/>
+		<Feature Id="ProductFeature" Title="MHB.CrateLoadDesigner.Setup" Level="1" Absent="disallow"
+             Display="expand" ConfigurableDirectory="$(var.InstallLocation)">
 			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id ="CompGroup_MHB_CrateLoadDesigner"/>
+      <ComponentRef Id="ProgramMenuShortcutComp"/>
+      <ComponentRef Id="DesktopShortcutComp"/>
 		</Feature>
-	</Product>
+    
+    <!--Shortcut icon-->
+    <Icon Id="ShortcutIcon.ico" SourceFile="..\..\MHB.CrateLoadDesigner.Desktop\bin\Release\MHB.CrateLoadDesigner.Desktop.exe" />
+      <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ProgramMenuShortcutComp" Guid="{7EEC4FCC-7CD9-453B-B149-C751DCFF1AD7}">
+        <Shortcut Id="PMenuShortcut"
+                  Name="MHB Crate Load Designer"
+                  Description="MHB Crate Load Designer"
+                  Target="[Bin]MHB.CrateLoadDesigner.Desktop.exe"
+                  Icon="ShortcutIcon.ico"
+                  WorkingDirectory="Bin"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU"
+                       Key="Software/$(var.ProductManufacturer)/PMenuShortcut"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="DesktopShortcutComp" Guid="{E75368FE-2CF8-47AF-8CC1-74F9716F8E3A}">
+        <Shortcut Id="DShortcut"
+                  Name="MHB Crate Load Designer"
+                  Description="MHB Crate Load Designer"
+                  Target="[Bin]MHB.CrateLoadDesigner.Desktop.exe"
+                  Icon="ShortcutIcon.ico"
+                  WorkingDirectory="Bin" />
+        <RemoveFolder Id="DesktopFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU"
+                       Key="Software/$(var.ProductManufacturer)/DShortcut"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
 
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="MHB.CrateLoadDesigner.Setup" />
-			</Directory>
-		</Directory>
-	</Fragment>
+
+   <!-- UI -->
+    <UIRef Id="WixUI_InstallDir" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <WixVariable Id="WixUIBannerBmp" Value="WixUIBannerBmp.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="WixUIDialogBmp.bmp" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+    <UI>
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg">1</Publish>
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
+    </UI>
+  </Product>
 
 	<Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-			<!-- <Component Id="ProductComponent"> -->
-				<!-- TODO: Insert files, registry keys, and other resources here. -->
-			<!-- </Component> -->
 		</ComponentGroup>
 	</Fragment>
+ 
+ 
 </Wix>

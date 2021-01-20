@@ -11,5 +11,8 @@
     <Setting Name="OutputFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="CrateFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\GitHub\MHBCrateLoadDesigner\Sources\MHB.CrateLoadDesigner\MHB.CreateLoadDesigner.Engine\Crates.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

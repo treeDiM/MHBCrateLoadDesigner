@@ -293,12 +293,8 @@ namespace RectangleBinPack
 			return newNode;
 		}
 
-
-
-
         /// Stores the starting y-coordinate of the latest (topmost) shelf.
         private int currentY;
-
 
         /// If true, the following GuillotineBinPack structure is used to recover the SHELF data structure from losing space.
         public bool UseWasteMap { get; set; }
@@ -307,18 +303,14 @@ namespace RectangleBinPack
         /// Describes a horizontal slab of space where rectangles may be placed.
         internal class Shelf
         {
-			internal Shelf()
-			{
-				Console.WriteLine("New shelf!");
-			}
+			internal Shelf() {}
             /// The x-coordinate that specifies where the used shelf space ends.
             /// Space between [0, currentX[ has been filled with rectangles, [currentX, binWidth[ is still available for filling.
             internal int currentX;
             /// The y-coordinate of where this shelf starts, inclusive.
             internal int startY;
             /// Specifices the height of this shelf. The topmost shelf is "open" and its height may grow.
-            internal int height;
- 
+            internal int height; 
             /// Lists all the rectangles in this shelf.
             internal readonly List<Rect> usedRectangles = new List<Rect>();
         };

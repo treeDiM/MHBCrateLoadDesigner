@@ -29,6 +29,7 @@ namespace MHB.CrateLoadDesigner.Desktop
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.toolStripMIFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -152,20 +153,20 @@ namespace MHB.CrateLoadDesigner.Desktop
             // inputsToolStripMenuItem
             // 
             this.inputsToolStripMenuItem.Name = "inputsToolStripMenuItem";
-            this.inputsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.inputsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.inputsToolStripMenuItem.Text = "Inputs";
             // 
             // cratesToolStripMenuItem
             // 
             this.cratesToolStripMenuItem.Name = "cratesToolStripMenuItem";
-            this.cratesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cratesToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.cratesToolStripMenuItem.Text = "Crates";
             this.cratesToolStripMenuItem.Click += new System.EventHandler(this.OnShowCrates);
             // 
             // containersToolStripMenuItem
             // 
             this.containersToolStripMenuItem.Name = "containersToolStripMenuItem";
-            this.containersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.containersToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.containersToolStripMenuItem.Text = "Containers";
             // 
             // openFileDialog
@@ -183,6 +184,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.menuStripMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "FormMain";
