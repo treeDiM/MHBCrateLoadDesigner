@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Linq;
 
 using Sharp3D.Math.Core;
+
+using MHB.CrateLoadDesigner.Engine.Properties;
 #endregion
 
 namespace MHB.CrateLoadDesigner.Engine
@@ -13,15 +15,23 @@ namespace MHB.CrateLoadDesigner.Engine
     {
         public void GenerateSolution()
         {
+            // clear ListCrateFrame
+            ListCrateFrame.Clear();
+
             // ### Frames ###
             // sort frames
             switch (SortingMethod)
             {
-                case ESortingMethod.SORTLONGSHORT: ListDefFrames.OrderByDescending(f => f.LongSide).ThenByDescending(f => f.ShortSide); break;
+                case ESortingMethod.SORTLONGSHORT: ListDefFrames.OrderByDescending(f => f.LongSide)/*.ThenByDescending(f => f.ShortSide)*/; break;
                 case ESortingMethod.SORTAREA: ListDefFrames.OrderByDescending(f => f.Area); break;
                 case ESortingMethod.SORTPERIMETER: ListDefFrames.OrderByDescending(f => f.Perimeter); break;
                 default: break;
             }
+
+            // move frames that would not fit the first crate to the top
+            DefCrate crate0 = ListDefCrates[0];
+            ListDefFrames.OrderByDescending(f => crate0.CouldFitFrame(f) ? 0 : 1);
+
             // pack frames
             foreach (var f in ListDefFrames)
             {
@@ -44,6 +54,8 @@ namespace MHB.CrateLoadDesigner.Engine
                     }
                 }
             }
+            foreach (var crate in ListCrateFrame)
+                crate.SortLayers();
             // ###
 
             // ### Glasses ###
@@ -61,10 +73,13 @@ namespace MHB.CrateLoadDesigner.Engine
             foreach (var defCrate in ListDefCrates)
             {
                 if (defCrate.CouldFitFrame(frame))
+                {
                     crate = defCrate.Instantiate(frame, (uint)ListCrateFrame.Count);
+                    break;
+                }
             }
             if (null == crate)
-                throw new System.Exception($"Failed to create for frame {frame.Brand}");
+                throw new System.Exception($"Failed to build crate for frame {frame.Brand} with dimensions ({frame.LongSide}, {frame.ShortSide})");
             ListCrateFrame.Add(crate);
             return crate;
         }
@@ -113,6 +128,38 @@ namespace MHB.CrateLoadDesigner.Engine
         public void Export(string filePath)
         { 
         }
+        public enum GlassType { DOUBLEGLASSTEMPERED, DOUBLEGLASSLAMINATED, TRIPLEGLASSTEMPERED, TRIPLEGLASSLAMINATED };
+        public static GlassType PGlassType { get; set; }
+        public static double FrameThickness
+        {
+            get
+            {
+                switch (PGlassType)
+                {
+                    case GlassType.DOUBLEGLASSTEMPERED:
+                    case GlassType.DOUBLEGLASSLAMINATED: return 88.0;
+                    case GlassType.TRIPLEGLASSTEMPERED:
+                    case GlassType.TRIPLEGLASSLAMINATED:  return 108.0;
+                    default: throw new System.Exception($"Invalid GlassType: {PGlassType}");
+                }
+            } 
+        }
+        public static double GlassThickness
+        {
+            get
+            {
+                switch (PGlassType)
+                {
+                    case GlassType.DOUBLEGLASSTEMPERED: return 28.0;
+                    case GlassType.DOUBLEGLASSLAMINATED: return 32.0;
+                    case GlassType.TRIPLEGLASSTEMPERED: return 48.0; 
+                    case GlassType.TRIPLEGLASSLAMINATED: return 48.8;
+                    default: throw new System.Exception($"Invalid GlassType: {PGlassType}");
+                }
+            }
+        }
+        public static double FrameSpacing => 0.0;//Settings.Default.FrameSpacing;
+        public static double FrameMargin => Settings.Default.FrameMargin;
 
         #region Data members
         public string Name { get; set; } = string.Empty;
@@ -120,12 +167,12 @@ namespace MHB.CrateLoadDesigner.Engine
         public List<DefFrame> ListDefFrames { get; set; } = new List<DefFrame>();
         public List<DefGlass> ListDefGlass { get; set; } = new List<DefGlass>();
 
-        private List<DefCrate> ListDefCrates { get; set; } = new List<DefCrate>();
+        public List<DefCrate> ListDefCrates { get; set; } = new List<DefCrate>();
         private List<DefContainer> ListDefContainers { get; set; } = new List<DefContainer>();
 
         private List<InstContainer> ListContainers { get; set; } = new List<InstContainer>();
         public List<InstCrateFrame> ListCrateFrame { get; set; } = new List<InstCrateFrame>();
-        private List<InstCrateGlass> ListCrateGlass { get; set; } = new List<InstCrateGlass>();
+        public List<InstCrateGlass> ListCrateGlass { get; set; } = new List<InstCrateGlass>();
 
         public enum EPackingMethod { FIRSTFIT, BESTFIT };
         public enum ESortingMethod { SORTLONGSHORT, SORTAREA, SORTPERIMETER };

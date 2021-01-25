@@ -94,16 +94,17 @@ namespace MHB.CrateLoadDesigner.Desktop
                 Resources.IDS_DESCRIPTION
             };
             GridInitialize(gridFrames, captions);
+            CellBackColorAlternate viewNormal = new CellBackColorAlternate(Color.LightBlue, Color.White);
             int iIndex = 0;
             foreach (var defFrame in Proj.ListDefFrames)
             {
                 gridFrames.Rows.Insert(++iIndex);
                 int iCol = 0;
-                gridFrames[iIndex, iCol++] = new SourceGrid.Cells.Cell(defFrame.Brand);
-                gridFrames[iIndex, iCol++] = new SourceGrid.Cells.Cell(defFrame.Number);
-                gridFrames[iIndex, iCol++] = new SourceGrid.Cells.Cell($"{defFrame.Width:0.##}");
-                gridFrames[iIndex, iCol++] = new SourceGrid.Cells.Cell($"{defFrame.Height:0.##}");
-                gridFrames[iIndex, iCol++] = new SourceGrid.Cells.Cell(defFrame.Description);
+                gridFrames[iIndex, iCol++] = new SourceGrid.Cells.Cell(defFrame.Brand) { View = viewNormal };
+                gridFrames[iIndex, iCol++] = new SourceGrid.Cells.Cell(defFrame.Number) { View = viewNormal };
+                gridFrames[iIndex, iCol++] = new SourceGrid.Cells.Cell($"{defFrame.Width:0.##}") { View = viewNormal };
+                gridFrames[iIndex, iCol++] = new SourceGrid.Cells.Cell($"{defFrame.Height:0.##}") { View = viewNormal };
+                gridFrames[iIndex, iCol++] = new SourceGrid.Cells.Cell(defFrame.Description) { View = viewNormal };
             }
             GridFinalize(gridFrames);
         }
@@ -133,10 +134,44 @@ namespace MHB.CrateLoadDesigner.Desktop
         {
             string[] captions = { 
                 Resources.IDS_BRAND,
+                Resources.IDS_DESCRIPTION,
+                Resources.IDS_MAXLONGSIDE,
+                Resources.IDS_MAXSHORTSIDE,
+                Resources.IDS_DIMENSIONSOUTER,
+                Resources.IDS_MAXDYNLENGTH,
+                Resources.IDS_ADDITIONALLENGTH
             };
+            GridInitialize(gridCratesFrame, captions);
+            CellBackColorAlternate viewNormal = new CellBackColorAlternate(Color.LightBlue, Color.White);
+            int iIndex = 0;
+            foreach (var crate in Proj.ListDefCrates)
+            {
+                gridCratesFrame.Rows.Insert(++iIndex);
+                int iCol = 0;
+                gridCratesFrame[iIndex, iCol++] = new SourceGrid.Cells.Cell(crate.Name) { View = viewNormal };
+                gridCratesFrame[iIndex, iCol++] = new SourceGrid.Cells.Cell(crate.Description) { View = viewNormal };
+                gridCratesFrame[iIndex, iCol++] = new SourceGrid.Cells.Cell(crate.MaxLongSide) { View = viewNormal };
+                gridCratesFrame[iIndex, iCol++] = new SourceGrid.Cells.Cell(crate.MaxShortSide) { View = viewNormal };
+                gridCratesFrame[iIndex, iCol++] = new SourceGrid.Cells.Cell($"{crate.DimensionsOuter.X}x{crate.DimensionsOuter.Y}x{crate.DimensionsOuter.Z}") { View = viewNormal };
+                gridCratesFrame[iIndex, iCol++] = new SourceGrid.Cells.Cell(crate.DynMaxLength.HasValue ? $"{crate.DynMaxLength}" : "") { View = viewNormal };
+                gridCratesFrame[iIndex, iCol++] = new SourceGrid.Cells.Cell(crate.DynAdditionalLength.HasValue ? $"{crate.DynAdditionalLength}" : "") { View = viewNormal };
+            }
+            GridFinalize(gridCratesFrame);
         }
         private void FillGridCrateGlass()
-        { 
+        {
+            string[] captions = {
+                Resources.IDS_NAME,
+                Resources.IDS_DESCRIPTION
+            };
+            GridInitialize(gridCratesGlass, captions);
+            CellBackColorAlternate viewNormal = new CellBackColorAlternate(Color.LightBlue, Color.White);
+            int iIndex = 0;
+            foreach (var crate in Proj.ListDefCrates)
+            {
+
+            }
+            GridFinalize(gridCratesGlass);
         }
         private void FillGridContainers()
         { 

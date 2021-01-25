@@ -24,15 +24,15 @@ namespace MHB.CrateLoadDesigner.Engine
         public bool CouldFitFrame(DefFrame frame)
         {
             if (frame.ShortSide > MaxShortSide) return false;
-            if (frame.LongSide > (DynMaxLength.HasValue ? DynMaxLength.Value - DynAdditionalLength.Value : MaxLongSide)) return false;
+            if (frame.LongSide > (DynMaxLength.HasValue ? DynMaxLength.Value : MaxLongSide)) return false;
             return true;
         }
         public InstCrateFrame Instantiate(DefFrame frame, uint index)
         {
             if (MaxLongSide >= frame.LongSide && MaxShortSide >= frame.ShortSide)
-                return new InstCrateFrame(index, new Vector2D(MaxLongSide, MaxShortSide), MaxNumberOfLayers[0]);
-            else if (DynMaxLength.HasValue && DynMaxLength.Value - DynAdditionalLength.Value >= frame.LongSide && MaxShortSide >= frame.ShortSide)
-                return new InstCrateFrame(index, new Vector2D(frame.LongSide, MaxShortSide), MaxNumberOfLayers[0]);
+                return new InstCrateFrame(index, new Vector2D(MaxLongSide, MaxShortSide), MaxNumberOfLayers[0], CrateType == EType.SKID) { OuterDimensions = DimensionsOuter };
+            else if (DynMaxLength.HasValue && DynMaxLength.Value/* - DynAdditionalLength.Value*/ >= frame.LongSide && MaxShortSide >= frame.ShortSide)
+                return new InstCrateFrame(index, new Vector2D(frame.LongSide, MaxShortSide), MaxNumberOfLayers[0], CrateType == EType.SKID) { OuterDimensions = new Vector3D(frame.LongSide + DynAdditionalLength.Value, DimensionsOuter.Y, DimensionsOuter.Z) };
             else
                 return null;
         }

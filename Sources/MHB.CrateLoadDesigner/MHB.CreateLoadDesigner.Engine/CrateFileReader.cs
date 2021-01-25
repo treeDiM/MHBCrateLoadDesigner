@@ -35,8 +35,8 @@ namespace MHB.CrateLoadDesigner.Engine
                     DimensionsOuter = new Vector3D(crateFrame.crateLength, crateFrame.crateWidth, crateFrame.crateHeight),
                     MaxNumberOfLayers = new int[] { crateFrame.maxQuantityCP80, crateFrame.maxQuantityCP100 },
                     DynResizing = crateFrame.dynMaxLengthSpecified,
-                    DynMaxLength = crateFrame.dynAdditionalLengthSpecified ? crateFrame.dynMaxLength : 0.0,
-                    DynAdditionalLength = crateFrame.dynMaxLengthSpecified ? crateFrame.dynAdditionalLength : 0.0
+                    DynMaxLength = crateFrame.dynAdditionalLengthSpecified ? crateFrame.dynMaxLength : (double?)null,
+                    DynAdditionalLength = crateFrame.dynMaxLengthSpecified ? crateFrame.dynAdditionalLength : (double?)null
                 }
                 );
             }
@@ -50,8 +50,8 @@ namespace MHB.CrateLoadDesigner.Engine
                     DimensionsOuter = new Vector3D(crateGlass.crateLength, crateGlass.crateWidth, crateGlass.crateHeight),
                     MaxNumberOfLayers = new int[] { crateGlass.maxQuantityDoubleGlass, crateGlass.maxQuantityTripleGlass },
                     DynResizing = crateGlass.dynMaxLengthSpecified,
-                    DynMaxLength = crateGlass.dynMaxLengthSpecified ? crateGlass.dynMaxLength : 0.0,
-                    DynAdditionalLength = crateGlass.dynMaxLengthSpecified ? crateGlass.dynAdditionalLength : 0.0
+                    DynMaxLength = crateGlass.dynMaxLengthSpecified ? crateGlass.dynMaxLength : (double?)null,
+                    DynAdditionalLength = crateGlass.dynMaxLengthSpecified ? crateGlass.dynAdditionalLength : (double?)null
                 }
                 );
             }

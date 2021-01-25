@@ -61,6 +61,15 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Additional length.
+        /// </summary>
+        internal static string IDS_ADDITIONALLENGTH {
+            get {
+                return ResourceManager.GetString("IDS_ADDITIONALLENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Brand.
         /// </summary>
         internal static string IDS_BRAND {
@@ -79,6 +88,15 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Outer dimensions.
+        /// </summary>
+        internal static string IDS_DIMENSIONSOUTER {
+            get {
+                return ResourceManager.GetString("IDS_DIMENSIONSOUTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Height.
         /// </summary>
         internal static string IDS_HEIGHT {
@@ -88,11 +106,56 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Max. dynamic length.
+        /// </summary>
+        internal static string IDS_MAXDYNLENGTH {
+            get {
+                return ResourceManager.GetString("IDS_MAXDYNLENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max. long side.
+        /// </summary>
+        internal static string IDS_MAXLONGSIDE {
+            get {
+                return ResourceManager.GetString("IDS_MAXLONGSIDE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max. short side.
+        /// </summary>
+        internal static string IDS_MAXSHORTSIDE {
+            get {
+                return ResourceManager.GetString("IDS_MAXSHORTSIDE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string IDS_NAME {
+            get {
+                return ResourceManager.GetString("IDS_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number.
         /// </summary>
         internal static string IDS_NUMBER {
             get {
                 return ResourceManager.GetString("IDS_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        internal static string IDS_TYPE {
+            get {
+                return ResourceManager.GetString("IDS_TYPE", resourceCulture);
             }
         }
         

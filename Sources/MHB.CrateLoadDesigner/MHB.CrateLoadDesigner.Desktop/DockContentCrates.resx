@@ -128,13 +128,19 @@
   <data name="lbCrates.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lbCrates.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lbCrates.ItemHeight" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
   <data name="lbCrates.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="lbCrates.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 450</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lbCrates.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -142,7 +148,7 @@
     <value>lbCrates</value>
   </data>
   <data name="&gt;&gt;lbCrates.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>MHB.CrateLoadDesigner.Desktop.ListBoxCrates, MHB.CrateLoadDesigner.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lbCrates.Parent" xml:space="preserve">
     <value>splitContainerVert.Panel1</value>
@@ -160,6 +166,189 @@
     <value>splitContainerVert</value>
   </data>
   <data name="&gt;&gt;splitContainerVert.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitContainerHoriz1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splitContainerHoriz1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="splitContainerHoriz1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="splitContainerVert2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splitContainerVert2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pbCrate.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pbCrate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pbCrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pbCrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 159</value>
+  </data>
+  <data name="pbCrate.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
+  </data>
+  <data name="pbCrate.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pbCrate.Name" xml:space="preserve">
+    <value>pbCrate</value>
+  </data>
+  <data name="&gt;&gt;pbCrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pbCrate.Parent" xml:space="preserve">
+    <value>splitContainerVert2.Panel1</value>
+  </data>
+  <data name="&gt;&gt;pbCrate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainerVert2.Panel1.Name" xml:space="preserve">
+    <value>splitContainerVert2.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerVert2.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerVert2.Panel1.Parent" xml:space="preserve">
+    <value>splitContainerVert2</value>
+  </data>
+  <data name="&gt;&gt;splitContainerVert2.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gridCrate.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="gridCrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="gridCrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 159</value>
+  </data>
+  <data name="gridCrate.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;gridCrate.Name" xml:space="preserve">
+    <value>gridCrate</value>
+  </data>
+  <data name="&gt;&gt;gridCrate.Type" xml:space="preserve">
+    <value>SourceGrid.Grid, SourceGrid, Version=4.40.4580.29115, Culture=neutral, PublicKeyToken=df6f5e538749e85d</value>
+  </data>
+  <data name="&gt;&gt;gridCrate.Parent" xml:space="preserve">
+    <value>splitContainerVert2.Panel2</value>
+  </data>
+  <data name="&gt;&gt;gridCrate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainerVert2.Panel2.Name" xml:space="preserve">
+    <value>splitContainerVert2.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainerVert2.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerVert2.Panel2.Parent" xml:space="preserve">
+    <value>splitContainerVert2</value>
+  </data>
+  <data name="&gt;&gt;splitContainerVert2.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainerVert2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>596, 159</value>
+  </data>
+  <data name="splitContainerVert2.SplitterDistance" type="System.Int32, mscorlib">
+    <value>390</value>
+  </data>
+  <data name="splitContainerVert2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainerVert2.Name" xml:space="preserve">
+    <value>splitContainerVert2</value>
+  </data>
+  <data name="&gt;&gt;splitContainerVert2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerVert2.Parent" xml:space="preserve">
+    <value>splitContainerHoriz1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerVert2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz1.Panel1.Name" xml:space="preserve">
+    <value>splitContainerHoriz1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz1.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz1.Panel1.Parent" xml:space="preserve">
+    <value>splitContainerHoriz1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz1.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gridLayers.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="gridLayers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="gridLayers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>596, 287</value>
+  </data>
+  <data name="gridLayers.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;gridLayers.Name" xml:space="preserve">
+    <value>gridLayers</value>
+  </data>
+  <data name="&gt;&gt;gridLayers.Type" xml:space="preserve">
+    <value>SourceGrid.Grid, SourceGrid, Version=4.40.4580.29115, Culture=neutral, PublicKeyToken=df6f5e538749e85d</value>
+  </data>
+  <data name="&gt;&gt;gridLayers.Parent" xml:space="preserve">
+    <value>splitContainerHoriz1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;gridLayers.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz1.Panel2.Name" xml:space="preserve">
+    <value>splitContainerHoriz1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz1.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz1.Panel2.Parent" xml:space="preserve">
+    <value>splitContainerHoriz1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz1.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainerHoriz1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>596, 450</value>
+  </data>
+  <data name="splitContainerHoriz1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>159</value>
+  </data>
+  <data name="splitContainerHoriz1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz1.Name" xml:space="preserve">
+    <value>splitContainerHoriz1</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz1.Parent" xml:space="preserve">
+    <value>splitContainerVert.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHoriz1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;splitContainerVert.Panel2.Name" xml:space="preserve">

@@ -62,6 +62,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="treeDiM.StackBuilder.Basics">
+      <HintPath>..\..\StackBuilderDLLs\treeDiM.StackBuilder.Basics.dll</HintPath>
+    </Reference>
+    <Reference Include="treeDiM.StackBuilder.Graphics">
+      <HintPath>..\..\StackBuilderDLLs\treeDiM.StackBuilder.Graphics.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CellBackColorAlternate.cs" />
@@ -106,6 +112,13 @@
     </Compile>
     <Compile Include="FormSplashScreen.Designer.cs">
       <DependentUpon>FormSplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicHelpers.cs" />
+    <Compile Include="ListBoxCrates.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListBoxCrates.Designer.cs">
+      <DependentUpon>ListBoxCrates.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

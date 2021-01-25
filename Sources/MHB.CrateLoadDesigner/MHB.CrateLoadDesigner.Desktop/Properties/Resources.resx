@@ -117,17 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="IDS_ADDITIONALLENGTH" xml:space="preserve">
+    <value>Additional length</value>
+  </data>
   <data name="IDS_BRAND" xml:space="preserve">
     <value>Brand</value>
   </data>
   <data name="IDS_DESCRIPTION" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="IDS_DIMENSIONSOUTER" xml:space="preserve">
+    <value>Outer dimensions</value>
+  </data>
   <data name="IDS_HEIGHT" xml:space="preserve">
     <value>Height</value>
   </data>
+  <data name="IDS_MAXDYNLENGTH" xml:space="preserve">
+    <value>Max. dynamic length</value>
+  </data>
+  <data name="IDS_MAXLONGSIDE" xml:space="preserve">
+    <value>Max. long side</value>
+  </data>
+  <data name="IDS_MAXSHORTSIDE" xml:space="preserve">
+    <value>Max. short side</value>
+  </data>
+  <data name="IDS_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="IDS_NUMBER" xml:space="preserve">
     <value>Number</value>
+  </data>
+  <data name="IDS_TYPE" xml:space="preserve">
+    <value>Type</value>
   </data>
   <data name="IDS_VALIDFILEPATHNEEDED" xml:space="preserve">
     <value>A valid file path is needed.</value>
