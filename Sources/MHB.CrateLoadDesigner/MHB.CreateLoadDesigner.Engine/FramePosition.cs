@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿#region Using directives
 using Sharp3D.Math.Core;
+#endregion
 
 
 namespace MHB.CrateLoadDesigner.Engine

@@ -278,7 +278,7 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
         
         private string crateNameField;
         
-        private string crateTypeField;
+        private string crateDescriptionField;
         
         private double maxLongSideField;
         
@@ -315,12 +315,12 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string crateType {
+        public string crateDescription {
             get {
-                return this.crateTypeField;
+                return this.crateDescriptionField;
             }
             set {
-                this.crateTypeField = value;
+                this.crateDescriptionField = value;
             }
         }
         

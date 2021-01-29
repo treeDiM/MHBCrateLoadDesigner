@@ -3,10 +3,13 @@ using System;
 using System.Windows.Forms;
 using System.Reflection;
 using System.IO;
+
 using WeifenLuo.WinFormsUI.Docking;
+using log4net;
 
 using MHB.CrateLoadDesigner.Desktop.Properties;
 using MHB.CrateLoadDesigner.Engine;
+using MHB.CrateLoadDesigner.Exporters;
 #endregion
 
 namespace MHB.CrateLoadDesigner.Desktop
@@ -122,34 +125,63 @@ namespace MHB.CrateLoadDesigner.Desktop
         {
             Close();
         }
-        private void OnNewFile(object sender, EventArgs e)
+        private void OnFileNew(object sender, EventArgs e)
         {
             var form = new FormNewProject();
             if (DialogResult.OK == form.ShowDialog())
             {
                 project = form.Proj;
+                project?.GenerateSolution();
                 OnShowCrates(sender, e);
             }
-
+            Text = $"MHB Crate load designer - {project?.Name}";
         }
+
         private void OnShowCrates(object sender, EventArgs e)
         {
-            var form = new DockContentCrates() { Project = project };
-            form.Show(dockPanel, DockState.Document);
+            var formCratesFrame = new DockContentCratesFrame() { Project = project };
+            formCratesFrame.Show(dockPanel, DockState.Document);
+            var formCratesGlass = new DockContentCratesGlass() { Project = project };
+            formCratesGlass.Show(dockPanel, DockState.Document);
         }
-        private void OnOpen(object sender, EventArgs e)
+        private void OnFileOpen(object sender, EventArgs e)
         {
             if (DialogResult.OK == openFileDialog.ShowDialog())
             {
                 project.Load(openFileDialog.FileName);
             }
+            UpdateCaption();
         }
-        private void OnSave(object sender, EventArgs e)
+        private void OnFileSave(object sender, EventArgs e)
         {
             if (DialogResult.OK == saveFileDialog.ShowDialog())
             {
                 project.Save(saveFileDialog.FileName);
             }
+        }
+        private void OnGenerateTableOfContents(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DialogResult.OK == outputFileDialog.ShowDialog())
+                {
+                    using (ExporterTableOfContents exporter = new ExporterTableOfContents())
+                    {
+                        exporter.Export(project, outputFileDialog.FileName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.ToString());
+            }
+        }
+        #endregion
+
+        #region Caption
+        private void UpdateCaption()
+        { 
+            Text = project == null? "MHB crate load designer" : $"MHB crate load designer - {project?.Name}";
         }
         #endregion
 
@@ -164,6 +196,8 @@ namespace MHB.CrateLoadDesigner.Desktop
         private DockContentLogConsole _logConsole;
         private DeserializeDockContent _deserializeDockContent;
         private Project project = new Project();
+        private ILog _log = LogManager.GetLogger(typeof(FormMain));
+
         #endregion
 
 

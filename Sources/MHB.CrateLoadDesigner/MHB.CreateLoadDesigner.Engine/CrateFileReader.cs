@@ -13,7 +13,7 @@ namespace MHB.CrateLoadDesigner.Engine
 {
     internal class CrateFileReader : IDisposable
     {
-        public bool LoadFile(string filePath, List<DefCrate> listFrameCrates, List<DefCrate> listGlassCrates, List<DefContainer> listContainers)
+        public bool LoadFile(string filePath, List<DefCrateFrame> listFrameCrates, List<DefCrateGlass> listGlassCrates, List<DefContainer> listContainers)
         {
             if (!File.Exists(filePath))
                 throw new FileNotFoundException(filePath);
@@ -26,10 +26,10 @@ namespace MHB.CrateLoadDesigner.Engine
 
             foreach (var crateFrame in root.ListCrateFrame)
             {
-                listFrameCrates.Add(new DefCrate()
+                listFrameCrates.Add(new DefCrateFrame()
                 {
                     Name = crateFrame.crateName,
-                    CrateType = crateFrame.crateType == enuCrateType.SKID ? DefCrate.EType.SKID : DefCrate.EType.CRATE,
+                    CrateType = crateFrame.crateType == enuCrateType.SKID ? DefCrateFrame.EType.SKID : DefCrateFrame.EType.CRATE,
                     MaxLongSide = crateFrame.maxLongSide,
                     MaxShortSide = crateFrame.maxShortSide,
                     DimensionsOuter = new Vector3D(crateFrame.crateLength, crateFrame.crateWidth, crateFrame.crateHeight),
@@ -42,13 +42,14 @@ namespace MHB.CrateLoadDesigner.Engine
             }
             foreach (var crateGlass in root.ListCrateGlass)
             {
-                listGlassCrates.Add(new DefCrate()
+                listGlassCrates.Add(new DefCrateGlass()
                 {
                     Name = crateGlass.crateName,
+                    Description = crateGlass.crateDescription,
                     MaxLongSide = crateGlass.maxLongSide,
                     MaxShortSide = crateGlass.maxShortSide,
                     DimensionsOuter = new Vector3D(crateGlass.crateLength, crateGlass.crateWidth, crateGlass.crateHeight),
-                    MaxNumberOfLayers = new int[] { crateGlass.maxQuantityDoubleGlass, crateGlass.maxQuantityTripleGlass },
+                    MaxQuantity = new int[] { crateGlass.maxQuantityDoubleGlass, crateGlass.maxQuantityTripleGlass },
                     DynResizing = crateGlass.dynMaxLengthSpecified,
                     DynMaxLength = crateGlass.dynMaxLengthSpecified ? crateGlass.dynMaxLength : (double?)null,
                     DynAdditionalLength = crateGlass.dynMaxLengthSpecified ? crateGlass.dynAdditionalLength : (double?)null

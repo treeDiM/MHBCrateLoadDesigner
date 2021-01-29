@@ -1,6 +1,7 @@
 ﻿#region Using directives
 using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 using WeifenLuo.WinFormsUI.Docking;
 using log4net;
@@ -12,14 +13,15 @@ using MHB.CrateLoadDesigner.Engine;
 
 namespace MHB.CrateLoadDesigner.Desktop
 {
-    public partial class DockContentCrates : DockContent
+    public partial class DockContentCratesFrame : DockContent
     {
         #region Constructor
-        public DockContentCrates()
+        public DockContentCratesFrame()
         {
             InitializeComponent();
         }
         #endregion
+        #region Form override
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -35,10 +37,12 @@ namespace MHB.CrateLoadDesigner.Desktop
             }
             FillLBoxCrates();
         }
+        #endregion
 
+        #region List box
         private void FillLBoxCrates()
         {
-            //
+            // loop on crates
             foreach (var crate in Project.ListCrateFrame)
             {
                 lbCrates.Items.Add(crate);
@@ -47,18 +51,21 @@ namespace MHB.CrateLoadDesigner.Desktop
             if (lbCrates.Items.Count > 0)
                 lbCrates.SelectedIndex = 0;
         }
+        #endregion
 
+        #region Drawing
         private void DrawCrate()
         {
             // sanity check
             if (null == SelectedCrate) return;
+            // generate image
             try
             {
-                _log.Info($"({pbCrate.Size.Width}, {pbCrate.Size.Height})");
+
                 pbCrate.Image = LayeredCrateToImage.Draw(
                     GraphicHelpers.CrateToBoxes(SelectedCrate),
-                    SelectedCrate.OuterDimensions,
-                    false,
+                    SelectedCrate.OuterDimensions, Color.White,
+                    false, true,
                     pbCrate.Size
                     );
             }
@@ -67,21 +74,10 @@ namespace MHB.CrateLoadDesigner.Desktop
                 _log.Error(ex.ToString());
             }
         }
-
-        #region Private properties
-        private InstCrateFrame SelectedCrate
-        {
-            get
-            {
-                if (lbCrates.SelectedIndex == -1) return null;
-                return lbCrates.SelectedItem as InstCrateFrame;
-            }
-        }
         #endregion
 
-        #region Data members
-        public Project Project { get; set; }
-        protected ILog _log = LogManager.GetLogger(typeof(DockContentCrates));
+        #region Private properties
+        private InstCrateFrame SelectedCrate => lbCrates.SelectedItem as InstCrateFrame;
         #endregion
 
         #region Event handlers
@@ -89,11 +85,15 @@ namespace MHB.CrateLoadDesigner.Desktop
         {
             DrawCrate();
         }
-        #endregion
-
         private void OnPbCrateResized(object sender, EventArgs e)
         {
             DrawCrate();
         }
+        #endregion
+
+        #region Data members
+        public Project Project { get; set; }
+        protected ILog _log = LogManager.GetLogger(typeof(DockContentCratesFrame));
+        #endregion
     }
 }

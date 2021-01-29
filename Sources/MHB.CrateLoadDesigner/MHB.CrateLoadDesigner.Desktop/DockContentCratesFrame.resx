@@ -148,7 +148,7 @@
     <value>lbCrates</value>
   </data>
   <data name="&gt;&gt;lbCrates.Type" xml:space="preserve">
-    <value>MHB.CrateLoadDesigner.Desktop.ListBoxCrates, MHB.CrateLoadDesigner.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MHB.CrateLoadDesigner.Desktop.ListBoxCratesFrame, MHB.CrateLoadDesigner.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lbCrates.Parent" xml:space="preserve">
     <value>splitContainerVert.Panel1</value>
@@ -394,10 +394,10 @@
     <value>800, 450</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Frame crates...</value>
+    <value>Frame crates</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>DockContentCrates</value>
+    <value>DockContentCratesFrame</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>WeifenLuo.WinFormsUI.Docking.DockContent, WeifenLuo.WinFormsUI.Docking, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481</value>

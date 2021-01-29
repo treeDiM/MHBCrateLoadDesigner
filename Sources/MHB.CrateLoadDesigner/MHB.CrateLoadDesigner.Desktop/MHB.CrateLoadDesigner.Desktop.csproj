@@ -71,11 +71,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CellBackColorAlternate.cs" />
-    <Compile Include="DockContentCrates.cs">
+    <Compile Include="DockContentContainer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DockContentCrates.Designer.cs">
-      <DependentUpon>DockContentCrates.cs</DependentUpon>
+    <Compile Include="DockContentContainer.Designer.cs">
+      <DependentUpon>DockContentContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockContentCratesFrame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockContentCratesFrame.Designer.cs">
+      <DependentUpon>DockContentCratesFrame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockContentCratesGlass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockContentCratesGlass.Designer.cs">
+      <DependentUpon>DockContentCratesGlass.cs</DependentUpon>
     </Compile>
     <Compile Include="DockContentInputs.cs">
       <SubType>Form</SubType>
@@ -114,16 +126,28 @@
       <DependentUpon>FormSplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="GraphicHelpers.cs" />
-    <Compile Include="ListBoxCrates.cs">
+    <Compile Include="ListBoxCratesFrame.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ListBoxCrates.Designer.cs">
-      <DependentUpon>ListBoxCrates.cs</DependentUpon>
+    <Compile Include="ListBoxCratesFrame.Designer.cs">
+      <DependentUpon>ListBoxCratesFrame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListBoxCratesGlass.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListBoxCratesGlass.Designer.cs">
+      <DependentUpon>ListBoxCratesGlass.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DockContentCrates.resx">
-      <DependentUpon>DockContentCrates.cs</DependentUpon>
+    <EmbeddedResource Include="DockContentContainer.resx">
+      <DependentUpon>DockContentContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockContentCratesFrame.resx">
+      <DependentUpon>DockContentCratesFrame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockContentCratesGlass.resx">
+      <DependentUpon>DockContentCratesGlass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockContentLogConsole.resx">
       <DependentUpon>DockContentLogConsole.cs</DependentUpon>
@@ -181,6 +205,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MHB.CrateLoadDesigner.Exporters\MHB.CrateLoadDesigner.Exporters.csproj">
+      <Project>{7eeea22e-5829-441d-89fc-3e9472246d63}</Project>
+      <Name>MHB.CrateLoadDesigner.Exporters</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MHB.CreateLoadDesigner.Engine\MHB.CrateLoadDesigner.Engine.csproj">
       <Project>{3a7b7420-97a3-444a-a932-4cd1f9c0bed8}</Project>
       <Name>MHB.CrateLoadDesigner.Engine</Name>

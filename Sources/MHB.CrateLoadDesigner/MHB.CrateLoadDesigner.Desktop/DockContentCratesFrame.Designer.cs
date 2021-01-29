@@ -1,7 +1,7 @@
 ﻿
 namespace MHB.CrateLoadDesigner.Desktop
 {
-    partial class DockContentCrates
+    partial class DockContentCratesFrame
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +29,14 @@ namespace MHB.CrateLoadDesigner.Desktop
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DockContentCrates));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DockContentCratesFrame));
             this.splitContainerVert = new System.Windows.Forms.SplitContainer();
+            this.lbCrates = new MHB.CrateLoadDesigner.Desktop.ListBoxCratesFrame();
             this.splitContainerHoriz1 = new System.Windows.Forms.SplitContainer();
             this.splitContainerVert2 = new System.Windows.Forms.SplitContainer();
             this.pbCrate = new System.Windows.Forms.PictureBox();
             this.gridCrate = new SourceGrid.Grid();
             this.gridLayers = new SourceGrid.Grid();
-            this.lbCrates = new MHB.CrateLoadDesigner.Desktop.ListBoxCrates();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerVert)).BeginInit();
             this.splitContainerVert.Panel1.SuspendLayout();
             this.splitContainerVert.Panel2.SuspendLayout();
@@ -64,6 +64,13 @@ namespace MHB.CrateLoadDesigner.Desktop
             // splitContainerVert.Panel2
             // 
             this.splitContainerVert.Panel2.Controls.Add(this.splitContainerHoriz1);
+            // 
+            // lbCrates
+            // 
+            resources.ApplyResources(this.lbCrates, "lbCrates");
+            this.lbCrates.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lbCrates.Name = "lbCrates";
+            this.lbCrates.SelectedIndexChanged += new System.EventHandler(this.OnSelectedCrateChanged);
             // 
             // splitContainerHoriz1
             // 
@@ -118,19 +125,12 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.gridLayers.TabStop = true;
             this.gridLayers.ToolTipText = "";
             // 
-            // lbCrates
-            // 
-            resources.ApplyResources(this.lbCrates, "lbCrates");
-            this.lbCrates.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lbCrates.Name = "lbCrates";
-            this.lbCrates.SelectedIndexChanged += new System.EventHandler(this.OnSelectedCrateChanged);
-            // 
-            // DockContentCrates
+            // DockContentCratesFrame
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainerVert);
-            this.Name = "DockContentCrates";
+            this.Name = "DockContentCratesFrame";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.splitContainerVert.Panel1.ResumeLayout(false);
@@ -154,7 +154,7 @@ namespace MHB.CrateLoadDesigner.Desktop
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainerVert;
-        private ListBoxCrates lbCrates;
+        private ListBoxCratesFrame lbCrates;
         private System.Windows.Forms.SplitContainer splitContainerHoriz1;
         private System.Windows.Forms.SplitContainer splitContainerVert2;
         private System.Windows.Forms.PictureBox pbCrate;

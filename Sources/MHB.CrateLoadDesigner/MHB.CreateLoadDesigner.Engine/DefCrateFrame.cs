@@ -1,10 +1,12 @@
 ﻿#region Using directives
+using System;
+
 using Sharp3D.Math.Core;
 #endregion
 
 namespace MHB.CrateLoadDesigner.Engine
 {
-    public class DefCrate
+    public class DefCrateFrame
     {
         public enum EType { CRATE, SKID };
 
@@ -30,11 +32,29 @@ namespace MHB.CrateLoadDesigner.Engine
         public InstCrateFrame Instantiate(DefFrame frame, uint index)
         {
             if (MaxLongSide >= frame.LongSide && MaxShortSide >= frame.ShortSide)
-                return new InstCrateFrame(index, new Vector2D(MaxLongSide, MaxShortSide), MaxNumberOfLayers[0], CrateType == EType.SKID) { OuterDimensions = DimensionsOuter };
+                return new InstCrateFrame(index, new Vector2D(MaxLongSide, MaxShortSide), MaxNumberOfLayers[IndexMaxNumber], CrateType == EType.SKID) { OuterDimensions = DimensionsOuter };
             else if (DynMaxLength.HasValue && DynMaxLength.Value/* - DynAdditionalLength.Value*/ >= frame.LongSide && MaxShortSide >= frame.ShortSide)
                 return new InstCrateFrame(index, new Vector2D(frame.LongSide, MaxShortSide), MaxNumberOfLayers[0], CrateType == EType.SKID) { OuterDimensions = new Vector3D(frame.LongSide + DynAdditionalLength.Value, DimensionsOuter.Y, DimensionsOuter.Z) };
             else
                 return null;
+        }
+
+        private static int IndexMaxNumber
+        {
+            get
+            {
+                switch (Project.PGlassType)
+                {
+                    case Project.GlassType.DOUBLEGLASSLAMINATED:
+                    case Project.GlassType.DOUBLEGLASSTEMPERED:
+                        return 0;
+                    case Project.GlassType.TRIPLEGLASSLAMINATED:
+                    case Project.GlassType.TRIPLEGLASSTEMPERED:
+                        return 1;
+                    default:
+                        throw new Exception($"Invalid GlassType: {Project.PGlassType}");
+                }
+            }
         }
     }
 }

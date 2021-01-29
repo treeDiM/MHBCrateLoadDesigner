@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHB.CrateLoadDesigner.Engin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectangleBinPack", "..\RectangleBinPack\RectangleBinPack.csproj", "{A124DF84-E1DA-42E5-9F16-BEAB33E8AE4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHB.CrateLoadDesigner.Exporters", "MHB.CrateLoadDesigner.Exporters\MHB.CrateLoadDesigner.Exporters.csproj", "{7EEEA22E-5829-441D-89FC-3E9472246D63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{A124DF84-E1DA-42E5-9F16-BEAB33E8AE4F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A124DF84-E1DA-42E5-9F16-BEAB33E8AE4F}.Release|x86.ActiveCfg = Release|Any CPU
 		{A124DF84-E1DA-42E5-9F16-BEAB33E8AE4F}.Release|x86.Build.0 = Release|Any CPU
+		{7EEEA22E-5829-441D-89FC-3E9472246D63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EEEA22E-5829-441D-89FC-3E9472246D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EEEA22E-5829-441D-89FC-3E9472246D63}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7EEEA22E-5829-441D-89FC-3E9472246D63}.Debug|x86.Build.0 = Debug|Any CPU
+		{7EEEA22E-5829-441D-89FC-3E9472246D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EEEA22E-5829-441D-89FC-3E9472246D63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EEEA22E-5829-441D-89FC-3E9472246D63}.Release|x86.ActiveCfg = Release|Any CPU
+		{7EEEA22E-5829-441D-89FC-3E9472246D63}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

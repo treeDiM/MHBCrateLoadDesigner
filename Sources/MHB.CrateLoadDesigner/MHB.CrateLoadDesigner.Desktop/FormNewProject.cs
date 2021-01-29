@@ -23,11 +23,8 @@ namespace MHB.CrateLoadDesigner.Desktop
         {
             base.OnLoad(e);
 
-             
-
             OnInputFilePathChanged(this, e);
         }
-
         private void OnExploreInputFolder(object sender, EventArgs e)
         {
             try
@@ -46,13 +43,15 @@ namespace MHB.CrateLoadDesigner.Desktop
                 _log.Error(ex.ToString());
             }
         }
-
         private void OnInputFilePathChanged(object sender, EventArgs e)
         {
             try
             {
                 if (File.Exists(InputFilePath))
+                {
                     LoadInputFile(InputFilePath);
+                    ProjectName = Path.GetFileNameWithoutExtension(InputFilePath);
+                }
                 else
                     SetStatusLabel(Resources.IDS_VALIDFILEPATHNEEDED);
             }
@@ -67,6 +66,10 @@ namespace MHB.CrateLoadDesigner.Desktop
             {
                 if (string.IsNullOrEmpty(ProjectName.Trim()))
                     SetStatusLabel(Resources.IDS_VALIDPROJECTNAME);
+                else if (string.IsNullOrEmpty(ProjectNumber.Trim()))
+                    SetStatusLabel(Resources.IDS_VALIDPROJECTNUMBER);
+                else
+                    SetStatusLabel();
 
             }
             catch (Exception ex)
@@ -82,8 +85,11 @@ namespace MHB.CrateLoadDesigner.Desktop
             ProjectName = Proj.Name;
             FillGridFrames();
             FillGridGlass();
+            FillGridCrateFrames();
+            FillGridCrateGlass();
         }
 
+        #region Grids
         private void FillGridFrames()
         {
             string[] captions = {
@@ -144,7 +150,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             GridInitialize(gridCratesFrame, captions);
             CellBackColorAlternate viewNormal = new CellBackColorAlternate(Color.LightBlue, Color.White);
             int iIndex = 0;
-            foreach (var crate in Proj.ListDefCrates)
+            foreach (var crate in Proj.ListDefCratesFrame)
             {
                 gridCratesFrame.Rows.Insert(++iIndex);
                 int iCol = 0;
@@ -162,14 +168,27 @@ namespace MHB.CrateLoadDesigner.Desktop
         {
             string[] captions = {
                 Resources.IDS_NAME,
-                Resources.IDS_DESCRIPTION
+                Resources.IDS_DESCRIPTION,
+                Resources.IDS_MAXLONGSIDE,
+                Resources.IDS_MAXSHORTSIDE,
+                Resources.IDS_DIMENSIONSOUTER,
+                Resources.IDS_MAXDYNLENGTH,
+                Resources.IDS_ADDITIONALLENGTH
             };
             GridInitialize(gridCratesGlass, captions);
             CellBackColorAlternate viewNormal = new CellBackColorAlternate(Color.LightBlue, Color.White);
             int iIndex = 0;
-            foreach (var crate in Proj.ListDefCrates)
+            foreach (var crate in Proj.ListDefCratesGlass)
             {
-
+                gridCratesGlass.Rows.Insert(++iIndex);
+                int iCol = 0;
+                gridCratesGlass[iIndex, iCol++] = new SourceGrid.Cells.Cell(crate.Name) { View = viewNormal };
+                gridCratesGlass[iIndex, iCol++] = new SourceGrid.Cells.Cell(crate.Description) { View = viewNormal };
+                gridCratesGlass[iIndex, iCol++] = new SourceGrid.Cells.Cell(crate.MaxLongSide) { View = viewNormal };
+                gridCratesGlass[iIndex, iCol++] = new SourceGrid.Cells.Cell(crate.MaxShortSide) { View = viewNormal };
+                gridCratesGlass[iIndex, iCol++] = new SourceGrid.Cells.Cell($"{crate.DimensionsOuter.X}x{crate.DimensionsOuter.Y}x{crate.DimensionsOuter.Z}") { View = viewNormal };
+                gridCratesGlass[iIndex, iCol++] = new SourceGrid.Cells.Cell(crate.DynMaxLength.HasValue ? $"{crate.DynMaxLength}" : "") { View = viewNormal };
+                gridCratesGlass[iIndex, iCol++] = new SourceGrid.Cells.Cell(crate.DynAdditionalLength.HasValue ? $"{crate.DynAdditionalLength}" : "") { View = viewNormal };
             }
             GridFinalize(gridCratesGlass);
         }
@@ -231,7 +250,9 @@ namespace MHB.CrateLoadDesigner.Desktop
             grid.AutoSizeCells();
             grid.Columns.StretchToFit();
         }
+        #endregion
 
+        #region Private properties
         private string InputFilePath
         {
             get => tbInputFilePath.Text;
@@ -242,8 +263,24 @@ namespace MHB.CrateLoadDesigner.Desktop
             get => tbProjectName.Text;
             set => tbProjectName.Text = value;
         }
-        private void SetStatusLabel(string message)
+        private string ProjectNumber
         {
+            get => tbProjectNumber.Text;
+            set => tbProjectNumber.Text = value;
+        }
+        #endregion
+
+        private void SetStatusLabel(string message = "")
+        {
+            if (string.IsNullOrEmpty(message))
+            {
+                bnOK.Enabled = true;
+                message = $"Ready";
+            }
+            else
+                bnOK.Enabled = false;
+
+
             statusLabel.Text = message;
         }
 

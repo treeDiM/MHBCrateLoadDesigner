@@ -27,7 +27,28 @@ namespace MHB.CrateLoadDesigner.Engine
         public uint ID { get; }
         public Vector2D MaxUnitDimensions { get; set; }
         public Vector3D OuterDimensions { get; set; }
-        public List<Layer> Layers { get; }
+        public List<Layer> Layers { get; private set; }
+        public Dictionary<DefFrame, int> ContentDict
+        {
+            get
+            {
+                var listDefFrame = new List<DefFrame>();
+                foreach (var layer in Layers)
+                {
+                    foreach (var fp in layer)
+                    {
+                        listDefFrame.Add(fp.Parent);
+                    }
+                }
+                var dict = listDefFrame
+                    .GroupBy(f => f)
+                    .Select(f => new {
+                        Frame = f.Key,
+                        Count = f.Count()
+                    });
+                return dict.ToDictionary(g => g.Frame, g => g.Count);
+            }
+        }
  
         public bool PackFrame(DefFrame defFrame, Project.EPackingMethod packingMethod)
         {
@@ -75,7 +96,10 @@ namespace MHB.CrateLoadDesigner.Engine
             return false;
         }
 
-        public void SortLayers() { Layers.OrderByDescending(l => l.Weight); }
+        public void SortLayers()
+        {
+            Layers = Layers.OrderByDescending(l => l.Weight).ToList();
+        }
         public double Weight => Layers.Select(l => l.Weight).Sum();
         public int NoFrames => Layers.Select(l => l.Count).Sum();
         public double LayerZ(int index)

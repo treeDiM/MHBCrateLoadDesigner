@@ -178,6 +178,15 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter a valid project number..
+        /// </summary>
+        internal static string IDS_VALIDPROJECTNUMBER {
+            get {
+                return ResourceManager.GetString("IDS_VALIDPROJECTNUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Width.
         /// </summary>
         internal static string IDS_WIDTH {

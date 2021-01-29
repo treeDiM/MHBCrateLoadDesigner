@@ -60,7 +60,6 @@
                 <xs:complexType>
                   <xs:attribute name="crateName" type="xs:string" use="required"/>
                   <xs:attribute name="crateDescription" type="xs:string" use="required"/>
-                  <xs:attribute name="crateType" type="xs:string" use="required"/>
                   <xs:attribute name="maxLongSide" type="xs:double" use="required"/>
                   <xs:attribute name="maxShortSide" type="xs:double" use="required"/>
                   <xs:attribute name="crateLength" type="xs:double" use="required"/>

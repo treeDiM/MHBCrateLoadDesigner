@@ -1,10 +1,8 @@
 ﻿#region Using directives
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
+using System.Linq;
 
 using Sharp3D.Math.Core;
 
@@ -47,6 +45,31 @@ namespace MHB.CrateLoadDesigner.Desktop
             }
             return boxes;
         }
+        public static List<Box> CrateToBoxes(InstCrateGlass crate)
+        {
+            var boxes = new List<Box>();
+            uint pickId = 0;
+            double initialY = 100.0;
+            double spacing = 40.0;
+            
+            foreach (var p in crate.GlassPositions)
+            {
+                var box = new Box(pickId++, p.Parent.Width, p.Parent.Height, Project.GlassThickness)
+                {
+                    BoxPosition = new BoxPosition(
+                        new Vector3D(
+                            p.Rotated ? p.Parent.Height : 0.0,
+                            initialY + pickId * (Project.GlassThickness + spacing),
+                            0.0),
+                        p.Rotated ? HalfAxis.HAxis.AXIS_Z_P : HalfAxis.HAxis.AXIS_X_P,
+                        p.Rotated ? HalfAxis.HAxis.AXIS_X_N: HalfAxis.HAxis.AXIS_Z_P)
+                };
+                box.SetAllFacesColor(Color.LightBlue);
+                boxes.Add(box);
+            }
+            return boxes;
+        }
+
         private static HalfAxis.HAxis LengthAxis(FramePosition.Axis axis)
         {
             switch (axis)
