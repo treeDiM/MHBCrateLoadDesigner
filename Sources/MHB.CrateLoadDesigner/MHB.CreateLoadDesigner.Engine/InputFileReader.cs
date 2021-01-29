@@ -10,7 +10,7 @@ namespace MHB.CrateLoadDesigner.Engine
 {
     internal class InputFileReader : IDisposable
     {
-        public bool LoadFile(string filePath, string projName, List<DefFrame> listFrames, List<DefGlass> listGlass)
+        public bool LoadFile(string filePath, ref string projName, List<DefFrame> listFrames, List<DefGlass> listGlass)
         {
             listFrames.Clear();
             listGlass.Clear();
@@ -27,7 +27,7 @@ namespace MHB.CrateLoadDesigner.Engine
                             int iRow = 0;
                             while (reader.Read())
                             {
-                                if (iRow == 1)
+                                if (iRow == 0)
                                     projName = reader.GetString(1);
 
                                 if (iRow > 2)

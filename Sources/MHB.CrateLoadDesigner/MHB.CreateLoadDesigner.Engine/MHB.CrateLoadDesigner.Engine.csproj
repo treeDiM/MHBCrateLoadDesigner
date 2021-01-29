@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BBox2D.cs" />
     <Compile Include="BinPacker.cs" />
     <Compile Include="CrateFileReader.cs" />
     <Compile Include="Crates.cs">

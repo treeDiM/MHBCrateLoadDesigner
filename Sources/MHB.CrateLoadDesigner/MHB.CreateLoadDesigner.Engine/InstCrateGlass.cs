@@ -23,6 +23,8 @@ namespace MHB.CrateLoadDesigner.Engine
             get
             {
                 var listDefGlass = new List<DefGlass>();
+                foreach (var gp in GlassPositions)
+                    listDefGlass.Add(gp.Parent);
                 var dict = listDefGlass
                     .GroupBy(gp => gp)
                     .Select(gp => new {
@@ -35,10 +37,7 @@ namespace MHB.CrateLoadDesigner.Engine
         public bool PackGlass(DefGlass defGlass)
         {
             if (GlassPositions.Count >= MaxQuantity)
-            {
-                _log.Info($"{GlassPositions.Count} -> Crate {ID} is full!");
                 return false;
-            }
             if (defGlass.LongSide > MaxUnitDimensions.X || defGlass.ShortSide > MaxUnitDimensions.Y)
                 return false;
 

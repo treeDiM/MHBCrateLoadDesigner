@@ -458,7 +458,7 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
         
         private string containerDescriptionField;
         
-        private double insideLenghtField;
+        private double insideLengthField;
         
         private double insideWidthField;
         
@@ -502,12 +502,12 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public double insideLenght {
+        public double insideLength {
             get {
-                return this.insideLenghtField;
+                return this.insideLengthField;
             }
             set {
-                this.insideLenghtField = value;
+                this.insideLengthField = value;
             }
         }
         

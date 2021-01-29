@@ -88,6 +88,24 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dimentions.
+        /// </summary>
+        internal static string IDS_DIMENSIONS {
+            get {
+                return ResourceManager.GetString("IDS_DIMENSIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dimensions inner.
+        /// </summary>
+        internal static string IDS_DIMENSIONSINNER {
+            get {
+                return ResourceManager.GetString("IDS_DIMENSIONSINNER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Outer dimensions.
         /// </summary>
         internal static string IDS_DIMENSIONSOUTER {
@@ -147,6 +165,42 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         internal static string IDS_NUMBER {
             get {
                 return ResourceManager.GetString("IDS_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opening.
+        /// </summary>
+        internal static string IDS_OPENING {
+            get {
+                return ResourceManager.GetString("IDS_OPENING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payload.
+        /// </summary>
+        internal static string IDS_PAYLOAD {
+            get {
+                return ResourceManager.GetString("IDS_PAYLOAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remark.
+        /// </summary>
+        internal static string IDS_REMARK {
+            get {
+                return ResourceManager.GetString("IDS_REMARK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roof opening.
+        /// </summary>
+        internal static string IDS_ROOFOPENING {
+            get {
+                return ResourceManager.GetString("IDS_ROOFOPENING", resourceCulture);
             }
         }
         

@@ -126,6 +126,12 @@
   <data name="IDS_DESCRIPTION" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="IDS_DIMENSIONS" xml:space="preserve">
+    <value>Dimentions</value>
+  </data>
+  <data name="IDS_DIMENSIONSINNER" xml:space="preserve">
+    <value>Dimensions inner</value>
+  </data>
   <data name="IDS_DIMENSIONSOUTER" xml:space="preserve">
     <value>Outer dimensions</value>
   </data>
@@ -146,6 +152,18 @@
   </data>
   <data name="IDS_NUMBER" xml:space="preserve">
     <value>Number</value>
+  </data>
+  <data name="IDS_OPENING" xml:space="preserve">
+    <value>Opening</value>
+  </data>
+  <data name="IDS_PAYLOAD" xml:space="preserve">
+    <value>Payload</value>
+  </data>
+  <data name="IDS_REMARK" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="IDS_ROOFOPENING" xml:space="preserve">
+    <value>Roof opening</value>
   </data>
   <data name="IDS_TYPE" xml:space="preserve">
     <value>Type</value>

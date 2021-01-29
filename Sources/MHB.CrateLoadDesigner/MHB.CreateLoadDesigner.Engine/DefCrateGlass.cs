@@ -20,7 +20,7 @@ namespace MHB.CrateLoadDesigner.Engine
 
         public int[] MaxQuantity = new int[2];
 
-        public bool CouldFitGlass(DefGlass glass)
+        public bool CanFitGlass(DefGlass glass)
         {
             if (glass.ShortSide > MaxShortSide) return false;
             if (glass.LongSide > (DynMaxLength.HasValue ? DynMaxLength.Value : MaxLongSide)) return false;

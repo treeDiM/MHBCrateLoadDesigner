@@ -117,56 +117,51 @@ namespace MHB.CrateLoadDesigner.Engine
         public Layer() {}
         #endregion
 
-        #region 
+        #region Public properties
         public InstCrateFrame ParentCrate { get; set; }
         public string LastAlgorithmUsed { get; set; }
         public double Weight => this.Select(f => f.Parent.Perimeter).Sum();
         public bool IsEmpty => Count == 0;
-        private List<RectSize> RectSizes(DefFrame additionalFrame)
-        {
-            List<RectSize> rectSizes = new List<RectSize>();
 
-            double spacing = Project.FrameSpacing;
-            // current frame(s)
-            foreach (var fp in this)
-                rectSizes.Add(new RectSize((int)(fp.Parent.LongSide + spacing), (int)(fp.Parent.ShortSide + spacing)));
-            // insert new frame
-            rectSizes.Add(new RectSize((int)(additionalFrame.LongSide + spacing), (int)(additionalFrame.ShortSide + spacing)));
-                return rectSizes;
-        }
         #endregion
 
         #region Packing methods
+        private int BinWidth => (int)(ParentCrate.MaxUnitDimensions.X + Project.FrameSpacing);
+        private int BinHeight => (int)(ParentCrate.MaxUnitDimensions.Y + Project.FrameSpacing); 
+
         public bool CanPack(DefFrame defFrame, ref double efficiency)
         {
             if (Count == 1 && ParentCrate.IsSkid)
                 return false;
-
             var rects = new List<Rect>();
             string algorithm = string.Empty;
-            return BinPacker.Pack((int)ParentCrate.MaxUnitDimensions.X, (int)ParentCrate.MaxUnitDimensions.Y, RectSizes(defFrame), ref rects, ref efficiency, ref algorithm);
+            return BinPacker.Pack(BinWidth, BinHeight, RectSizes(defFrame), ref rects, ref efficiency, ref algorithm);
         }
         public void Pack(DefFrame defFrame)
         {
             var rects = new List<Rect>();
             string algorithm = string.Empty;
-            double spacing = 0.0;
-            double halfSpacing = 0.0;
+            double spacing = Project.FrameSpacing;
+            double halfSpacing = 0.5 * spacing;
             double efficiency = 0.0;
 
             Rect rectLayer = new Rect()
             {
                 X = 0,
                 Y = 0,
-                Width = (int)ParentCrate.MaxUnitDimensions.X,
-                Height = (int)ParentCrate.MaxUnitDimensions.Y 
+                Width = (int)(ParentCrate.MaxUnitDimensions.X + spacing),
+                Height = (int)(ParentCrate.MaxUnitDimensions.Y + spacing) 
             };
 
-            if (BinPacker.Pack((int)ParentCrate.MaxUnitDimensions.X, (int)ParentCrate.MaxUnitDimensions.Y, RectSizes(defFrame), ref rects, ref efficiency, ref algorithm))
+            if (BinPacker.Pack(BinWidth, BinHeight, RectSizes(defFrame), ref rects, ref efficiency, ref algorithm))
             {
                 List<DefFrame> frames = this.Select(item => item.Parent).ToList();
                 frames.Add(defFrame);
                 Clear();
+
+                BBox2D bbox = new BBox2D(rects);
+                double offsetX = (ParentCrate.OuterDimensions.X - bbox.Width)/2 + halfSpacing;
+                double offsetY = (ParentCrate.OuterDimensions.Y - bbox.Height)/2 + halfSpacing;
 
                 LastAlgorithmUsed = algorithm;
                 int index = 0;
@@ -180,11 +175,11 @@ namespace MHB.CrateLoadDesigner.Engine
 
                     if (rect.Width == (int)(f.Width + spacing) && rect.Height == (int)(f.Height + spacing))
                     {
-                        fp = new FramePosition(f, new Vector2D(rect.X + halfSpacing, rect.Y + halfSpacing), FramePosition.Axis.XP);
+                        fp = new FramePosition(f, new Vector2D(rect.X + offsetX, rect.Y + offsetY), FramePosition.Axis.XP);
                     }
                     else if (rect.Width == (int)(f.Height + spacing) && rect.Height == (int)(f.Width + spacing))
                     {
-                        fp = new FramePosition(f, new Vector2D(rect.X + f.Height + halfSpacing, rect.Y + halfSpacing), FramePosition.Axis.YP);
+                        fp = new FramePosition(f, new Vector2D(rect.X + f.Height + offsetX, rect.Y + offsetY), FramePosition.Axis.YP);
                     }
                     else
                         throw new Exception($"Pack failed for ({rect.Width}, {rect.Height})");
@@ -192,6 +187,18 @@ namespace MHB.CrateLoadDesigner.Engine
                     Add(fp);
                 }
             }
+        }
+        private List<RectSize> RectSizes(DefFrame additionalFrame)
+        {
+            List<RectSize> rectSizes = new List<RectSize>();
+
+            double spacing = Project.FrameSpacing;
+            // current frame(s)
+            foreach (var fp in this)
+                rectSizes.Add(new RectSize((int)(fp.Parent.LongSide + spacing), (int)(fp.Parent.ShortSide + spacing)));
+            // insert new frame
+            rectSizes.Add(new RectSize((int)(additionalFrame.LongSide + spacing), (int)(additionalFrame.ShortSide + spacing)));
+                return rectSizes;
         }
         #endregion
     }

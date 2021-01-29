@@ -15,16 +15,28 @@ namespace MHB.CrateLoadDesigner.Desktop
 {
     public partial class FormNewProject : Form
     {
+        #region Constructor
         public FormNewProject()
         {
             InitializeComponent();
         }
+        #endregion
+        #region Form override
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            cbGlassType.SelectedIndex = 0;
+
+            Proj = Project.Instantiate();
+
+            FillGridCrateFrames();
+            FillGridCrateGlass();
+            FillGridContainers();
 
             OnInputFilePathChanged(this, e);
         }
+        #endregion
+        #region Event handlers
         private void OnExploreInputFolder(object sender, EventArgs e)
         {
             try
@@ -50,7 +62,10 @@ namespace MHB.CrateLoadDesigner.Desktop
                 if (File.Exists(InputFilePath))
                 {
                     LoadInputFile(InputFilePath);
-                    ProjectName = Path.GetFileNameWithoutExtension(InputFilePath);
+                    ProjectName = Proj.Name;
+
+                    Proj.IsValid(out string reasonInvalid);
+                    SetStatusLabel(reasonInvalid);
                 }
                 else
                     SetStatusLabel(Resources.IDS_VALIDFILEPATHNEEDED);
@@ -77,16 +92,15 @@ namespace MHB.CrateLoadDesigner.Desktop
                 _log.Error(ex.ToString());
             }
         }
+        #endregion
 
         private void LoadInputFile(string filePath)
         {
-            if (null == (Proj = Project.LoadNewProject(filePath)))
+            if (!Proj.LoadInputFileExcel(filePath))
                 return;
             ProjectName = Proj.Name;
             FillGridFrames();
             FillGridGlass();
-            FillGridCrateFrames();
-            FillGridCrateGlass();
         }
 
         #region Grids
@@ -193,7 +207,33 @@ namespace MHB.CrateLoadDesigner.Desktop
             GridFinalize(gridCratesGlass);
         }
         private void FillGridContainers()
-        { 
+        {
+            string[] captions =
+            {
+                Resources.IDS_NAME,
+                Resources.IDS_DESCRIPTION,
+                Resources.IDS_DIMENSIONSINNER,
+                Resources.IDS_OPENING,
+                Resources.IDS_ROOFOPENING,
+                Resources.IDS_PAYLOAD,
+                Resources.IDS_REMARK
+            };
+            GridInitialize(gridContainers, captions);
+            CellBackColorAlternate viewNormal = new CellBackColorAlternate(Color.LightBlue, Color.White);
+            int iIndex = 0;
+            foreach (var container in Proj.ListDefContainers)
+            {
+                gridContainers.Rows.Insert(++iIndex);
+                int iCol = 0;
+                gridContainers[iIndex, iCol++] = new SourceGrid.Cells.Cell(container.Name) { View = viewNormal };
+                gridContainers[iIndex, iCol++] = new SourceGrid.Cells.Cell(container.Description) { View = viewNormal };
+                gridContainers[iIndex, iCol++] = new SourceGrid.Cells.Cell($"{container.DimensionsInner.X}x{container.DimensionsInner.Y}x{container.DimensionsInner.Z}") { View = viewNormal };
+                gridContainers[iIndex, iCol++] = new SourceGrid.Cells.Cell($"{container.OpeningWidth}x{container.OpeningHeight}") { View = viewNormal };
+                gridContainers[iIndex, iCol++] = new SourceGrid.Cells.Cell($"{container.RoofOpeningLength}x{container.RoofOpeningWidth}") { View = viewNormal };
+                gridContainers[iIndex, iCol++] = new SourceGrid.Cells.Cell($"{container.Payload}") { View = viewNormal };
+                gridContainers[iIndex, iCol++] = new SourceGrid.Cells.Cell(container.Remark) { View = viewNormal };
+            }
+            GridFinalize(gridContainers);
         }
         private void GridInitialize(Grid grid, string[] captions)
         {
@@ -268,23 +308,36 @@ namespace MHB.CrateLoadDesigner.Desktop
             get => tbProjectNumber.Text;
             set => tbProjectNumber.Text = value;
         }
+        private Project.GlassType GlassType => (Project.GlassType)cbGlassType.SelectedIndex;
+
+        private void OnGlassTypeChanged(object sender, EventArgs e)
+        {
+            Project.PGlassType = GlassType;
+        }
         #endregion
 
+        #region Status label
         private void SetStatusLabel(string message = "")
         {
             if (string.IsNullOrEmpty(message))
             {
+                statusLabel.ForeColor = Color.Black;
                 bnOK.Enabled = true;
                 message = $"Ready";
             }
             else
+            {
+                statusLabel.ForeColor = Color.Red;
                 bnOK.Enabled = false;
-
-
+            }
             statusLabel.Text = message;
         }
+        #endregion
 
+        #region Data members
         public Project Proj { get; set; }
         protected ILog _log = LogManager.GetLogger(typeof(FormNewProject));
+        #endregion
+
     }
 }

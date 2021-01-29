@@ -72,7 +72,7 @@ namespace MHB.CrateLoadDesigner.Exporters
                 foreach (var defGlass in dictContent.Keys)
                 {
                     // cell Part batch Nr
-                    Range cellPartBatchNr = xlWorkSheet.get_Range("b", "b");
+                    Range cellPartBatchNr = xlWorkSheet.get_Range("b" + iRow, "b" + iRow);
                     cellPartBatchNr.Value = defGlass.Brand;
                     // width
                     Range cellWidth = xlWorkSheet.get_Range("e" + iRow, "e" + iRow);

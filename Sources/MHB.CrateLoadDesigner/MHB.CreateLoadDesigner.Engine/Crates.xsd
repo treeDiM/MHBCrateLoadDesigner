@@ -81,7 +81,7 @@
                 <xs:complexType>
                   <xs:attribute name="containerName" type="xs:string" use="required"/>
                   <xs:attribute name="containerDescription" type="xs:string" use="required"/>
-                  <xs:attribute name="insideLenght" type="xs:double" use="required"/>
+                  <xs:attribute name="insideLength" type="xs:double" use="required"/>
                   <xs:attribute name="insideWidth" type="xs:double" use="required"/>
                   <xs:attribute name="insideHeight" type="xs:double" use="required"/>
                   <xs:attribute name="openingWidth" type="xs:double" use="required"/>

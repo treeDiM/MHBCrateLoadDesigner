@@ -38,6 +38,8 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitHoriz = new System.Windows.Forms.SplitContainer();
+            this.tbProjectNumber = new System.Windows.Forms.TextBox();
+            this.lbProjectNr = new System.Windows.Forms.Label();
             this.tbProjectName = new System.Windows.Forms.TextBox();
             this.lbProjectName = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -51,8 +53,8 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.gridCratesGlass = new SourceGrid.Grid();
             this.tabPageContainers = new System.Windows.Forms.TabPage();
             this.gridContainers = new SourceGrid.Grid();
-            this.lbProjectNr = new System.Windows.Forms.Label();
-            this.tbProjectNumber = new System.Windows.Forms.TextBox();
+            this.lbGlassType = new System.Windows.Forms.Label();
+            this.cbGlassType = new System.Windows.Forms.ComboBox();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitHoriz)).BeginInit();
             this.splitHoriz.Panel1.SuspendLayout();
@@ -147,6 +149,8 @@ namespace MHB.CrateLoadDesigner.Desktop
             // 
             // splitHoriz.Panel1
             // 
+            this.splitHoriz.Panel1.Controls.Add(this.cbGlassType);
+            this.splitHoriz.Panel1.Controls.Add(this.lbGlassType);
             this.splitHoriz.Panel1.Controls.Add(this.tbProjectNumber);
             this.splitHoriz.Panel1.Controls.Add(this.lbProjectNr);
             this.splitHoriz.Panel1.Controls.Add(this.tbProjectName);
@@ -163,6 +167,23 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.splitHoriz.Size = new System.Drawing.Size(800, 428);
             this.splitHoriz.SplitterDistance = 73;
             this.splitHoriz.TabIndex = 6;
+            // 
+            // tbProjectNumber
+            // 
+            this.tbProjectNumber.Location = new System.Drawing.Point(322, 34);
+            this.tbProjectNumber.Name = "tbProjectNumber";
+            this.tbProjectNumber.Size = new System.Drawing.Size(46, 20);
+            this.tbProjectNumber.TabIndex = 8;
+            this.tbProjectNumber.TextChanged += new System.EventHandler(this.OnProjectNameChanged);
+            // 
+            // lbProjectNr
+            // 
+            this.lbProjectNr.AutoSize = true;
+            this.lbProjectNr.Location = new System.Drawing.Point(259, 37);
+            this.lbProjectNr.Name = "lbProjectNr";
+            this.lbProjectNr.Size = new System.Drawing.Size(57, 13);
+            this.lbProjectNr.TabIndex = 7;
+            this.lbProjectNr.Text = "Project Nr.";
             // 
             // tbProjectName
             // 
@@ -312,22 +333,29 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.gridContainers.TabStop = true;
             this.gridContainers.ToolTipText = "";
             // 
-            // lbProjectNr
+            // lbGlassType
             // 
-            this.lbProjectNr.AutoSize = true;
-            this.lbProjectNr.Location = new System.Drawing.Point(438, 37);
-            this.lbProjectNr.Name = "lbProjectNr";
-            this.lbProjectNr.Size = new System.Drawing.Size(57, 13);
-            this.lbProjectNr.TabIndex = 7;
-            this.lbProjectNr.Text = "Project Nr.";
+            this.lbGlassType.AutoSize = true;
+            this.lbGlassType.Location = new System.Drawing.Point(431, 37);
+            this.lbGlassType.Name = "lbGlassType";
+            this.lbGlassType.Size = new System.Drawing.Size(56, 13);
+            this.lbGlassType.TabIndex = 9;
+            this.lbGlassType.Text = "Glass type";
             // 
-            // tbProjectNumber
+            // cbGlassType
             // 
-            this.tbProjectNumber.Location = new System.Drawing.Point(521, 34);
-            this.tbProjectNumber.Name = "tbProjectNumber";
-            this.tbProjectNumber.Size = new System.Drawing.Size(156, 20);
-            this.tbProjectNumber.TabIndex = 8;
-            this.tbProjectNumber.TextChanged += new System.EventHandler(this.OnProjectNameChanged);
+            this.cbGlassType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGlassType.FormattingEnabled = true;
+            this.cbGlassType.Items.AddRange(new object[] {
+            "Double Glass - Tempered",
+            "Double Glass - Laminated",
+            "Triple Glass - Tempered",
+            "Triple Glass - Laminated"});
+            this.cbGlassType.Location = new System.Drawing.Point(494, 34);
+            this.cbGlassType.Name = "cbGlassType";
+            this.cbGlassType.Size = new System.Drawing.Size(183, 21);
+            this.cbGlassType.TabIndex = 10;
+            this.cbGlassType.SelectedIndexChanged += new System.EventHandler(this.OnGlassTypeChanged);
             // 
             // FormNewProject
             // 
@@ -388,5 +416,7 @@ namespace MHB.CrateLoadDesigner.Desktop
         private SourceGrid.Grid gridContainers;
         private System.Windows.Forms.TextBox tbProjectNumber;
         private System.Windows.Forms.Label lbProjectNr;
+        private System.Windows.Forms.ComboBox cbGlassType;
+        private System.Windows.Forms.Label lbGlassType;
     }
 }

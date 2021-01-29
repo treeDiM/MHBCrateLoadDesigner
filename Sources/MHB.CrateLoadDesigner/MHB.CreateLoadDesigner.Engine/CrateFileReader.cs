@@ -63,7 +63,7 @@ namespace MHB.CrateLoadDesigner.Engine
                     Name = container.containerName,
                     Description = container.containerDescription,
                     Remark = container.remark,
-                    DimensionsInner = new Vector3D(container.insideLenght, container.insideWidth, container.insideHeight),
+                    DimensionsInner = new Vector3D(container.insideLength, container.insideWidth, container.insideHeight),
                     OpeningWidth = container.openingWidth,
                     OpeningHeight = container.openingHeight,
                     RoofOpeningLength = container.roofOpeningLenght,
