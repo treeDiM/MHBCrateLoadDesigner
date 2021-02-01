@@ -13,7 +13,7 @@ namespace MHB.CrateLoadDesigner.Exporters
     {
         public string TemplateFilePath => Settings.Default.FilePathTemplateTableOfContents;
         public string SheetName(short index) => $"Partlist - Crate - {index}";
-        public bool QuitApp { get; set; } = false;
+        public bool QuitApp => Settings.Default.QuitExcelAfterExport;
 
         public override void Export(Project proj, string outputFilePath)
         {
@@ -94,10 +94,11 @@ namespace MHB.CrateLoadDesigner.Exporters
             xlWorkBook.Save();
 
  
-            xlWorkBook.Close();
             if (QuitApp)
+            {
+                xlWorkBook.Close();
                 xlApp.Quit();
-
+            }
             GC.WaitForPendingFinalizers();
             GC.Collect();
         }

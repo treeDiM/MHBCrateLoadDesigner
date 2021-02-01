@@ -200,6 +200,23 @@ namespace MHB.CrateLoadDesigner.Engine
             rectSizes.Add(new RectSize((int)(additionalFrame.LongSide + spacing), (int)(additionalFrame.ShortSide + spacing)));
                 return rectSizes;
         }
+
+        public Dictionary<DefFrame, int> ContentDict
+        {
+            get
+            {
+                var listDefFrame = new List<DefFrame>();
+                foreach (var fp in this)
+                    listDefFrame.Add(fp.Parent);
+                var dict = listDefFrame
+                    .GroupBy(gp => gp)
+                    .Select(gp => new {
+                        Glass = gp.Key,
+                        Count = gp.Count()
+                    });
+                return dict.ToDictionary(g => g.Glass, g => g.Count);
+            }
+        }
         #endregion
     }
 }

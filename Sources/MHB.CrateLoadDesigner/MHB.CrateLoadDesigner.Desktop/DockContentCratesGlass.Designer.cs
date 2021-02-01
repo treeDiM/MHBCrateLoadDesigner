@@ -30,14 +30,16 @@ namespace MHB.CrateLoadDesigner.Desktop
         private void InitializeComponent()
         {
             this.splitContainerVert = new System.Windows.Forms.SplitContainer();
+            this.lbCrates = new MHB.CrateLoadDesigner.Desktop.ListBoxCratesGlass();
             this.splitContainerHoriz = new System.Windows.Forms.SplitContainer();
             this.splitContainerCrate = new System.Windows.Forms.SplitContainer();
+            this.lbCrateDimsOuterValue = new System.Windows.Forms.Label();
+            this.lbCrateDimsInnerValue = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbCrateDimInner = new System.Windows.Forms.Label();
             this.lbCrateName = new System.Windows.Forms.Label();
             this.pbCrate = new System.Windows.Forms.PictureBox();
             this.gridCrate = new SourceGrid.Grid();
-            this.lbCrates = new MHB.CrateLoadDesigner.Desktop.ListBoxCratesGlass();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerVert)).BeginInit();
             this.splitContainerVert.Panel1.SuspendLayout();
             this.splitContainerVert.Panel2.SuspendLayout();
@@ -70,6 +72,19 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.splitContainerVert.SplitterDistance = 266;
             this.splitContainerVert.TabIndex = 0;
             // 
+            // lbCrates
+            // 
+            this.lbCrates.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbCrates.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lbCrates.FormattingEnabled = true;
+            this.lbCrates.IntegralHeight = false;
+            this.lbCrates.ItemHeight = 150;
+            this.lbCrates.Location = new System.Drawing.Point(0, 0);
+            this.lbCrates.Name = "lbCrates";
+            this.lbCrates.Size = new System.Drawing.Size(266, 450);
+            this.lbCrates.TabIndex = 0;
+            this.lbCrates.SelectedIndexChanged += new System.EventHandler(this.OnSelectedCrateChanged);
+            // 
             // splitContainerHoriz
             // 
             this.splitContainerHoriz.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -97,6 +112,8 @@ namespace MHB.CrateLoadDesigner.Desktop
             // 
             // splitContainerCrate.Panel1
             // 
+            this.splitContainerCrate.Panel1.Controls.Add(this.lbCrateDimsOuterValue);
+            this.splitContainerCrate.Panel1.Controls.Add(this.lbCrateDimsInnerValue);
             this.splitContainerCrate.Panel1.Controls.Add(this.label1);
             this.splitContainerCrate.Panel1.Controls.Add(this.lbCrateDimInner);
             this.splitContainerCrate.Panel1.Controls.Add(this.lbCrateName);
@@ -107,6 +124,24 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.splitContainerCrate.Size = new System.Drawing.Size(530, 290);
             this.splitContainerCrate.SplitterDistance = 67;
             this.splitContainerCrate.TabIndex = 1;
+            // 
+            // lbCrateDimsOuterValue
+            // 
+            this.lbCrateDimsOuterValue.AutoSize = true;
+            this.lbCrateDimsOuterValue.Location = new System.Drawing.Point(298, 36);
+            this.lbCrateDimsOuterValue.Name = "lbCrateDimsOuterValue";
+            this.lbCrateDimsOuterValue.Size = new System.Drawing.Size(41, 13);
+            this.lbCrateDimsOuterValue.TabIndex = 4;
+            this.lbCrateDimsOuterValue.Text = ": 0x0x0";
+            // 
+            // lbCrateDimsInnerValue
+            // 
+            this.lbCrateDimsInnerValue.AutoSize = true;
+            this.lbCrateDimsInnerValue.Location = new System.Drawing.Point(298, 13);
+            this.lbCrateDimsInnerValue.Name = "lbCrateDimsInnerValue";
+            this.lbCrateDimsInnerValue.Size = new System.Drawing.Size(41, 13);
+            this.lbCrateDimsInnerValue.TabIndex = 3;
+            this.lbCrateDimsInnerValue.Text = ": 0x0x0";
             // 
             // label1
             // 
@@ -148,28 +183,15 @@ namespace MHB.CrateLoadDesigner.Desktop
             // gridCrate
             // 
             this.gridCrate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridCrate.EnableSort = true;
+            this.gridCrate.EnableSort = false;
             this.gridCrate.Location = new System.Drawing.Point(0, 0);
             this.gridCrate.Name = "gridCrate";
             this.gridCrate.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
-            this.gridCrate.SelectionMode = SourceGrid.GridSelectionMode.Cell;
+            this.gridCrate.SelectionMode = SourceGrid.GridSelectionMode.Row;
             this.gridCrate.Size = new System.Drawing.Size(530, 156);
             this.gridCrate.TabIndex = 0;
             this.gridCrate.TabStop = true;
             this.gridCrate.ToolTipText = "";
-            // 
-            // lbCrates
-            // 
-            this.lbCrates.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbCrates.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lbCrates.FormattingEnabled = true;
-            this.lbCrates.IntegralHeight = false;
-            this.lbCrates.ItemHeight = 150;
-            this.lbCrates.Location = new System.Drawing.Point(0, 0);
-            this.lbCrates.Name = "lbCrates";
-            this.lbCrates.Size = new System.Drawing.Size(266, 450);
-            this.lbCrates.TabIndex = 0;
-            this.lbCrates.SelectedIndexChanged += new System.EventHandler(this.OnSelectedCrateChanged);
             // 
             // DockContentCratesGlass
             // 
@@ -210,5 +232,7 @@ namespace MHB.CrateLoadDesigner.Desktop
         private System.Windows.Forms.Label lbCrateName;
         private System.Windows.Forms.PictureBox pbCrate;
         private SourceGrid.Grid gridCrate;
+        private System.Windows.Forms.Label lbCrateDimsOuterValue;
+        private System.Windows.Forms.Label lbCrateDimsInnerValue;
     }
 }

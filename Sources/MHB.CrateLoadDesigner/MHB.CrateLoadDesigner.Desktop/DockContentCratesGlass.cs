@@ -72,6 +72,13 @@ namespace MHB.CrateLoadDesigner.Desktop
         {
             DrawCrate();
             FillGridGlass();
+            InstCrateGlass crate = SelectedCrate;
+            if (null != crate)
+            {
+                lbCrateName.Text = $"#{crate.ID}";
+                lbCrateDimsOuterValue.Text = $"{crate.OuterDimensions.X} x {crate.OuterDimensions.Y} x {crate.OuterDimensions.Z}";
+                lbCrateDimsInnerValue.Text = $"{crate.MaxUnitDimensions.X} x {crate.MaxUnitDimensions.Y}";
+            }
         }
         private void OnPbCrateResized(object sender, EventArgs e)
         {
@@ -127,8 +134,6 @@ namespace MHB.CrateLoadDesigner.Desktop
             viewColumnHeader.ForeColor = Color.Black;
             viewColumnHeader.Font = new Font("Arial", 10, FontStyle.Regular);
             viewColumnHeader.ElementSort.SortStyle = DevAge.Drawing.HeaderSortStyle.None;
-            // viewNormal
-            CellBackColorAlternate viewNormal = new CellBackColorAlternate(Color.LightBlue, Color.White);
             // ***
             // set first row
             grid.BorderStyle = BorderStyle.FixedSingle;

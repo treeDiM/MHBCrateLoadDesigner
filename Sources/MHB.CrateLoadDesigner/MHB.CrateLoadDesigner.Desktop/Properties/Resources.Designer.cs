@@ -79,6 +79,33 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Content.
+        /// </summary>
+        internal static string IDS_CONTENT {
+            get {
+                return ResourceManager.GetString("IDS_CONTENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Count.
+        /// </summary>
+        internal static string IDS_COUNT {
+            get {
+                return ResourceManager.GetString("IDS_COUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Perimeter.
+        /// </summary>
+        internal static string IDS_CUMULATEDPERIMETER {
+            get {
+                return ResourceManager.GetString("IDS_CUMULATEDPERIMETER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         internal static string IDS_DESCRIPTION {
@@ -120,6 +147,15 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         internal static string IDS_HEIGHT {
             get {
                 return ResourceManager.GetString("IDS_HEIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image.
+        /// </summary>
+        internal static string IDS_IMAGE {
+            get {
+                return ResourceManager.GetString("IDS_IMAGE", resourceCulture);
             }
         }
         

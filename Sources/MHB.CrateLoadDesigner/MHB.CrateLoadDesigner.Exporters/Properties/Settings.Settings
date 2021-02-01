@@ -5,5 +5,8 @@
     <Setting Name="FilePathTemplateTableOfContents" Type="System.String" Scope="User">
       <Value Profile="(Default)">D:\GitHub\MHBCrateLoadDesigner\Sources\Outputs\TemplateTableOfContents.xlsx</Value>
     </Setting>
+    <Setting Name="QuitExcelAfterExport" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

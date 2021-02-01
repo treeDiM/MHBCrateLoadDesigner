@@ -34,5 +34,17 @@ namespace MHB.CrateLoadDesigner.Exporters.Properties {
                 this["FilePathTemplateTableOfContents"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool QuitExcelAfterExport {
+            get {
+                return ((bool)(this["QuitExcelAfterExport"]));
+            }
+            set {
+                this["QuitExcelAfterExport"] = value;
+            }
+        }
     }
 }
