@@ -24,10 +24,13 @@
 		<MediaTemplate EmbedCab="yes"/>
 		<Feature Id="ProductFeature" Title="MHB.CrateLoadDesigner.Setup" Level="1" Absent="disallow"
              Display="expand" ConfigurableDirectory="$(var.InstallLocation)">
-			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentGroupRef Id ="ProductComponents" />
       <ComponentGroupRef Id ="CompGroup_MHB_CrateLoadDesigner"/>
-      <ComponentRef Id="ProgramMenuShortcutComp"/>
-      <ComponentRef Id="DesktopShortcutComp"/>
+      <ComponentGroupRef Id ="CompGroup_MHB_OutputTemplates"/>
+      <ComponentGroupRef Id ="CompGroup_MHB_Data"/>
+      <ComponentRef Id ="ProgramMenuShortcutComp"/>
+      <ComponentRef Id ="DesktopShortcutComp"/>
+      <ComponentRef Id="app_exe_config"/>
 		</Feature>
     
     <!--Shortcut icon-->

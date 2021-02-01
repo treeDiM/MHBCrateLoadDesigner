@@ -9,6 +9,7 @@
           <Directory Id="INSTALLFOLDER" Name="$(var.ProductName)">
             <Directory Id="Bin" Name="Bin"/>
             <Directory Id="Data" Name="Data"/>
+            <Directory Id="OutputTemplates" Name="OutputTemplates"/>              
            </Directory>
           <Directory Id="ProgramMenuFolder" Name="Programs" ShortName="PMenu">
             <Directory Id="ApplicationProgramsFolder" Name="$(var.ShortcutFolder)"/>

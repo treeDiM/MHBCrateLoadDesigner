@@ -205,12 +205,11 @@ namespace MHB.CrateLoadDesigner.Engine
         #endregion
         #region Input data loading
         private bool LoadCrates()
-        { 
+        {
             // load crates
-            string filePathCrates = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Crates.xml");
             using (var crateFileReader = new CrateFileReader())
             {
-                if (!crateFileReader.LoadFile(filePathCrates, ListDefCratesFrame, ListDefCratesGlass, ListDefContainers))
+                if (!crateFileReader.LoadFile(Settings.Default.CratesFilePath, ListDefCratesFrame, ListDefCratesGlass, ListDefContainers))
                     return false;
             }
             return true;

@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-  <Root xsi:schemaLocation="'http://www.treedim.com/MHB' 'D:\GitHub\MHBCrateLoadDesigner\Sources\MHB.CrateLoadDesigner\MHB.CreateLoadDesigner.Engine\Crates.xsd'" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.treedim.com/Pic3DExporter" xmlns:exp="http://www.treedim.com/Pic3DExporter">
+﻿<Root xmlns="http://MHBNamespace">
   <ListCrateFrame>
     <CrateFrame crateName="Crate 1" crateDescription="" crateType="CRATE"
                 maxLongSide="3650" maxShortSide="2100"
@@ -8,12 +7,29 @@
               />
     <CrateFrame crateName="Crate 2" crateDescription="" crateType="SKID"
               maxLongSide="3700" maxShortSide="2790"
-              crateLength="3950" crateWidth="2300" crateHeight="2550"
+              crateLength="3950" crateWidth="2790" crateHeight="2550"
               maxQuantityCP80="4" maxQuantityCP100="3"
               dynMaxLength="5000" dynAdditionalLength="250"/>
   </ListCrateFrame>
   <ListCrateGlass>
-
+    <CrateGlass crateName="Crate 3" crateDescription="Standard small glass crate"
+                maxLongSide="1200" maxShortSide="1000"
+                crateLength="1400" crateWidth="1150" crateHeight="1280"
+                maxQuantityDoubleGlass="18" maxQuantityTripleGlass="10" />
+    <CrateGlass crateName="Crate 5" crateDescription="A-frame small"
+                maxLongSide="2050" maxShortSide="2150"
+                crateLength="2300" crateWidth="1150" crateHeight="2550"
+                maxQuantityDoubleGlass="14" maxQuantityTripleGlass="8" />
+    <CrateGlass crateName="Crate 4" crateDescription="Standard A-frame glass crate"
+                maxLongSide="4500" maxShortSide="2150"
+                crateLength="4750" crateWidth="1150" crateHeight="2550"
+                maxQuantityDoubleGlass="14" maxQuantityTripleGlass="8"
+                dynMaxLength="5000" dynAdditionalLength="250"/>    
+    <CrateClass crateName="Crate 6" crateDescription="Extreme size glass crate"
+                maxLongSide="5000" maxShortSide="2800"
+                crateLength="5250" crateWidth="1800" crateHeight="3150"
+                maxQuantityDoubleGlass="2" maxQuantityTripleGlass="2"
+                dynMaxLength="5000" dynAdditionalLength="250"/>
   </ListCrateGlass>
   <ListContainer>
     <Container containerName="20Box" containerDescription="20' Standard"
@@ -26,5 +42,5 @@
                 openingWidth="2300" openingHeight="2250"
                 roofOpeningLength="0" roofOpeningWidth="0"
                 payload="27000" emptyWeight="3750" remark="Not used or manual only"/>
-    </ListContainer>
+  </ListContainer>
 </Root>

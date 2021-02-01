@@ -23,21 +23,40 @@ namespace MHB.CrateLoadDesigner.Engine.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("25")]
         public double FrameSpacing {
             get {
                 return ((double)(this["FrameSpacing"]));
             }
+            set {
+                this["FrameSpacing"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public double FrameMargin {
             get {
                 return ((double)(this["FrameMargin"]));
+            }
+            set {
+                this["FrameMargin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\GitHub\\MHBCrateLoadDesigner\\Sources\\MHB.CrateLoadDesigner\\MHB.CreateLoadDesign" +
+            "er.Engine\\Crates.xml")]
+        public string CratesFilePath {
+            get {
+                return ((string)(this["CratesFilePath"]));
+            }
+            set {
+                this["CratesFilePath"] = value;
             }
         }
     }

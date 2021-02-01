@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+       xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Fragment>
+    <DirectoryRef Id="Bin">
+      <Component Id="app_exe_config" Guid="{AC621A43-69F7-4F51-929E-4EBB57261C7B}" KeyPath="yes">
+        <util:XmlFile Id="SettingCrateFilePath"
+                      Action="setValue"
+                      ElementPath="/configuration/userSettings/MHB.CrateLoadDesigner.Engine.Properties.Settings/setting[\[]@name='CratesFilePath'[\]]/value"
+                      File="[Bin]MHB.CrateLoadDesigner.Desktop.exe.config"
+                      Value="[Data]Crates.xml" />
+        <util:XmlFile Id="SettingTemplateTOCFilePath"
+                      Action="setValue"
+                      ElementPath="/configuration/userSettings/MHB.CrateLoadDesigner.Exporters.Properties.Settings/setting[\[]@name='FilePathTemplateTableOfContents'[\]]/value"
+                      File="[Bin]MHB.CrateLoadDesigner.Desktop.exe.config"
+                      Value="[OutputTemplates]TemplateTableOfContents.xlsx" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

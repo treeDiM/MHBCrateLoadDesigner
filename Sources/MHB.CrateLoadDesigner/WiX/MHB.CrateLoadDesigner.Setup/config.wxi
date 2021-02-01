@@ -20,5 +20,7 @@
 <?define ProductManufacturer = "MHB"?>
 <!-- var -->
 <?define MHBCrateLoadDesignerBinSourceDir = "..\..\MHB.CrateLoadDesigner.Desktop\bin\Release"?>
+<?define MHBCrateLoadDesignerDataSourceDir = "..\..\MHB.CreateLoadDesigner.Engine"?>
+<?define MHBCrateLoadDesignerOutputSourceDir =  "..\..\..\Outputs"?>
 <?define ShortcutFolder="MHB"?>
 </Include>

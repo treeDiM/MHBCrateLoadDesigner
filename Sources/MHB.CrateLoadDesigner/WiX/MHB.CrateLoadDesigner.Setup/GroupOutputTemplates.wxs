@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include $(sys.CURRENTDIR)\Config.wxi?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <DirectoryRef Id="OutputTemplates"/>
+	</Fragment>
+  <Fragment>
+    <ComponentGroup Id="CompGroup_MHB_OutputTemplates">
+      <Component Id="cmp92FD5CDB22614F83A9FC14FFC179BA2E" Directory="OutputTemplates" Guid="0622C145-7F00-4C13-A900-304BC150A7EF">
+        <File Id="fil4FC378898E85425B856457605EF4AE7E" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerOutputSourceDir)\TemplateTableOfContents.xlsx"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

@@ -69,4 +69,7 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release "$(SolutionDir)Signfile.bat" "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

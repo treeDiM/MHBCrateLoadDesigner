@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?include $(sys.CURRENTDIR)\Config.wxi?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="Data" />
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="CompGroup_MHB_Data">
+      <Component Id="cmp4BC229DC7CEE4688BB990D7A6FA391AC" Directory="Data" Guid="04A70353-5B73-49FA-BAAD-F80C3ACCD9D8">
+        <File Id="fil04A703535B7349FABAADF80C3ACCD9D8" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerDataSourceDir)\Crates.xml">
+          <Permission ChangePermission="yes" GenericAll="yes" User="Everyone" TakeOwnership="yes" Write="yes" WriteAttributes="yes" WriteExtendedAttributes="yes" />
+        </File>
+        <File Id="filD382CEA66F474C3C8BD2CDFBCEE52B85" KeyPath="no" Source="$(var.MHBCrateLoadDesignerDataSourceDir)\Crates.xsd"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
