@@ -63,7 +63,7 @@ namespace MHB.CrateLoadDesigner.Engine
                             int iRow = 0;
                             while (reader.Read())
                             {
-                                if (iRow > 1)
+                                if (iRow > 0)
                                 {
                                     string sDataTypeActual = string.Empty;
                                     string sDataTypeExpected = string.Empty;
