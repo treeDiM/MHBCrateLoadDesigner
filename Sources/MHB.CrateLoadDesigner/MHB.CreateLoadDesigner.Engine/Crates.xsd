@@ -69,6 +69,7 @@
                   <xs:attribute name="maxQuantityTripleGlass" type="xs:int" use="required"/>
                   <xs:attribute name="dynMaxLength" type="xs:double" use="optional"/>
                   <xs:attribute name="dynAdditionalLength" type="xs:double" use="optional"/>
+                  <xs:attribute name="spacing" type="xs:double" use="required"/>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>

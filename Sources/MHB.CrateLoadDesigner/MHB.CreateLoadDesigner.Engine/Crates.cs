@@ -302,6 +302,8 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
         
         private bool dynAdditionalLengthFieldSpecified;
         
+        private double spacingField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string crateName {
@@ -442,6 +444,17 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
             }
             set {
                 this.dynAdditionalLengthFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public double spacing {
+            get {
+                return this.spacingField;
+            }
+            set {
+                this.spacingField = value;
             }
         }
     }

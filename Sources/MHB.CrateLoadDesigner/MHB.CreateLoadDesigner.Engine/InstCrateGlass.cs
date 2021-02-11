@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using log4net;
 using Sharp3D.Math.Core;
 #endregion
 
@@ -10,12 +9,13 @@ namespace MHB.CrateLoadDesigner.Engine
 {
     public class InstCrateGlass
     {
-        internal InstCrateGlass(uint id, Vector2D maxUnitDimensions, Vector3D outerDimensions, int maxQuantity)
+        internal InstCrateGlass(uint id, Vector2D maxUnitDimensions, Vector3D outerDimensions, int maxQuantity, double spacing)
         {
             ID = id;
             MaxQuantity = maxQuantity;
             MaxUnitDimensions = maxUnitDimensions;
             OuterDimensions = outerDimensions;
+            Spacing = spacing;
         }
 
         public Dictionary<DefGlass, int> ContentDict
@@ -52,9 +52,7 @@ namespace MHB.CrateLoadDesigner.Engine
         public int MaxQuantity { get; set; }
         public Vector2D MaxUnitDimensions { get; set; }
         public Vector3D OuterDimensions { get; set; }
-
-
-        private static ILog _log = LogManager.GetLogger(typeof(InstCrateGlass));
+        public double Spacing { get; set; }
     }
 
     public class GlassPosition

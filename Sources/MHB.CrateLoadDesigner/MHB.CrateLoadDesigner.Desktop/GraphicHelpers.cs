@@ -50,7 +50,6 @@ namespace MHB.CrateLoadDesigner.Desktop
             var boxes = new List<Box>();
             uint pickId = 0;
             double initialY = 100.0;
-            double spacing = 40.0;
             
             foreach (var p in crate.GlassPositions)
             {
@@ -59,7 +58,7 @@ namespace MHB.CrateLoadDesigner.Desktop
                     BoxPosition = new BoxPosition(
                         new Vector3D(
                             p.Rotated ? p.Parent.Height : 0.0,
-                            initialY + pickId * (Project.GlassThickness + spacing),
+                            initialY + pickId * (Project.GlassThickness + crate.Spacing),
                             0.0),
                         p.Rotated ? HalfAxis.HAxis.AXIS_Z_P : HalfAxis.HAxis.AXIS_X_P,
                         p.Rotated ? HalfAxis.HAxis.AXIS_X_N: HalfAxis.HAxis.AXIS_Z_P)

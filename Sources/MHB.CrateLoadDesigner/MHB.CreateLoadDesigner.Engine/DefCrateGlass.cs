@@ -13,6 +13,7 @@ namespace MHB.CrateLoadDesigner.Engine
         public double MaxLongSide { get; set; }
         public double MaxShortSide { get; set; }
         public Vector3D DimensionsOuter { get; set; }
+        public double Spacing { get; set; }
 
         public bool DynResizing { get; set; } = false;
         public double? DynMaxLength { get; set; }
@@ -31,11 +32,11 @@ namespace MHB.CrateLoadDesigner.Engine
         {
             if (MaxLongSide >= glass.LongSide
                 && MaxShortSide >= glass.ShortSide)
-                return new InstCrateGlass(index, new Vector2D(MaxLongSide, MaxShortSide), DimensionsOuter, MaxQuantity[IndexMaxQuantity]);
+                return new InstCrateGlass(index, new Vector2D(MaxLongSide, MaxShortSide), DimensionsOuter, MaxQuantity[IndexMaxQuantity], Spacing);
             else if (DynMaxLength.HasValue && DynAdditionalLength.HasValue
                 && DynMaxLength.Value >= glass.LongSide
                 && MaxShortSide >= glass.ShortSide)
-                return new InstCrateGlass(index, new Vector2D(glass.LongSide, MaxShortSide), new Vector3D(glass.LongSide + DynAdditionalLength.Value, DimensionsOuter.Y, DimensionsOuter.Z), MaxQuantity[IndexMaxQuantity]);
+                return new InstCrateGlass(index, new Vector2D(glass.LongSide, MaxShortSide), new Vector3D(glass.LongSide + DynAdditionalLength.Value, DimensionsOuter.Y, DimensionsOuter.Z), MaxQuantity[IndexMaxQuantity], Spacing);
             else 
                 return null;
         }
@@ -54,7 +55,6 @@ namespace MHB.CrateLoadDesigner.Engine
                         return 1;
                     default:
                         throw new Exception($"Invalid GlassType: {Project.PGlassType}");
-
                 }
             }
         }

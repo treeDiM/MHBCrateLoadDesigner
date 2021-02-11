@@ -52,7 +52,8 @@ namespace MHB.CrateLoadDesigner.Engine
                     MaxQuantity = new int[] { crateGlass.maxQuantityDoubleGlass, crateGlass.maxQuantityTripleGlass },
                     DynResizing = crateGlass.dynMaxLengthSpecified,
                     DynMaxLength = crateGlass.dynMaxLengthSpecified ? crateGlass.dynMaxLength : (double?)null,
-                    DynAdditionalLength = crateGlass.dynMaxLengthSpecified ? crateGlass.dynAdditionalLength : (double?)null
+                    DynAdditionalLength = crateGlass.dynMaxLengthSpecified ? crateGlass.dynAdditionalLength : (double?)null,
+                    Spacing = crateGlass.spacing
                 }
                 );
             }

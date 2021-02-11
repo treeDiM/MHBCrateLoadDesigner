@@ -15,21 +15,29 @@
     <CrateGlass crateName="Crate 3" crateDescription="Standard small glass crate"
                 maxLongSide="1200" maxShortSide="1000"
                 crateLength="1400" crateWidth="1150" crateHeight="1280"
-                maxQuantityDoubleGlass="18" maxQuantityTripleGlass="10" />
+                maxQuantityDoubleGlass="18" maxQuantityTripleGlass="10"
+				spacing="1"
+				/>
     <CrateGlass crateName="Crate 5" crateDescription="A-frame small"
                 maxLongSide="2050" maxShortSide="2150"
                 crateLength="2300" crateWidth="1150" crateHeight="2550"
-                maxQuantityDoubleGlass="14" maxQuantityTripleGlass="8" />
+                maxQuantityDoubleGlass="14" maxQuantityTripleGlass="8"
+				spacing="10"
+				/>
     <CrateGlass crateName="Crate 4" crateDescription="Standard A-frame glass crate"
                 maxLongSide="4500" maxShortSide="2150"
                 crateLength="4750" crateWidth="1150" crateHeight="2550"
                 maxQuantityDoubleGlass="14" maxQuantityTripleGlass="8"
-                dynMaxLength="5000" dynAdditionalLength="250"/>    
+                dynMaxLength="5000" dynAdditionalLength="250"
+				spacing="10"
+				/>    
     <CrateClass crateName="Crate 6" crateDescription="Extreme size glass crate"
                 maxLongSide="5000" maxShortSide="2800"
                 crateLength="5250" crateWidth="1800" crateHeight="3150"
                 maxQuantityDoubleGlass="2" maxQuantityTripleGlass="2"
-                dynMaxLength="5000" dynAdditionalLength="250"/>
+                dynMaxLength="5000" dynAdditionalLength="250"
+				spacing="10"
+				/>
   </ListCrateGlass>
   <ListContainer>
     <Container containerName="20Box" containerDescription="20' Standard"
