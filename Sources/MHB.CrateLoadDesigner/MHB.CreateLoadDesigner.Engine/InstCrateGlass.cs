@@ -7,17 +7,15 @@ using Sharp3D.Math.Core;
 
 namespace MHB.CrateLoadDesigner.Engine
 {
-    public class InstCrateGlass
+    public class InstCrateGlass : InstCrate
     {
-        internal InstCrateGlass(uint id, Vector2D maxUnitDimensions, Vector3D outerDimensions, int maxQuantity, double spacing)
+        internal InstCrateGlass(uint id, Vector2D maxUnitDimensions, Vector3D outerDimensions, int maxQuantity, double spacing) : base(id)
         {
-            ID = id;
             MaxQuantity = maxQuantity;
             MaxUnitDimensions = maxUnitDimensions;
             OuterDimensions = outerDimensions;
             Spacing = spacing;
         }
-
         public Dictionary<DefGlass, int> ContentDict
         {
             get
@@ -46,12 +44,9 @@ namespace MHB.CrateLoadDesigner.Engine
                 );
             return true;
         }
-
         public List<GlassPosition> GlassPositions { get; set; } = new List<GlassPosition>();
-        public uint ID { get; set; }
         public int MaxQuantity { get; set; }
         public Vector2D MaxUnitDimensions { get; set; }
-        public Vector3D OuterDimensions { get; set; }
         public double Spacing { get; set; }
     }
 

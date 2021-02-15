@@ -1,8 +1,11 @@
 ﻿#region Using directives
 using System;
+using System.Drawing;
 
 using WeifenLuo.WinFormsUI.Docking;
 using log4net;
+
+using treeDiM.StackBuilder.Graphics;
 
 using MHB.CrateLoadDesigner.Engine;
 #endregion
@@ -24,7 +27,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             base.OnLoad(e);
             try
             {
-                FillContainerList();
+                FillLBoxContainers();
             }
             catch (Exception ex)
             {
@@ -34,14 +37,71 @@ namespace MHB.CrateLoadDesigner.Desktop
         #endregion
 
         #region Fill container list
-        private void FillContainerList()
+        private void FillLBoxContainers()
+        {
+            // loop on containers
+            foreach (var container in Project.ListContainers)
+            {
+                lbContainers.Items.Add(container);
+            }
+            // select first item
+            if (lbContainers.Items.Count > 0)
+                lbContainers.SelectedIndex = 0;
+        }
+        #endregion
+
+        #region DrawContainer
+        private void DrawContainer()
+        {
+            // sanity check
+            if (null == SelectedContainer) return;
+            // generate image
+            try
+            {
+                pbContainer.Image = LayeredCrateToImage.Draw(
+                    GraphicHelpers.ContainerToBoxes(SelectedContainer),
+                    SelectedContainer.Dimensions, Color.White,
+                    false, true, pbContainer.Size
+                    );
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.ToString());
+            }
+        }
+        #endregion
+
+        #region Event handlers
+        private void OnSelectedContainerChanged(object sender, EventArgs e)
+        {
+            DrawContainer();
+            FillGridContainer();
+            InstContainer container = SelectedContainer;
+            if (null != container)
+            {
+                lbContainerName.Text = $"{container.ID}";
+                
+            }
+        }
+        private void OnPbContainerResized(object sender, EventArgs e)
+        {
+            DrawContainer();
+        }
+
+        private void FillGridContainer()
         { 
         }
         #endregion
 
+        #region Private properties
+        private InstContainer SelectedContainer => lbContainers.SelectedItem as InstContainer;
+        #endregion
+
         #region Data members
         public Project Project { get; set; }
-        protected static ILog _log = LogManager.GetLogger(typeof(DockContentContainer)); 
+        protected static ILog _log = LogManager.GetLogger(typeof(DockContentContainer));
         #endregion
+
+
     }
 }

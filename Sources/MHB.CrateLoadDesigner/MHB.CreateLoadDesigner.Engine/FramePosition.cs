@@ -2,16 +2,15 @@
 using Sharp3D.Math.Core;
 #endregion
 
-
 namespace MHB.CrateLoadDesigner.Engine
 {
-    public class FramePosition
+    public class FramePosition : BasePosition
     {
-        public enum Axis { XP, YP, XN, YN };
-
-        public FramePosition(DefFrame parent, Vector2D pos, Axis orientation) { Parent = parent; Position = pos; Orientation = orientation; }
+        public FramePosition(DefFrame parent, Vector2D pos, Axis orientation)
+            : base(pos, orientation)
+        {
+            Parent = parent;
+        }
         public DefFrame Parent { get; }
-        public Vector2D Position { get; set; }
-        public Axis Orientation { get; set; } 
     }
 }

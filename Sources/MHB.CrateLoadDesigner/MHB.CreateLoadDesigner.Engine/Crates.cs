@@ -76,7 +76,7 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
         
         private string crateDescriptionField;
         
-        private enuCrateType crateTypeField;
+        private enuCrateTypeFrame crateTypeField;
         
         private double maxLongSideField;
         
@@ -124,7 +124,7 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public enuCrateType crateType {
+        public enuCrateTypeFrame crateType {
             get {
                 return this.crateTypeField;
             }
@@ -259,7 +259,7 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://MHBNamespace")]
-    public enum enuCrateType {
+    public enum enuCrateTypeFrame {
         
         /// <remarks/>
         CRATE,
@@ -279,6 +279,8 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
         private string crateNameField;
         
         private string crateDescriptionField;
+        
+        private enuCrateTypeGlass crateTypeField;
         
         private double maxLongSideField;
         
@@ -323,6 +325,17 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
             }
             set {
                 this.crateDescriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public enuCrateTypeGlass crateType {
+            get {
+                return this.crateTypeField;
+            }
+            set {
+                this.crateTypeField = value;
             }
         }
         
@@ -462,6 +475,19 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://MHBNamespace")]
+    public enum enuCrateTypeGlass {
+        
+        /// <remarks/>
+        VERTICAL,
+        
+        /// <remarks/>
+        AFRAME,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://MHBNamespace")]
@@ -570,7 +596,7 @@ namespace MHB.CrateLoadDesigner.Engine.XML {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public double roofOpeningLenght {
+        public double roofOpeningLength {
             get {
                 return this.roofOpeningLenghtField;
             }

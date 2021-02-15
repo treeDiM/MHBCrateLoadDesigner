@@ -143,6 +143,8 @@ namespace MHB.CrateLoadDesigner.Desktop
             formCratesFrame.Show(dockPanel, DockState.Document);
             var formCratesGlass = new DockContentCratesGlass() { Project = project };
             formCratesGlass.Show(dockPanel, DockState.Document);
+            var formContainer = new DockContentContainer() { Project = project };
+            formContainer.Show(dockPanel, DockState.Document);
         }
         private void OnFileOpen(object sender, EventArgs e)
         {

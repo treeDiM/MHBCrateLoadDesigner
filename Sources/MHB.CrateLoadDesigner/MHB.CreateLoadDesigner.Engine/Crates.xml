@@ -16,28 +16,24 @@
                 maxLongSide="1200" maxShortSide="1000"
                 crateLength="1400" crateWidth="1150" crateHeight="1280"
                 maxQuantityDoubleGlass="18" maxQuantityTripleGlass="10"
-				spacing="1"
-				/>
+                spacing ="1" crateType="VERTICAL"/>
     <CrateGlass crateName="Crate 5" crateDescription="A-frame small"
                 maxLongSide="2050" maxShortSide="2150"
                 crateLength="2300" crateWidth="1150" crateHeight="2550"
                 maxQuantityDoubleGlass="14" maxQuantityTripleGlass="8"
-				spacing="10"
-				/>
+                spacing="10" crateType="AFRAME"/>
     <CrateGlass crateName="Crate 4" crateDescription="Standard A-frame glass crate"
                 maxLongSide="4500" maxShortSide="2150"
                 crateLength="4750" crateWidth="1150" crateHeight="2550"
                 maxQuantityDoubleGlass="14" maxQuantityTripleGlass="8"
                 dynMaxLength="5000" dynAdditionalLength="250"
-				spacing="10"
-				/>    
+                spacing="10" crateType="AFRAME"/>    
     <CrateClass crateName="Crate 6" crateDescription="Extreme size glass crate"
                 maxLongSide="5000" maxShortSide="2800"
                 crateLength="5250" crateWidth="1800" crateHeight="3150"
                 maxQuantityDoubleGlass="2" maxQuantityTripleGlass="2"
                 dynMaxLength="5000" dynAdditionalLength="250"
-				spacing="10"
-				/>
+                spacing="10" crateType="VERTICAL"/>
   </ListCrateGlass>
   <ListContainer>
     <Container containerName="20Box" containerDescription="20' Standard"
@@ -50,5 +46,20 @@
                 openingWidth="2300" openingHeight="2250"
                 roofOpeningLength="0" roofOpeningWidth="0"
                 payload="27000" emptyWeight="3750" remark="Not used or manual only"/>
+    <Container containerName="40HC" containerDescription="40' Standard High Cube"
+                insideLength="11900" insideWidth="2340" insideHeight="2680"
+                openingWidth="2300" openingHeight="2570"
+                roofOpeningLength="0" roofOpeningWidth="0"
+                payload="29000" emptyWeight="3900" remark="Default"/>
+    <Container containerName="20OT" containerDescription="20' Open top"
+                insideLength="5900" insideWidth="2340" insideHeight="2280"
+                openingWidth="0" openingHeight="0"
+                roofOpeningLength="5350" roofOpeningWidth="2200"
+                payload="21000" emptyWeight="2100" remark="Extreme size glass crate only"/>
+    <Container containerName="40OT" containerDescription="40' Open top"
+                insideLength="11900" insideWidth="2340" insideHeight="2280"
+                openingWidth="0" openingHeight="0"
+                roofOpeningLength="11550" roofOpeningWidth="2200"
+                payload="43000" emptyWeight="4300" remark="Extreme size glass crate only"/>
   </ListContainer>
 </Root>

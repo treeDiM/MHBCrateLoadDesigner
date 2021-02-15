@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasePosition.cs" />
     <Compile Include="BBox2D.cs" />
     <Compile Include="BinPacker.cs" />
     <Compile Include="CrateFileReader.cs" />
+    <Compile Include="CratePosition.cs" />
     <Compile Include="Crates.cs">
       <DependentUpon>Crates.xsd</DependentUpon>
     </Compile>
@@ -53,6 +55,7 @@
     <Compile Include="FramePosition.cs" />
     <Compile Include="InputFileReader.cs" />
     <Compile Include="InstContainer.cs" />
+    <Compile Include="InstCrate.cs" />
     <Compile Include="InstCrateFrame.cs" />
     <Compile Include="DefCrateFrame.cs" />
     <Compile Include="InstCrateGlass.cs" />
@@ -90,15 +93,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\MHB.CrateLoadDesigner.Desktop\bin\Debug\Crates.xml">
-      <Link>Crates.xml</Link>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\RectangleBinPack\RectangleBinPack.csproj">
       <Project>{a124df84-e1da-42e5-9f16-beab33e8ae4f}</Project>
       <Name>RectangleBinPack</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Crates.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

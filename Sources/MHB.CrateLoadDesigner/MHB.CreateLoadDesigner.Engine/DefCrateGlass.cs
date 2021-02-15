@@ -8,12 +8,16 @@ namespace MHB.CrateLoadDesigner.Engine
 {
     public class DefCrateGlass
     {
+        public enum EType { VERTICAL, AFRAME }
+
         public string Name { get; set; }
         public string Description { get; set; }
         public double MaxLongSide { get; set; }
         public double MaxShortSide { get; set; }
         public Vector3D DimensionsOuter { get; set; }
         public double Spacing { get; set; }
+        public EType CrateType { get; set; }
+
 
         public bool DynResizing { get; set; } = false;
         public double? DynMaxLength { get; set; }

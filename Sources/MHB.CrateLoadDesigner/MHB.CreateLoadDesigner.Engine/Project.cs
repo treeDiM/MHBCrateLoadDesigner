@@ -77,6 +77,7 @@ namespace MHB.CrateLoadDesigner.Engine
             // clear ListCrateFrame
             ListCrateFrame.Clear();
             ListCrateGlass.Clear();
+            ListContainers.Clear();
 
             // ### Frames ###
             // sort frames
@@ -145,6 +146,32 @@ namespace MHB.CrateLoadDesigner.Engine
                     }
                 }
             }
+            // ###
+
+            // ### Crates -> containers
+            List<InstCrate> listCrates = new List<InstCrate>();
+            listCrates.AddRange(ListCrateFrame);
+            listCrates.AddRange(ListCrateGlass);
+
+            foreach (var crate in listCrates)
+            {
+                bool packed = false;
+                foreach (var container in ListContainers)
+                {
+                    if (container.PackCrate(crate))
+                    {
+                        packed = true;
+                        break;
+                    }
+                }
+                if (!packed)
+                {
+                    InstContainer cont = BuildNewContainer(crate.OuterDimensions);
+                    if (!cont.PackCrate(crate))
+                        throw new Exception($"Failed to pack crate {crate.ID}");
+                }
+            }
+            // ### 
         }
         #region Crate/container instantiation
         private InstCrateFrame BuildNewCrateFrame(DefFrame frame)
@@ -181,7 +208,17 @@ namespace MHB.CrateLoadDesigner.Engine
         }
         private InstContainer BuildNewContainer(Vector3D dimensions)
         {
-            var container = new InstContainer() { };
+            InstContainer container = null;
+            foreach (var defContainer in ListDefContainers)
+            {
+                if (defContainer.CanFitCrate(dimensions))
+                {
+                    container = defContainer.Instantiate((uint)ListContainers.Count);
+                    break;
+                }
+            }
+            if (null == container)
+                throw new Exception($"Failed to build container for crate {dimensions}");
             ListContainers.Add(container);
             return container;
         }
@@ -271,7 +308,7 @@ namespace MHB.CrateLoadDesigner.Engine
         public List<DefCrateGlass> ListDefCratesGlass { get; set; } = new List<DefCrateGlass>();
         public List<DefContainer> ListDefContainers { get; set; } = new List<DefContainer>();
 
-        private List<InstContainer> ListContainers { get; set; } = new List<InstContainer>();
+        public List<InstContainer> ListContainers { get; set; } = new List<InstContainer>();
         public List<InstCrateFrame> ListCrateFrame { get; set; } = new List<InstCrateFrame>();
         public List<InstCrateGlass> ListCrateGlass { get; set; } = new List<InstCrateGlass>();
 

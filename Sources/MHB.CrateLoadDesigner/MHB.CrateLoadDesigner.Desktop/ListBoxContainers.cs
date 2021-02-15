@@ -9,15 +9,15 @@ using MHB.CrateLoadDesigner.Engine;
 
 namespace MHB.CrateLoadDesigner.Desktop
 {
-    public partial class ListBoxCratesGlass : ListBox
+    public partial class ListBoxContainers : ListBox
     {
         #region Constructor
-        public ListBoxCratesGlass()
+        public ListBoxContainers()
         {
-            InitializeComponent();
+            DoubleBuffered = true;
+            DrawMode = DrawMode.OwnerDrawFixed;
         }
         #endregion
-
         #region Override ListBox
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
@@ -28,18 +28,19 @@ namespace MHB.CrateLoadDesigner.Desktop
             {
                 var imageSize = new Size(e.Bounds.Width, e.Bounds.Height);
                 bool selected = (e.State & DrawItemState.Selected) == DrawItemState.Selected;
-                var crate = Items[e.Index] as InstCrateGlass;
+                var container = Items[e.Index] as InstContainer;
                 e.Graphics.DrawImage(
                     LayeredCrateToImage.Draw(
-                        GraphicHelpers.CrateToBoxes(crate),
-                        crate.OuterDimensions, Color.White,
+                        GraphicHelpers.ContainerToBoxes(container),
+                        container.Dimensions, Color.White,
                         selected, false,
-                        imageSize),
+                        imageSize
+                        ),
                     e.Bounds.Left,
                     e.Bounds.Top);
-
             }
         }
-        #endregion
     }
+    #endregion
 }
+

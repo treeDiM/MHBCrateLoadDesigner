@@ -10,11 +10,10 @@ using RectangleBinPack;
 
 namespace MHB.CrateLoadDesigner.Engine
 {
-    public class InstCrateFrame
+    public class InstCrateFrame : InstCrate
     {
-        internal InstCrateFrame(uint id, Vector2D maxUnitDimensions, int noLayers, bool isSkid = false)
+        internal InstCrateFrame(uint id, Vector2D maxUnitDimensions, int noLayers, bool isSkid = false) : base(id)
         {
-            ID = id;
             MaxUnitDimensions = maxUnitDimensions;
             // add empty layers
             Layers = new List<Layer>();
@@ -24,9 +23,7 @@ namespace MHB.CrateLoadDesigner.Engine
             IsSkid = isSkid;
         }
         public bool IsSkid { get; private set; } = false;
-        public uint ID { get; }
         public Vector2D MaxUnitDimensions { get; set; }
-        public Vector3D OuterDimensions { get; set; }
         public List<Layer> Layers { get; private set; }
         public Dictionary<DefFrame, int> ContentDict
         {
@@ -48,8 +45,7 @@ namespace MHB.CrateLoadDesigner.Engine
                     });
                 return dict.ToDictionary(g => g.Frame, g => g.Count);
             }
-        }
- 
+        } 
         public bool PackFrame(DefFrame defFrame, Project.EPackingMethod packingMethod)
         {
             switch (packingMethod)
@@ -122,7 +118,6 @@ namespace MHB.CrateLoadDesigner.Engine
         public string LastAlgorithmUsed { get; set; }
         public double Weight => this.Select(f => f.Parent.Perimeter).Sum();
         public bool IsEmpty => Count == 0;
-
         #endregion
 
         #region Packing methods
@@ -175,11 +170,11 @@ namespace MHB.CrateLoadDesigner.Engine
 
                     if (rect.Width == (int)(f.Width + spacing) && rect.Height == (int)(f.Height + spacing))
                     {
-                        fp = new FramePosition(f, new Vector2D(rect.X + offsetX, rect.Y + offsetY), FramePosition.Axis.XP);
+                        fp = new FramePosition(f, new Vector2D(rect.X + offsetX, rect.Y + offsetY), BasePosition.Axis.XP);
                     }
                     else if (rect.Width == (int)(f.Height + spacing) && rect.Height == (int)(f.Width + spacing))
                     {
-                        fp = new FramePosition(f, new Vector2D(rect.X + f.Height + offsetX, rect.Y + offsetY), FramePosition.Axis.YP);
+                        fp = new FramePosition(f, new Vector2D(rect.X + f.Height + offsetX, rect.Y + offsetY), BasePosition.Axis.YP);
                     }
                     else
                         throw new Exception($"Pack failed for ({rect.Width}, {rect.Height})");
@@ -191,7 +186,6 @@ namespace MHB.CrateLoadDesigner.Engine
         private List<RectSize> RectSizes(DefFrame additionalFrame)
         {
             List<RectSize> rectSizes = new List<RectSize>();
-
             double spacing = Project.FrameSpacing;
             // current frame(s)
             foreach (var fp in this)

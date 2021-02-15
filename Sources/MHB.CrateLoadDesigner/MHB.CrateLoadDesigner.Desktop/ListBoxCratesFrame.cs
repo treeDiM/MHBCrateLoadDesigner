@@ -24,9 +24,9 @@ namespace MHB.CrateLoadDesigner.Desktop
             e.DrawFocusRectangle();
             if (!DesignMode && Items.Count > 0 && e.Index != -1)
             {
-                var crate = Items[e.Index] as InstCrateFrame;
                 bool selected = (e.State & DrawItemState.Selected) == DrawItemState.Selected;
                 var imageSize = new Size(e.Bounds.Width, e.Bounds.Height);
+                var crate = Items[e.Index] as InstCrateFrame;
                 e.Graphics.DrawImage(
                     LayeredCrateToImage.Draw(
                         GraphicHelpers.CrateToBoxes(crate),

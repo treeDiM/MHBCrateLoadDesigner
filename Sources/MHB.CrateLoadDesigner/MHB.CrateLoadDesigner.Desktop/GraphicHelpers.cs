@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 
 using Sharp3D.Math.Core;
 
@@ -53,11 +52,13 @@ namespace MHB.CrateLoadDesigner.Desktop
             
             foreach (var p in crate.GlassPositions)
             {
+                // compute X position so that glass appears centered
+                double xPos = 0.5 * ( crate.OuterDimensions.X - (p.Rotated ? p.Parent.Height : p.Parent.Width) );
                 var box = new Box(pickId++, p.Parent.Width, p.Parent.Height, Project.GlassThickness)
                 {
                     BoxPosition = new BoxPosition(
                         new Vector3D(
-                            p.Rotated ? p.Parent.Height : 0.0,
+                            xPos + (p.Rotated ? p.Parent.Height : 0.0),
                             initialY + pickId * (Project.GlassThickness + crate.Spacing),
                             0.0),
                         p.Rotated ? HalfAxis.HAxis.AXIS_Z_P : HalfAxis.HAxis.AXIS_X_P,
@@ -68,15 +69,30 @@ namespace MHB.CrateLoadDesigner.Desktop
             }
             return boxes;
         }
+        public static List<Box> ContainerToBoxes(InstContainer container)
+        {
+            var boxes = new List<Box>();
+            uint pickId = 0;
+            foreach (var cp in container.CratePositions)
+            {
+                var box = new Box(pickId++, cp.Crate.OuterDimensions.X, cp.Crate.OuterDimensions.Y, cp.Crate.OuterDimensions.Z)
+                {
+                    BoxPosition = new BoxPosition(new Vector3D(cp.Position.X, cp.Position.Y, 0.0), LengthAxis(cp.Orientation), WidthAxis(cp.Orientation))
+                };
+                box.SetAllFacesColor(Color.Beige);
+                boxes.Add(box);
+            }
+            return boxes;
+        }
 
         private static HalfAxis.HAxis LengthAxis(FramePosition.Axis axis)
         {
             switch (axis)
             {
-                case FramePosition.Axis.XP: return HalfAxis.HAxis.AXIS_X_P;
-                case FramePosition.Axis.YP: return HalfAxis.HAxis.AXIS_Y_P;
-                case FramePosition.Axis.XN: return HalfAxis.HAxis.AXIS_X_N;
-                case FramePosition.Axis.YN: return HalfAxis.HAxis.AXIS_Y_N;
+                case BasePosition.Axis.XP: return HalfAxis.HAxis.AXIS_X_P;
+                case BasePosition.Axis.YP: return HalfAxis.HAxis.AXIS_Y_P;
+                case BasePosition.Axis.XN: return HalfAxis.HAxis.AXIS_X_N;
+                case BasePosition.Axis.YN: return HalfAxis.HAxis.AXIS_Y_N;
                 default: throw new Exception("Invalid FormPosition.Axis");
             }
 
@@ -85,13 +101,12 @@ namespace MHB.CrateLoadDesigner.Desktop
         {
             switch (axis)
             {
-                case FramePosition.Axis.XP: return HalfAxis.HAxis.AXIS_Y_P;
-                case FramePosition.Axis.YP: return HalfAxis.HAxis.AXIS_X_N;
-                case FramePosition.Axis.XN: return HalfAxis.HAxis.AXIS_Y_N;
-                case FramePosition.Axis.YN: return HalfAxis.HAxis.AXIS_X_P;
+                case BasePosition.Axis.XP: return HalfAxis.HAxis.AXIS_Y_P;
+                case BasePosition.Axis.YP: return HalfAxis.HAxis.AXIS_X_N;
+                case BasePosition.Axis.XN: return HalfAxis.HAxis.AXIS_Y_N;
+                case BasePosition.Axis.YN: return HalfAxis.HAxis.AXIS_X_P;
                 default: throw new Exception("Invalid FormPosition.Axis");
             }
-
         }
     }
 }

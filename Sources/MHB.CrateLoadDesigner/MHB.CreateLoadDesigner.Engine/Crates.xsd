@@ -5,7 +5,7 @@
     xmlns="http://MHBNamespace"
     elementFormDefault="qualified"
 >
-  <xs:simpleType name="enuCrateType">
+  <xs:simpleType name="enuCrateTypeFrame">
     <xs:annotation>
       <xs:documentation>
         Crate type (i.e. either CRATE or SKID)
@@ -28,6 +28,29 @@
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="enuCrateTypeGlass">
+    <xs:annotation>
+      <xs:documentation>
+        Crate type (i.e. either VERTICAL or AFRAME)
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="VERTICAL">
+        <xs:annotation>
+          <xs:documentation>
+            VERTICAL : glass sheets are stored vertically
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AFRAME">
+        <xs:annotation>
+          <xs:documentation>
+            AFRAME : glass sheets are stored on a A frame
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:element name="Root">
     <xs:complexType>
       <xs:sequence>
@@ -38,7 +61,7 @@
                 <xs:complexType>
                   <xs:attribute name="crateName" type="xs:string" use="required"/>
                   <xs:attribute name="crateDescription" type="xs:string" use="required"/>
-                  <xs:attribute name="crateType" type="enuCrateType" use="required"/>
+                  <xs:attribute name="crateType" type="enuCrateTypeFrame" use="required"/>
                   <xs:attribute name="maxLongSide" type="xs:double" use="required"/>
                   <xs:attribute name="maxShortSide" type="xs:double" use="required"/>
                   <xs:attribute name="crateLength" type="xs:double" use="required"/>
@@ -60,6 +83,7 @@
                 <xs:complexType>
                   <xs:attribute name="crateName" type="xs:string" use="required"/>
                   <xs:attribute name="crateDescription" type="xs:string" use="required"/>
+                  <xs:attribute name="crateType" type="enuCrateTypeGlass" use="required"/>
                   <xs:attribute name="maxLongSide" type="xs:double" use="required"/>
                   <xs:attribute name="maxShortSide" type="xs:double" use="required"/>
                   <xs:attribute name="crateLength" type="xs:double" use="required"/>
@@ -87,7 +111,7 @@
                   <xs:attribute name="insideHeight" type="xs:double" use="required"/>
                   <xs:attribute name="openingWidth" type="xs:double" use="required"/>
                   <xs:attribute name="openingHeight" type="xs:double" use="required"/>
-                  <xs:attribute name="roofOpeningLenght" type="xs:double" use="required"/>
+                  <xs:attribute name="roofOpeningLength" type="xs:double" use="required"/>
                   <xs:attribute name="roofOpeningWidth" type="xs:double" use="required"/>
                   <xs:attribute name="payload" type="xs:double" use="required"/>
                   <xs:attribute name="emptyWeight" type="xs:double" use="required"/>

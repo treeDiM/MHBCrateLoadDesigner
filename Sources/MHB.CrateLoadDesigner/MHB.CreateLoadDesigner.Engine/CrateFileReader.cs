@@ -29,7 +29,7 @@ namespace MHB.CrateLoadDesigner.Engine
                 listFrameCrates.Add(new DefCrateFrame()
                 {
                     Name = crateFrame.crateName,
-                    CrateType = crateFrame.crateType == enuCrateType.SKID ? DefCrateFrame.EType.SKID : DefCrateFrame.EType.CRATE,
+                    CrateType = crateFrame.crateType == enuCrateTypeFrame.SKID ? DefCrateFrame.EType.SKID : DefCrateFrame.EType.CRATE,
                     MaxLongSide = crateFrame.maxLongSide,
                     MaxShortSide = crateFrame.maxShortSide,
                     DimensionsOuter = new Vector3D(crateFrame.crateLength, crateFrame.crateWidth, crateFrame.crateHeight),
@@ -53,7 +53,8 @@ namespace MHB.CrateLoadDesigner.Engine
                     DynResizing = crateGlass.dynMaxLengthSpecified,
                     DynMaxLength = crateGlass.dynMaxLengthSpecified ? crateGlass.dynMaxLength : (double?)null,
                     DynAdditionalLength = crateGlass.dynMaxLengthSpecified ? crateGlass.dynAdditionalLength : (double?)null,
-                    Spacing = crateGlass.spacing
+                    Spacing = crateGlass.spacing,
+                    CrateType = crateGlass.crateType == enuCrateTypeGlass.AFRAME ? DefCrateGlass.EType.AFRAME : DefCrateGlass.EType.VERTICAL
                 }
                 );
             }
@@ -67,7 +68,7 @@ namespace MHB.CrateLoadDesigner.Engine
                     DimensionsInner = new Vector3D(container.insideLength, container.insideWidth, container.insideHeight),
                     OpeningWidth = container.openingWidth,
                     OpeningHeight = container.openingHeight,
-                    RoofOpeningLength = container.roofOpeningLenght,
+                    RoofOpeningLength = container.roofOpeningLength,
                     RoofOpeningWidth = container.roofOpeningWidth,
                     Payload = container.payload,
                     EmptyWeight = container.emptyWeight

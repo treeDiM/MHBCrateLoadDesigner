@@ -16,5 +16,15 @@ namespace MHB.CrateLoadDesigner.Engine
         public double EmptyWeight { get; set; }
         public string Remark { get; set; }
         public Vector3D DimensionsInner { get; set; }
+
+        public bool CanFitCrate(Vector3D dimensions)
+        {
+            if (dimensions.X < DimensionsInner.X && dimensions.Y < DimensionsInner.Y && dimensions.Z < DimensionsInner.Z)
+                return true;
+            if (dimensions.X < RoofOpeningLength && dimensions.Y < RoofOpeningWidth)
+                return true;
+            return false;
+        }
+        public InstContainer Instantiate(uint id) => new InstContainer(id, this);
     }
 }

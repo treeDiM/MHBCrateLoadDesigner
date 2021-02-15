@@ -126,6 +126,12 @@
       <DependentUpon>FormSplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="GraphicHelpers.cs" />
+    <Compile Include="ListBoxContainers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListBoxContainers.Designer.cs">
+      <DependentUpon>ListBoxContainers.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListBoxCratesFrame.cs">
       <SubType>Component</SubType>
     </Compile>
