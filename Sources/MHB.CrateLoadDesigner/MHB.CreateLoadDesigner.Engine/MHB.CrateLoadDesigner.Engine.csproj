@@ -42,7 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasePosition.cs" />
-    <Compile Include="BBox2D.cs" />
+    <Compile Include="BBox2I.cs" />
+    <Compile Include="BBox3D.cs" />
     <Compile Include="BinPacker.cs" />
     <Compile Include="CrateFileReader.cs" />
     <Compile Include="CratePosition.cs" />

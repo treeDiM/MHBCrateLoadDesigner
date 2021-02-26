@@ -30,10 +30,12 @@ namespace MHB.CrateLoadDesigner.Desktop
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lbContainers = new MHB.CrateLoadDesigner.Desktop.ListBoxContainers();
             this.splitContainerHoriz = new System.Windows.Forms.SplitContainer();
             this.lbContainerName = new System.Windows.Forms.Label();
             this.pbContainer = new System.Windows.Forms.PictureBox();
-            this.lbContainers = new MHB.CrateLoadDesigner.Desktop.ListBoxContainers();
+            this.lbContainerType = new System.Windows.Forms.Label();
+            this.lbDimensions = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,6 +64,19 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.splitContainer1.SplitterDistance = 193;
             this.splitContainer1.TabIndex = 0;
             // 
+            // lbContainers
+            // 
+            this.lbContainers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbContainers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lbContainers.FormattingEnabled = true;
+            this.lbContainers.IntegralHeight = false;
+            this.lbContainers.ItemHeight = 150;
+            this.lbContainers.Location = new System.Drawing.Point(0, 0);
+            this.lbContainers.Name = "lbContainers";
+            this.lbContainers.Size = new System.Drawing.Size(193, 450);
+            this.lbContainers.TabIndex = 0;
+            this.lbContainers.SelectedIndexChanged += new System.EventHandler(this.OnSelectedContainerChanged);
+            // 
             // splitContainerHoriz
             // 
             this.splitContainerHoriz.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -71,6 +86,8 @@ namespace MHB.CrateLoadDesigner.Desktop
             // 
             // splitContainerHoriz.Panel1
             // 
+            this.splitContainerHoriz.Panel1.Controls.Add(this.lbDimensions);
+            this.splitContainerHoriz.Panel1.Controls.Add(this.lbContainerType);
             this.splitContainerHoriz.Panel1.Controls.Add(this.lbContainerName);
             // 
             // splitContainerHoriz.Panel2
@@ -99,18 +116,23 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.pbContainer.TabStop = false;
             this.pbContainer.SizeChanged += new System.EventHandler(this.OnPbContainerResized);
             // 
-            // lbContainers
+            // lbContainerType
             // 
-            this.lbContainers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbContainers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lbContainers.FormattingEnabled = true;
-            this.lbContainers.IntegralHeight = false;
-            this.lbContainers.ItemHeight = 150;
-            this.lbContainers.Location = new System.Drawing.Point(0, 0);
-            this.lbContainers.Name = "lbContainers";
-            this.lbContainers.Size = new System.Drawing.Size(193, 450);
-            this.lbContainers.TabIndex = 0;
-            this.lbContainers.SelectedIndexChanged += new System.EventHandler(this.OnSelectedContainerChanged);
+            this.lbContainerType.AutoSize = true;
+            this.lbContainerType.Location = new System.Drawing.Point(160, 13);
+            this.lbContainerType.Name = "lbContainerType";
+            this.lbContainerType.Size = new System.Drawing.Size(37, 13);
+            this.lbContainerType.TabIndex = 1;
+            this.lbContainerType.Text = "Type :";
+            // 
+            // lbDimensions
+            // 
+            this.lbDimensions.AutoSize = true;
+            this.lbDimensions.Location = new System.Drawing.Point(322, 13);
+            this.lbDimensions.Name = "lbDimensions";
+            this.lbDimensions.Size = new System.Drawing.Size(92, 13);
+            this.lbDimensions.TabIndex = 2;
+            this.lbDimensions.Text = "Inner dimensions :";
             // 
             // DockContentContainer
             // 
@@ -143,5 +165,7 @@ namespace MHB.CrateLoadDesigner.Desktop
         private MHB.CrateLoadDesigner.Desktop.ListBoxContainers lbContainers;
         private System.Windows.Forms.PictureBox pbContainer;
         private System.Windows.Forms.Label lbContainerName;
+        private System.Windows.Forms.Label lbDimensions;
+        private System.Windows.Forms.Label lbContainerType;
     }
 }

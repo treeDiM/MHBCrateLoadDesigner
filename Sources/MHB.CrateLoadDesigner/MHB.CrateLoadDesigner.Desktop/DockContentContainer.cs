@@ -80,7 +80,8 @@ namespace MHB.CrateLoadDesigner.Desktop
             if (null != container)
             {
                 lbContainerName.Text = $"{container.ID}";
-                
+                lbContainerType.Text = $"{container.ParentDef.Name}";
+                lbDimensions.Text = $"{container.InnerDimensions.X}x{container.InnerDimensions.Y}x{container.InnerDimensions.Z}";                
             }
         }
         private void OnPbContainerResized(object sender, EventArgs e)

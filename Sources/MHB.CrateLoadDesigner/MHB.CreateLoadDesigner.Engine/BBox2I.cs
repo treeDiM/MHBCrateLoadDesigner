@@ -1,17 +1,16 @@
-﻿using System;
+﻿#region Using directives
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using RectangleBinPack;
+#endregion
 
 namespace MHB.CrateLoadDesigner.Engine
 {
-    internal class BBox2D
+    internal class BBox2I
     {
-        public BBox2D() {}
-        public BBox2D(IEnumerable<Rect> rects)
+        public BBox2I() {}
+        public BBox2I(IEnumerable<Rect> rects)
         {
             foreach (var rect in rects)
                 Expand(rect);
@@ -29,19 +28,6 @@ namespace MHB.CrateLoadDesigner.Engine
             YMin = Math.Min(YMin, rect.Y);
             YMax = Math.Max(YMax, rect.Y + rect.Height);
         }
-        public bool IsValid
-        {
-            get
-            {
-                try
-                {
-                    return XMin <= XMax && YMin <= YMax;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            }
-        }
+        public bool IsValid => XMin <= XMax && YMin <= YMax;
     }
 }

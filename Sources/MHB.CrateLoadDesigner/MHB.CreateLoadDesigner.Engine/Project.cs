@@ -153,6 +153,22 @@ namespace MHB.CrateLoadDesigner.Engine
             listCrates.AddRange(ListCrateFrame);
             listCrates.AddRange(ListCrateGlass);
 
+            // split crates between those that exceed 40HC height and those who don't
+            DefContainer container40HC = GetContainerByName("40HC");
+            if (null == container40HC) throw new Exception("Container 40HC could not be found in container list.");
+            double extremeHeight = container40HC.DimensionsInner.Z;
+
+            PackListOfCrates(listCrates.Where(c => c.OuterDimensions.Z <= extremeHeight).ToList(), "40HC");
+            PackListOfCrates(listCrates.Where(c => c.OuterDimensions.Z > extremeHeight).ToList(), "listCratesExtreme");
+
+            // replace "40HC" with "20Box" when possible
+            DownSizeContainer("40HC", "20Box");
+            // replace "40OT" with "20OT" when possible
+            DownSizeContainer("40OT", "20OT");
+            // ### 
+        }
+        private void PackListOfCrates(List<InstCrate> listCrates, string containerName)
+        {
             foreach (var crate in listCrates)
             {
                 bool packed = false;
@@ -166,14 +182,26 @@ namespace MHB.CrateLoadDesigner.Engine
                 }
                 if (!packed)
                 {
-                    InstContainer cont = BuildNewContainer(crate.OuterDimensions);
+                    InstContainer cont = BuildNewContainer(containerName, crate.OuterDimensions);
                     if (!cont.PackCrate(crate))
                         throw new Exception($"Failed to pack crate {crate.ID}");
                 }
             }
-            // ### 
         }
+        private void DownSizeContainer(string nameInit, string nameReplacement)
+        {
+            var listContainer = ListContainers.Where(c => c.ParentDef.Name == nameInit);
+            var defContainerReplacement = GetContainerByName(nameReplacement);
+            foreach (var container in listContainer)
+            {
+                if (defContainerReplacement.CanFitCrate(container.LoadBBox.Dimensions))
+                    container.ParentDef = defContainerReplacement;
+            }
+        }
+
         #region Crate/container instantiation
+        private DefContainer GetContainerByName(string name) => ListDefContainers.Single(c => c.Name == name);
+
         private InstCrateFrame BuildNewCrateFrame(DefFrame frame)
         {
             InstCrateFrame crate = null;
@@ -206,19 +234,12 @@ namespace MHB.CrateLoadDesigner.Engine
             ListCrateGlass.Add(crate);
             return crate;
         }
-        private InstContainer BuildNewContainer(Vector3D dimensions)
+        private InstContainer BuildNewContainer(string containerName, Vector3D dimensions)
         {
-            InstContainer container = null;
-            foreach (var defContainer in ListDefContainers)
-            {
-                if (defContainer.CanFitCrate(dimensions))
-                {
-                    container = defContainer.Instantiate((uint)ListContainers.Count);
-                    break;
-                }
-            }
-            if (null == container)
+            var defContainer = GetContainerByName(containerName);
+            if (!defContainer.CanFitCrate(dimensions))
                 throw new Exception($"Failed to build container for crate {dimensions}");
+            InstContainer container = defContainer.Instantiate((uint)ListContainers.Count);
             ListContainers.Add(container);
             return container;
         }

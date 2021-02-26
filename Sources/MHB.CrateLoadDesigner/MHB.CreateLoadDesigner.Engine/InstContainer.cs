@@ -20,7 +20,7 @@ namespace MHB.CrateLoadDesigner.Engine
         public uint ID { get; }
         public Vector3D InnerDimensions => ParentDef.DimensionsInner;
         public bool HasOpenTop => ParentDef.RoofOpeningLength > 0 && ParentDef.RoofOpeningWidth > 0;
-        private DefContainer ParentDef { get; set; }
+        public DefContainer ParentDef { get; set; }
         private string LastAlgorithmUsed { get; set; }
         public bool PackCrate(InstCrate crate)
         {
@@ -83,5 +83,15 @@ namespace MHB.CrateLoadDesigner.Engine
         private int BinHeight => (int)InnerDimensions.Y;
         public Vector3D Dimensions => ParentDef.DimensionsInner;
         public List<CratePosition> CratePositions { get; set; } = new List<CratePosition>();
+        internal BBox3D LoadBBox
+        {
+            get
+            {
+                var bbox = new BBox3D();
+                foreach (var cp in CratePositions)
+                    bbox.Extend(cp.BBox);
+                return bbox;
+            }
+        }
     }
 }

@@ -154,7 +154,7 @@ namespace MHB.CrateLoadDesigner.Engine
                 frames.Add(defFrame);
                 Clear();
 
-                BBox2D bbox = new BBox2D(rects);
+                BBox2I bbox = new BBox2I(rects);
                 double offsetX = (ParentCrate.OuterDimensions.X - bbox.Width)/2 + halfSpacing;
                 double offsetY = (ParentCrate.OuterDimensions.Y - bbox.Height)/2 + halfSpacing;
 
