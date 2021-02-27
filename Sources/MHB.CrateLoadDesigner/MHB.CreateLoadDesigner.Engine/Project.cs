@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Linq;
 
 using Sharp3D.Math.Core;
@@ -260,6 +259,9 @@ namespace MHB.CrateLoadDesigner.Engine
             if (!File.Exists(filePath))
                 throw new FileNotFoundException(filePath);
         }
+        #endregion
+        #region Public properties
+        public int NoCrates => ListCrateFrame.Count + ListCrateGlass.Count;
         #endregion
         #region Input data loading
         private bool LoadCrates()

@@ -7,7 +7,7 @@
               />
     <CrateFrame crateName="Crate 2" crateDescription="" crateType="SKID"
               maxLongSide="3700" maxShortSide="2790"
-              crateLength="3950" crateWidth="2790" crateHeight="2550"
+              crateLength="3950" crateWidth="2300" crateHeight="2550"
               maxQuantityCP80="4" maxQuantityCP100="3"
               dynMaxLength="5000" dynAdditionalLength="250"/>
   </ListCrateFrame>

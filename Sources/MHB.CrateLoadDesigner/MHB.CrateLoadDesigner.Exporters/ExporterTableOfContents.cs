@@ -29,11 +29,22 @@ namespace MHB.CrateLoadDesigner.Exporters
             };
             Workbooks xlWorkBooks = xlApp.Workbooks;
             Workbook xlWorkBook = xlWorkBooks.Open(outputFilePath, Type.Missing, false);
+            int noSheets = xlWorkBook.Worksheets.Count;
+            Worksheet xlLastWorkSheet = xlWorkBook.Worksheets.get_Item(8) as Worksheet;
+            while (noSheets < proj.NoCrates)
+            {
+                xlLastWorkSheet.Copy(xlLastWorkSheet);
+                Worksheet xlWorkSheetNew = xlWorkBook.Worksheets.get_Item(noSheets) as Worksheet;
+                xlWorkSheetNew.Name = $"Partlist - Crate- {noSheets}";
+                ++noSheets;
+            }
 
             short crateIndex = 1;
             foreach (var crate in proj.ListCrateFrame)
             {
                 Worksheet xlWorkSheet = xlWorkBook.Worksheets.get_Item(crateIndex) as Worksheet;
+                if (null == xlWorkSheet)
+                    throw new Exception($"Failed to access sheet {crateIndex}");
 
                 int iRow = 18;
 
@@ -65,7 +76,8 @@ namespace MHB.CrateLoadDesigner.Exporters
             foreach (var crate in proj.ListCrateGlass)
             {
                 Worksheet xlWorkSheet = xlWorkBook.Worksheets.get_Item(crateIndex) as Worksheet;
-
+                if (null == xlWorkSheet)
+                    throw new Exception($"Failed to access sheet {crateIndex}");
                 int iRow = 18;
 
                 var dictContent = crate.ContentDict;
