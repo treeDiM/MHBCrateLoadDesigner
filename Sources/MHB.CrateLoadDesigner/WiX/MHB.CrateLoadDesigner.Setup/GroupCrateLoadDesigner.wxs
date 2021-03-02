@@ -6,61 +6,58 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="CompGroup_MHB_CrateLoadDesigner">
-            <Component Id="cmpB5F2771100F52D12860FA3E195E1F2BE" Directory="Bin" Guid="7E0CD871-07FE-4949-A79F-5AD789757248">
+            <Component Id="cmpB5F2771100F52D12860FA3E195E1F2BE" Directory="Bin" Guid="A3F7147D-34B6-48F5-AD0D-C1BEA36759A0">
                 <File Id="fil0777030352A360404A6D34865891981F" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\Cureos.Measures.dll" />
             </Component>
-            <Component Id="cmp88B61BB0895FD0A59E0E80BBB9BAF4F4" Directory="Bin" Guid="C8444676-E522-4FD3-A5BE-0B0CC1478623">
+            <Component Id="cmp88B61BB0895FD0A59E0E80BBB9BAF4F4" Directory="Bin" Guid="0DD4A16D-0B7F-433E-A58D-F6FD065A4A2B">
                 <File Id="fil6E328BC3AEFF064CC8264437778A9601" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\ExcelDataReader.dll" />
             </Component>
-            <Component Id="cmp223F7A40DFEA68AB8E5332C1C201B6DC" Directory="Bin" Guid="B5DBD591-B65A-4DBA-8744-ECC236261E52">
+            <Component Id="cmp223F7A40DFEA68AB8E5332C1C201B6DC" Directory="Bin" Guid="D4163BD5-BF69-4918-B46B-4F620220D6DC">
                 <File Id="fil53216D1158CAC2A725AF4E77F7DA2DDE" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\log4net.dll" />
             </Component>
-            <Component Id="cmpA7782FE330B4B643A652CAFB25D6B130" Directory="Bin" Guid="92A7F686-F765-4A97-803D-4381DF3CCAC6">
+            <Component Id="cmpA7782FE330B4B643A652CAFB25D6B130" Directory="Bin" Guid="BF75CD98-99E9-4FAF-98DE-B1AFDEE9F285">
                 <File Id="filCC1D043D7644F6758B11158006A58583" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\MHB.CrateLoadDesigner.Desktop.exe" />
             </Component>
-            <Component Id="cmpD80484880AEA818E46ECC53D261F16D8" Directory="Bin" Guid="6DE1D83F-5278-4F0F-BE6C-CDAA753F11D3">
+            <Component Id="cmpD80484880AEA818E46ECC53D261F16D8" Directory="Bin" Guid="C863F97D-CF88-49E2-BB58-961BF7E71B75">
                 <File Id="fil4330EE78A557694148B9BE53914F42CC" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\MHB.CrateLoadDesigner.Desktop.exe.config" />
             </Component>
-            <Component Id="cmpE65E97B081A7D9A8C59F2E685F6CB269" Directory="Bin" Guid="88AED376-BC0D-4087-B3FE-F7B11034A682">
+            <Component Id="cmpE65E97B081A7D9A8C59F2E685F6CB269" Directory="Bin" Guid="A3AEF91A-C494-4D61-8150-9B1BBF1DF385">
                 <File Id="fil6B8D3ED0DDBA609879CB41AFCA8027DA" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\MHB.CrateLoadDesigner.Engine.dll" />
             </Component>
-            <Component Id="cmpFFDB2B17B7B3B8C4516F83D82746D56C" Directory="Bin" Guid="21264E7E-3AF7-48BB-90F7-DDD8EBB7A007">
+            <Component Id="cmpFFDB2B17B7B3B8C4516F83D82746D56C" Directory="Bin" Guid="F061F7A5-6ABD-4589-A230-3F6F6F68A123">
                 <File Id="fil10A9FA5BFFE0512E66BDB7ED17FA778B" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\MHB.CrateLoadDesigner.Exporters.dll" />
             </Component>
-            <Component Id="cmp7FA903CEA9889BD654B2DAB4635610A4" Directory="Bin" Guid="59D67EA8-3C88-4097-B89E-DAC22BF6F858">
+            <Component Id="cmp7FA903CEA9889BD654B2DAB4635610A4" Directory="Bin" Guid="91AAC0C5-7291-4036-86D3-753A547A30CF">
                 <File Id="filA0AE4734F4C6151F585D15E2DE650B8A" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\MIConvexHull.dll" />
             </Component>
-            <Component Id="cmp52CD32B2A5AA3BFECD600DBB5B8EE84E" Directory="Bin" Guid="3E474214-772E-4F43-8932-FEF9C1784F70">
+            <Component Id="cmp52CD32B2A5AA3BFECD600DBB5B8EE84E" Directory="Bin" Guid="B4C05515-6D87-415D-A282-0742F368EF99">
                 <File Id="filF39EB487F295800E1EEB4CC3786F16FD" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\Microsoft.Office.Interop.Excel.dll" />
             </Component>
-            <Component Id="cmp93B8AAD5CCAAA98FFAD347A19E6C3475" Directory="Bin" Guid="659416E7-68CC-4E5E-8891-B3132A0C9875">
-                <File Id="fil2FE507B83B812AEF884414FEB99FA784" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\OfficePickers.dll" />
-            </Component>
-            <Component Id="cmp30514E41EB3A13C953C090B00E6C5631" Directory="Bin" Guid="271F6638-F3DE-4ABA-8955-B1A4006D7B0D">
+            <Component Id="cmp30514E41EB3A13C953C090B00E6C5631" Directory="Bin" Guid="3B5E06E6-77D3-40DE-A168-16A12CAF9A83">
                 <File Id="fil7EDD223459200EDD81A8E6F6B8079503" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\RectangleBinPack.dll" />
             </Component>
-            <Component Id="cmp64874A6AA44AE8EA5EF21DE166ACA1D3" Directory="Bin" Guid="0D854DF0-938B-4260-883F-AB4C2F6F9A70">
+            <Component Id="cmp64874A6AA44AE8EA5EF21DE166ACA1D3" Directory="Bin" Guid="9ABB6DBD-3AF9-4C90-9BF3-0B966B0CEE23">
                 <File Id="fil4CA2823E816DFAAF212EF70D25DFA665" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\RichTextBoxAppender.dll" />
             </Component>
-            <Component Id="cmp84BB5F6380BAC7A6AA707C764F5B9C97" Directory="Bin" Guid="1F326A67-FCA0-4AB0-9A9A-365BD4961175">
+            <Component Id="cmp84BB5F6380BAC7A6AA707C764F5B9C97" Directory="Bin" Guid="76AE3000-2E4C-4316-B466-41B8F4DF4AC4">
                 <File Id="filD6F16025096C7EC5FA37321C27041CD2" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\Sharp3D.Math.dll" />
             </Component>
-            <Component Id="cmpFA3F737CB13792E4A80AE73247CC1070" Directory="Bin" Guid="CC5AF9D4-F659-4067-9B91-1642F0F9B8A9">
+            <Component Id="cmpFA3F737CB13792E4A80AE73247CC1070" Directory="Bin" Guid="B2F0FD05-1DE4-49D7-8C29-405F70D35752">
                 <File Id="fil78601734F77601AB601C5337002EB694" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\SourceGrid.dll" />
             </Component>
-            <Component Id="cmp56B5FD2AC91A9321D8364440DFB78D24" Directory="Bin" Guid="71318C5C-E28A-4CA2-AF46-33565AC91009">
+            <Component Id="cmp56B5FD2AC91A9321D8364440DFB78D24" Directory="Bin" Guid="AD82963E-8310-42D9-B468-FCE26CC5C956">
                 <File Id="filCFDDDC5DF37CA791B05BDE3F8B29F2DE" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\treeDiM.Basics.dll" />
             </Component>
-            <Component Id="cmp7A726A41FE490FD1DB24ADB922A2F7F5" Directory="Bin" Guid="8FED9A36-488D-44A3-B937-9ED10B403887">
+            <Component Id="cmp7A726A41FE490FD1DB24ADB922A2F7F5" Directory="Bin" Guid="3C0E07B2-C65C-4786-8F7B-1B34678FC618">
                 <File Id="filB6BCFE6CF7E39F7254E8F2847BCBACE2" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\treeDiM.StackBuilder.Basics.dll" />
             </Component>
-            <Component Id="cmpBFF4558AFE987E56C73FECF9CDBBD38B" Directory="Bin" Guid="0D7E2A4A-568F-417D-AA4D-F922E7D69EAB">
+            <Component Id="cmpBFF4558AFE987E56C73FECF9CDBBD38B" Directory="Bin" Guid="706D8A75-1523-42DF-9104-FC882347C7EA">
                 <File Id="fil9FD2C3909106DCF01889C88A03BFE266" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\treeDiM.StackBuilder.Graphics.dll" />
             </Component>
-            <Component Id="cmpC84F6623B49D671A2535B33BDD33026B" Directory="Bin" Guid="817E4FF3-1943-4A90-8E52-8995CE6283A3">
+            <Component Id="cmpC84F6623B49D671A2535B33BDD33026B" Directory="Bin" Guid="EF48B182-BD91-4B13-B5D4-5F5F5F0EEA95">
                 <File Id="fil1287F0AF2D5F3C1F7FC2D2676331483F" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\WeifenLuo.WinFormsUI.Docking.dll" />
             </Component>
-            <Component Id="cmp54399822F197E61A322210A374908FB5" Directory="Bin" Guid="4CFFD2EB-4506-4D62-846F-3D653A833DEC">
+            <Component Id="cmp54399822F197E61A322210A374908FB5" Directory="Bin" Guid="31A3DF25-8A0D-4375-96DF-8646F332045A">
                 <File Id="filE00FCE124A5DD2725645CB4596B7B471" KeyPath="yes" Source="$(var.MHBCrateLoadDesignerBinSourceDir)\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll" />
             </Component>
         </ComponentGroup>
