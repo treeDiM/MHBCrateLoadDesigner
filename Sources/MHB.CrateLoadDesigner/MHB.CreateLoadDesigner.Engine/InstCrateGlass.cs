@@ -9,12 +9,13 @@ namespace MHB.CrateLoadDesigner.Engine
 {
     public class InstCrateGlass : InstCrate
     {
-        internal InstCrateGlass(uint id, Vector2D maxUnitDimensions, Vector3D outerDimensions, int maxQuantity, double spacing) : base(id)
+        internal InstCrateGlass(uint id, Vector2D maxUnitDimensions, Vector3D outerDimensions, int maxQuantity, double spacing, DefCrateGlass parent) : base(id)
         {
             MaxQuantity = maxQuantity;
             MaxUnitDimensions = maxUnitDimensions;
             OuterDimensions = outerDimensions;
             Spacing = spacing;
+            Parent = parent;
         }
         public Dictionary<DefGlass, int> ContentDict
         {
@@ -48,6 +49,7 @@ namespace MHB.CrateLoadDesigner.Engine
         public int MaxQuantity { get; set; }
         public Vector2D MaxUnitDimensions { get; set; }
         public double Spacing { get; set; }
+        public DefCrateGlass Parent { get; private set; }
     }
 
     public class GlassPosition

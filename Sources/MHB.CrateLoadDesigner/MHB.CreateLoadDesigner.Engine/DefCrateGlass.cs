@@ -36,11 +36,11 @@ namespace MHB.CrateLoadDesigner.Engine
         {
             if (MaxLongSide >= glass.LongSide
                 && MaxShortSide >= glass.ShortSide)
-                return new InstCrateGlass(index, new Vector2D(MaxLongSide, MaxShortSide), DimensionsOuter, MaxQuantity[IndexMaxQuantity], Spacing);
+                return new InstCrateGlass(index, new Vector2D(MaxLongSide, MaxShortSide), DimensionsOuter, MaxQuantity[IndexMaxQuantity], Spacing, this);
             else if (DynMaxLength.HasValue && DynAdditionalLength.HasValue
                 && DynMaxLength.Value >= glass.LongSide
                 && MaxShortSide >= glass.ShortSide)
-                return new InstCrateGlass(index, new Vector2D(glass.LongSide, MaxShortSide), new Vector3D(glass.LongSide + DynAdditionalLength.Value, DimensionsOuter.Y, DimensionsOuter.Z), MaxQuantity[IndexMaxQuantity], Spacing);
+                return new InstCrateGlass(index, new Vector2D(glass.LongSide, MaxShortSide), new Vector3D(glass.LongSide + DynAdditionalLength.Value, DimensionsOuter.Y, DimensionsOuter.Z), MaxQuantity[IndexMaxQuantity], Spacing, this);
             else 
                 return null;
         }

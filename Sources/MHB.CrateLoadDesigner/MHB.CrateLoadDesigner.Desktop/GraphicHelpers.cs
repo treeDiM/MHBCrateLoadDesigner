@@ -69,6 +69,45 @@ namespace MHB.CrateLoadDesigner.Desktop
             }
             return boxes;
         }
+        public static List<BoxExplicitDir> CrateToBoxesExplicitDir(InstCrateGlass crate, double angle)
+        {
+            var boxes = new List<BoxExplicitDir>();
+            uint pickId = 0;
+
+            foreach (var p in crate.GlassPositions)
+            {
+                double xPos = 0.0, yPos = 0.0;
+                Vector3D xAxis = Vector3D.XAxis;
+                Vector3D yAxis = Vector3D.Zero;
+
+                double angleRad = angle * Math.PI / 180.0;
+                double yStep = (Project.GlassThickness + crate.Spacing) / Math.Cos(angleRad);
+
+                if (pickId % 2 == 0)
+                {
+                    int row = ((int)pickId) / 2;
+                    xPos = 0.5 * (crate.OuterDimensions.X - p.Parent.ShortSide);
+                    yPos = 0.5 * crate.OuterDimensions.Y - ( p.Parent.LongSide * Math.Sin(angleRad) + row * yStep);
+                    xAxis = Vector3D.XAxis;
+                    yAxis = new Vector3D(0.0, Math.Sin(angleRad), Math.Cos(angleRad));
+                }
+                else
+                {
+                    int row = ((int)pickId)/ 2 - 1;
+                    xPos = 0.5 * (crate.OuterDimensions.X + p.Parent.ShortSide);
+                    yPos = 0.5 * crate.OuterDimensions.Y + p.Parent.LongSide * Math.Sin(angleRad) + row * yStep;
+                    xAxis = -Vector3D.XAxis;
+                    yAxis = new Vector3D(0.0, -Math.Sin(angleRad), Math.Cos(angleRad));
+                }
+
+                boxes.Add( new BoxExplicitDir(pickId++,
+                    p.Parent.ShortSide, p.Parent.LongSide, Project.GlassThickness,
+                    new Vector3D(xPos, yPos, 0.0),
+                    xAxis, yAxis, Color.LightBlue
+                    ));
+            }
+            return boxes;
+        }
         public static List<Box> ContainerToBoxes(InstContainer container)
         {
             var boxes = new List<Box>();

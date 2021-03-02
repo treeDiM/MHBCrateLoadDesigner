@@ -49,12 +49,27 @@ namespace MHB.CrateLoadDesigner.Desktop
             // generate image
             try
             {
-                pbCrate.Image = LayeredCrateToImage.Draw(
-                    GraphicHelpers.CrateToBoxes(SelectedCrate),
-                    SelectedCrate.OuterDimensions, Color.White,
-                    false, true,
-                    pbCrate.Size
-                    );
+                switch (SelectedCrate.Parent.CrateType)
+                {
+                    case DefCrateGlass.EType.VERTICAL:
+                        pbCrate.Image = LayeredCrateToImage.Draw(
+                            GraphicHelpers.CrateToBoxes(SelectedCrate),
+                            SelectedCrate.OuterDimensions, Color.White,
+                            false, true,
+                            pbCrate.Size
+                            );
+                        break;
+                    case DefCrateGlass.EType.AFRAME:
+                        pbCrate.Image = NonLayeredCrateToImage.Draw(
+                            GraphicHelpers.CrateToBoxesExplicitDir(SelectedCrate, 10.0),
+                            SelectedCrate.OuterDimensions, Color.White,
+                            false, true,
+                            pbCrate.Size
+                            );
+                        break;
+                    default:
+                        break;
+                }
             }
             catch (Exception ex)
             {
