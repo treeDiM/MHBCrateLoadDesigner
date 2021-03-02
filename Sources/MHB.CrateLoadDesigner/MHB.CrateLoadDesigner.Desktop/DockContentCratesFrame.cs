@@ -64,13 +64,20 @@ namespace MHB.CrateLoadDesigner.Desktop
             // generate image
             try
             {
-
-                pbCrate.Image = LayeredCrateToImage.Draw(
-                    GraphicHelpers.CrateToBoxes(SelectedCrate),
-                    SelectedCrate.OuterDimensions, Color.White,
-                    false, true,
-                    pbCrate.Size
-                    );
+                if (SelectedCrate.IsSkid)
+                    pbCrate.Image = NonLayeredCrateToImage.Draw(
+                        GraphicHelpers.CrateToBoxesExplicitDir(SelectedCrate, 30),
+                        SelectedCrate.OuterDimensions, Color.White,
+                        false, true,
+                        pbCrate.Size
+                        );
+                else
+                    pbCrate.Image = LayeredCrateToImage.Draw(
+                        GraphicHelpers.CrateToBoxes(SelectedCrate),
+                        SelectedCrate.OuterDimensions, Color.White,
+                        false, true,
+                        pbCrate.Size
+                        );
             }
             catch (Exception ex)
             {

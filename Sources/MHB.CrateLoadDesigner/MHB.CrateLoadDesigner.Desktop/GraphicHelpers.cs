@@ -69,10 +69,54 @@ namespace MHB.CrateLoadDesigner.Desktop
             }
             return boxes;
         }
+        public static List<BoxExplicitDir> CrateToBoxesExplicitDir(InstCrateFrame crate, double angle)
+        {
+            var boxes = new List<BoxExplicitDir>();
+            uint pickId = 0;
+
+            double angleRad = angle * Math.PI / 180.0;
+            double yStep = Project.FrameThickness / Math.Cos(angleRad);
+            double initialY = 0.0;
+            if (crate.Layers.Count > 0)
+            {
+                var layer = crate.Layers[0];
+                if (layer.Count > 0)
+                    initialY = layer[0].Parent.ShortSide * Math.Sin(angleRad);
+            }
+
+
+            foreach (var layer in crate.Layers)
+            {
+                foreach (var fp in layer)
+                {
+                    double xPos = 0.5 * (crate.OuterDimensions.X + fp.Parent.LongSide);
+                    double yPos = initialY + pickId * yStep;
+                    Vector3D xAxis = -Vector3D.XAxis;
+                    Vector3D yAxis = new Vector3D(0.0, -Math.Sin(angleRad), Math.Cos(angleRad));
+                    boxes.Add(new BoxExplicitDir(pickId++,
+                       fp.Parent.LongSide, fp.Parent.ShortSide, Project.FrameThickness,
+                       new Vector3D(xPos, yPos, 0.0),
+                       xAxis, yAxis, Color.LightBlue
+                       ));
+                }
+            }
+            return boxes;
+        
+        }
+
         public static List<BoxExplicitDir> CrateToBoxesExplicitDir(InstCrateGlass crate, double angle)
         {
             var boxes = new List<BoxExplicitDir>();
             uint pickId = 0;
+
+            double angleRad = angle * Math.PI / 180.0;
+            double yStep = (Project.GlassThickness + crate.Spacing) / Math.Cos(angleRad);
+
+            double initialY0 = 0.0, initialY1 = 0.0;
+            if (crate.GlassPositions.Count > 0)
+                initialY0 = crate.GlassPositions[0].Parent.LongSide * Math.Sin(angleRad);
+            if (crate.GlassPositions.Count > 1)
+                initialY1 = crate.GlassPositions[1].Parent.LongSide * Math.Sin(angleRad);
 
             foreach (var p in crate.GlassPositions)
             {
@@ -80,14 +124,12 @@ namespace MHB.CrateLoadDesigner.Desktop
                 Vector3D xAxis = Vector3D.XAxis;
                 Vector3D yAxis = Vector3D.Zero;
 
-                double angleRad = angle * Math.PI / 180.0;
-                double yStep = (Project.GlassThickness + crate.Spacing) / Math.Cos(angleRad);
 
                 if (pickId % 2 == 0)
                 {
                     int row = ((int)pickId) / 2;
                     xPos = 0.5 * (crate.OuterDimensions.X - p.Parent.ShortSide);
-                    yPos = 0.5 * crate.OuterDimensions.Y - ( p.Parent.LongSide * Math.Sin(angleRad) + row * yStep);
+                    yPos = 0.5 * crate.OuterDimensions.Y - ( initialY0 + row * yStep);
                     xAxis = Vector3D.XAxis;
                     yAxis = new Vector3D(0.0, Math.Sin(angleRad), Math.Cos(angleRad));
                 }
@@ -95,7 +137,7 @@ namespace MHB.CrateLoadDesigner.Desktop
                 {
                     int row = ((int)pickId)/ 2 - 1;
                     xPos = 0.5 * (crate.OuterDimensions.X + p.Parent.ShortSide);
-                    yPos = 0.5 * crate.OuterDimensions.Y + p.Parent.LongSide * Math.Sin(angleRad) + row * yStep;
+                    yPos = 0.5 * crate.OuterDimensions.Y + initialY1 + row * yStep;
                     xAxis = -Vector3D.XAxis;
                     yAxis = new Vector3D(0.0, -Math.Sin(angleRad), Math.Cos(angleRad));
                 }

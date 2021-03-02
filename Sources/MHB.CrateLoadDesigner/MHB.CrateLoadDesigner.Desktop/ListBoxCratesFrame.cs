@@ -27,14 +27,27 @@ namespace MHB.CrateLoadDesigner.Desktop
                 bool selected = (e.State & DrawItemState.Selected) == DrawItemState.Selected;
                 var imageSize = new Size(e.Bounds.Width, e.Bounds.Height);
                 var crate = Items[e.Index] as InstCrateFrame;
-                e.Graphics.DrawImage(
-                    LayeredCrateToImage.Draw(
-                        GraphicHelpers.CrateToBoxes(crate),
+
+                if (crate.IsSkid)
+                    e.Graphics.DrawImage(
+                        NonLayeredCrateToImage.Draw(
+                        GraphicHelpers.CrateToBoxesExplicitDir(crate, 30),
                         crate.OuterDimensions, Color.White,
                         selected, false,
-                        imageSize),
-                    e.Bounds.Left,
-                    e.Bounds.Top);
+                        imageSize
+                        ),
+                        e.Bounds.Left,
+                        e.Bounds.Top
+                        );
+                else
+                    e.Graphics.DrawImage(
+                        LayeredCrateToImage.Draw(
+                            GraphicHelpers.CrateToBoxes(crate),
+                            crate.OuterDimensions, Color.White,
+                            selected, false,
+                            imageSize),
+                        e.Bounds.Left,
+                        e.Bounds.Top);
             }
         }
         #endregion
