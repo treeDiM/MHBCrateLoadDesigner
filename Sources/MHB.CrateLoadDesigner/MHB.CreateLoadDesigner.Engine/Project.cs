@@ -90,7 +90,7 @@ namespace MHB.CrateLoadDesigner.Engine
 
             // move frames that would not fit the first crate to the top
             DefCrateFrame crate0 = ListDefCratesFrame[0];
-            ListDefFrames.OrderByDescending(f => crate0.CanFitFrame(f) ? 0 : 1);
+            ListDefFrames = ListDefFrames.OrderByDescending(f => crate0.CanFitFrame(f) ? 0 : 1).ToList();
 
             // pack frames
             foreach (var f in ListDefFrames)
@@ -145,6 +145,34 @@ namespace MHB.CrateLoadDesigner.Engine
                     }
                 }
             }
+            // clear and rebuild glass crates
+            foreach (var c in ListCrateGlass)
+                c.GlassPositions.Clear();
+            ListCrateGlass.Reverse();
+
+            var listDefGlassAsc = ListDefGlass.OrderBy(g => g.LongSide).ThenBy(g => g.ShortSide);
+            foreach (var g in listDefGlassAsc)
+            {
+                for (int i = 0; i < g.Number; ++i)
+                {
+                    bool packed = false;
+                    foreach (var c in ListCrateGlass)
+                    {
+                        if (c.PackGlass(g))
+                        {
+                            packed = true;
+                            break;
+                        }
+                    }
+                    // if we successfully packed in previous step
+                    // there is no reason why a glass should not be packed by now
+                    if (!packed)
+                        throw new Exception($"Failed to pack {g.Brand} while repacking");
+                }
+            }
+            // reorder crate content
+            foreach (var c in ListCrateGlass)
+                c.ReorderContent();
             // ###
 
             // ### Crates -> containers

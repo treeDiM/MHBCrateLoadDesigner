@@ -45,11 +45,15 @@ namespace MHB.CrateLoadDesigner.Engine
                 );
             return true;
         }
+        public void ReorderContent() => GlassPositions = GlassPositions.OrderByDescending(gp => gp.Parent.LongSide).ThenByDescending(gp => gp.Parent.ShortSide).ToList();
+
+        #region Data members
         public List<GlassPosition> GlassPositions { get; set; } = new List<GlassPosition>();
         public int MaxQuantity { get; set; }
         public Vector2D MaxUnitDimensions { get; set; }
         public double Spacing { get; set; }
         public DefCrateGlass Parent { get; private set; }
+        #endregion
     }
 
     public class GlassPosition
