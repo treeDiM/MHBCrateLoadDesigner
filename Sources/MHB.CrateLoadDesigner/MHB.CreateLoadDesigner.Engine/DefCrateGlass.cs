@@ -42,7 +42,8 @@ namespace MHB.CrateLoadDesigner.Engine
 
         public InstCrateGlass Instantiate(DefGlass glass, uint index)
         {
-            if (MaxLongSide >= glass.LongSide
+            if (!DynMaxLength.HasValue
+                && MaxLongSide >= glass.LongSide
                 && MaxShortSide >= glass.ShortSide)
                 return new InstCrateGlass(index, new Vector2D(MaxLongSide, MaxShortSide), DimensionsOuter, MaxQuantity[IndexMaxQuantity], Spacing, this);
             else if (DynMaxLength.HasValue && DynAdditionalLength.HasValue
