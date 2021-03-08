@@ -122,7 +122,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             // 
             // inputFileDialog
             // 
-            this.inputFileDialog.Filter = "Excel file (*.xlsm)|*.xlsm|All files (*.*)|*.*";
+            this.inputFileDialog.Filter = "Excel file (*.xlsx;*.xlsm)|*.xlsx;*.xlsm|All files (*.*)|*.*";
             this.inputFileDialog.FilterIndex = 0;
             // 
             // statusStrip
