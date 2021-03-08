@@ -45,7 +45,7 @@ namespace MHB.CrateLoadDesigner.Engine
                 );
             return true;
         }
-        public void ReorderContent() => GlassPositions = GlassPositions.OrderByDescending(gp => gp.Parent.LongSide).ThenByDescending(gp => gp.Parent.ShortSide).ToList();
+        public void ReorderContent() => GlassPositions = GlassPositions.OrderByDescending(gp => gp.Parent.ShortSide).ThenByDescending(gp => gp.Parent.LongSide).ToList();
 
         #region Data members
         public List<GlassPosition> GlassPositions { get; set; } = new List<GlassPosition>();

@@ -100,8 +100,7 @@ namespace MHB.CrateLoadDesigner.Desktop
                        ));
                 }
             }
-            return boxes;
-        
+            return boxes;        
         }
 
         public static List<BoxExplicitDir> CrateToBoxesExplicitDir(InstCrateGlass crate, double angle)
@@ -114,9 +113,9 @@ namespace MHB.CrateLoadDesigner.Desktop
 
             double initialY0 = 0.0, initialY1 = 0.0;
             if (crate.GlassPositions.Count > 0)
-                initialY0 = crate.GlassPositions[0].Parent.LongSide * Math.Sin(angleRad);
+                initialY0 = crate.GlassPositions[0].Parent.ShortSide * Math.Sin(angleRad);
             if (crate.GlassPositions.Count > 1)
-                initialY1 = crate.GlassPositions[1].Parent.LongSide * Math.Sin(angleRad);
+                initialY1 = crate.GlassPositions[1].Parent.ShortSide * Math.Sin(angleRad);
 
             foreach (var p in crate.GlassPositions)
             {
@@ -128,7 +127,7 @@ namespace MHB.CrateLoadDesigner.Desktop
                 if (pickId % 2 == 0)
                 {
                     int row = ((int)pickId) / 2;
-                    xPos = 0.5 * (crate.OuterDimensions.X - p.Parent.ShortSide);
+                    xPos = 0.5 * (crate.OuterDimensions.X - p.Parent.LongSide);
                     yPos = 0.5 * crate.OuterDimensions.Y - ( initialY0 + row * yStep);
                     xAxis = Vector3D.XAxis;
                     yAxis = new Vector3D(0.0, Math.Sin(angleRad), Math.Cos(angleRad));
@@ -136,14 +135,14 @@ namespace MHB.CrateLoadDesigner.Desktop
                 else
                 {
                     int row = ((int)pickId)/ 2 - 1;
-                    xPos = 0.5 * (crate.OuterDimensions.X + p.Parent.ShortSide);
+                    xPos = 0.5 * (crate.OuterDimensions.X + p.Parent.LongSide);
                     yPos = 0.5 * crate.OuterDimensions.Y + initialY1 + row * yStep;
                     xAxis = -Vector3D.XAxis;
                     yAxis = new Vector3D(0.0, -Math.Sin(angleRad), Math.Cos(angleRad));
                 }
 
                 boxes.Add( new BoxExplicitDir(pickId++,
-                    p.Parent.ShortSide, p.Parent.LongSide, Project.GlassThickness,
+                    p.Parent.LongSide, p.Parent.ShortSide, Project.GlassThickness,
                     new Vector3D(xPos, yPos, 0.0),
                     xAxis, yAxis, Color.LightBlue
                     ));
@@ -166,7 +165,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             return boxes;
         }
 
-        private static HalfAxis.HAxis LengthAxis(FramePosition.Axis axis)
+        private static HalfAxis.HAxis LengthAxis(BasePosition.Axis axis)
         {
             switch (axis)
             {
@@ -178,7 +177,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             }
 
         }
-        private static HalfAxis.HAxis WidthAxis(FramePosition.Axis axis)
+        private static HalfAxis.HAxis WidthAxis(BasePosition.Axis axis)
         {
             switch (axis)
             {
