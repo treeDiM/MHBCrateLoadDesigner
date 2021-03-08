@@ -29,16 +29,8 @@ namespace MHB.CrateLoadDesigner.Desktop
         {
             base.OnLoad(e);
 
-            // initialize
-            try
-            {
-                Project?.GenerateSolution();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
             FillLBoxCrates();
+            Project.SolutionUpdated += new Project.DelegateSolutionUpdated(OnSolutionUpdated);
         }
         #endregion
 
@@ -187,6 +179,10 @@ namespace MHB.CrateLoadDesigner.Desktop
         #endregion
 
         #region Event handlers
+        private void OnSolutionUpdated(Project proj)
+        {
+            FillLBoxCrates();
+        }
         private void OnSelectedCrateChanged(object sender, EventArgs e)
         {
             DrawCrate();

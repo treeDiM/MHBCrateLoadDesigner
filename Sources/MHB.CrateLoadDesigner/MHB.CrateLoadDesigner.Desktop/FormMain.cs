@@ -139,6 +139,8 @@ namespace MHB.CrateLoadDesigner.Desktop
 
         private void OnShowCrates(object sender, EventArgs e)
         {
+            var formInputs = new DockContentInputs() { Project = project };
+            formInputs.Show(dockPanel, DockState.Document);
             var formCratesFrame = new DockContentCratesFrame() { Project = project };
             formCratesFrame.Show(dockPanel, DockState.Document);
             var formCratesGlass = new DockContentCratesGlass() { Project = project };

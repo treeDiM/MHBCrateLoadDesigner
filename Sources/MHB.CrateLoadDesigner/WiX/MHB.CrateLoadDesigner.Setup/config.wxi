@@ -4,7 +4,7 @@
 <!-- Product name as it appears in Add/Remove Programs-->
 <?define ProductName = "MHB Crate Load Designer" ?>
 <!-- Product version -->
-<?define ProductVersion = "0.3.0.0"?>
+<?define ProductVersion = "0.4.0.0"?>
 <!-- Product code -->
 <?define ProductCode ="{D360326F-5A81-46CF-AA27-7C5A3A196AEC}"?>
 <!-- Upgrade code -->

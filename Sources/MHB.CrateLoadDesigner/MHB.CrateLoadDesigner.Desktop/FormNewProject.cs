@@ -93,7 +93,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             }
         }
         #endregion
-
+        #region Load input file
         private void LoadInputFile(string filePath)
         {
             if (!Proj.LoadInputFileExcel(filePath))
@@ -102,7 +102,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             FillGridFrames();
             FillGridGlass();
         }
-
+        #endregion
         #region Grids
         private void FillGridFrames()
         {
@@ -290,8 +290,19 @@ namespace MHB.CrateLoadDesigner.Desktop
             grid.AutoSizeCells();
             grid.Columns.StretchToFit();
         }
-        #endregion
+        private void OnAddFrame(object sender, EventArgs e)
+        {
 
+        }
+
+        private void OnAddGlass(object sender, EventArgs e)
+        {
+            var form = new FormAddNewGlass() { CurrentProject = Proj };
+            if (DialogResult.OK == form.ShowDialog())
+            { 
+            }
+        }
+        #endregion
         #region Private properties
         private string InputFilePath
         {
@@ -315,7 +326,6 @@ namespace MHB.CrateLoadDesigner.Desktop
             Project.PGlassType = GlassType;
         }
         #endregion
-
         #region Status label
         private void SetStatusLabel(string message = "")
         {
@@ -333,11 +343,9 @@ namespace MHB.CrateLoadDesigner.Desktop
             statusLabel.Text = message;
         }
         #endregion
-
         #region Data members
         public Project Proj { get; set; }
         protected ILog _log = LogManager.GetLogger(typeof(FormNewProject));
         #endregion
-
     }
 }

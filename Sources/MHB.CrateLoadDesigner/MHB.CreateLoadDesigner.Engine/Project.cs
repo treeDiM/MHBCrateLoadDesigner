@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Serialization;
 
 using Sharp3D.Math.Core;
 
@@ -13,6 +14,11 @@ namespace MHB.CrateLoadDesigner.Engine
 {
     public class Project
     {
+        #region Events 
+        public delegate void DelegateSolutionUpdated(Project proj);
+        public event DelegateSolutionUpdated SolutionUpdated;
+        #endregion
+
         #region Validity checking
         public bool IsValid(out string reasonInvalid)
         {
@@ -24,7 +30,7 @@ namespace MHB.CrateLoadDesigner.Engine
             else if (ListDefContainers.Count == 0)
             { reasonInvalid = "No containers were loaded."; return false; }
             else if (ListDefFrames.Count + ListDefGlass.Count == 0)
-            { reasonInvalid = "No items to load"; return false; }
+            { reasonInvalid = "No items to load."; return false; }
             else if (!CanGenerateSolution(ref reasonInvalid))
             { return false; }
             else
@@ -68,6 +74,62 @@ namespace MHB.CrateLoadDesigner.Engine
                 }
             }
             return true;
+        }
+        public bool CanFitFrame(double width, double height)
+        {
+            foreach (var defCrate in ListDefCratesFrame)
+            {
+                if (defCrate.CanFitFrame(width, height))
+                    return true;
+            }
+            return false;
+        }
+        public bool CanFitGlass(double width, double height)
+        {
+            foreach (var defCrate in ListDefCratesGlass)
+            {
+                if (defCrate.CanFitGlass(width, height))
+                    return true;
+            }
+            return false;
+        }
+
+        public void InsertFrame(string brand, string description, double width, double height, int number)
+        {
+            uint maxId = (from f in ListDefFrames select f.ID).Max();
+            ListDefFrames.Add(new DefFrame()
+                {
+                ID = maxId+1,
+                Brand = brand,
+                Description = description,
+                Width = width,
+                Height = height,
+                Number = number
+                }
+            );
+            GenerateSolution();
+        }
+        public void RemoveFrame(int index)
+        {
+            ListDefFrames.RemoveAt(index);
+            GenerateSolution();
+        }
+        public void InsertGlass(string brand, double width, double height, int number)
+        {
+            ListDefGlass.Add(new DefGlass()
+            {
+                Brand = brand,
+                Width = width,
+                Height = height,
+                Number = number
+            }
+            );
+            GenerateSolution();
+        }
+        public void RemoveGlass(int index)
+        {
+            ListDefGlass.RemoveAt(index);
+            GenerateSolution();
         }
         #endregion
         #region Generate solution
@@ -193,6 +255,8 @@ namespace MHB.CrateLoadDesigner.Engine
             // replace "40OT" with "20OT" when possible
             DownSizeContainer("40OT", "20OT");
             // ### 
+
+            SolutionUpdated?.Invoke(this);
         }
         private void PackListOfCrates(List<InstCrate> listCrates, string containerName)
         {
@@ -280,12 +344,17 @@ namespace MHB.CrateLoadDesigner.Engine
             return proj;
         }
         public void Save(string filePath)
-        {            
+        {
         }
         public void Load(string filePath)
         {
             if (!File.Exists(filePath))
                 throw new FileNotFoundException(filePath);
+
+            // To read the file, create a FileStream.  
+            FileStream fStream = new FileStream(filePath, FileMode.Open);
+            // Construct an instance of the XmlSerializer with the type  of object that is being deserialized.  
+            //XmlSerializer listCrateFrameSerializer = new XmlSerializer(typeof(ProjectRoot));
         }
         #endregion
         #region Public properties

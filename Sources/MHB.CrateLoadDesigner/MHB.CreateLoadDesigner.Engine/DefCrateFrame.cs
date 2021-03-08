@@ -23,6 +23,15 @@ namespace MHB.CrateLoadDesigner.Engine
         public EType CrateType { get; set; }
         public int[] MaxNumberOfLayers = new int[2];
 
+        public bool CanFitFrame(double width, double height)
+        {
+            double shortSide = Math.Min(width, height);
+            double longSide = Math.Max(width, height);
+            if (shortSide > MaxShortSide) return false;
+            if (longSide > (DynMaxLength.HasValue ? DynMaxLength.Value : MaxLongSide)) return false;
+
+            return true;
+        }
         public bool CanFitFrame(DefFrame frame)
         {
             if (frame.ShortSide > MaxShortSide) return false;

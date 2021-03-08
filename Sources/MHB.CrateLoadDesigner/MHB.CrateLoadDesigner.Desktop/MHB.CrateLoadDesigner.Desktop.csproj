@@ -51,6 +51,7 @@
     <ApplicationIcon>MHB_16x16.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cureos.Measures, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -62,6 +63,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="treeDiM.Basics, Version=3.0.2.27, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\StackBuilderDLLs\treeDiM.Basics.dll</HintPath>
+    </Reference>
     <Reference Include="treeDiM.StackBuilder.Basics">
       <HintPath>..\..\StackBuilderDLLs\treeDiM.StackBuilder.Basics.dll</HintPath>
     </Reference>
@@ -106,6 +111,18 @@
     </Compile>
     <Compile Include="FormAboutBox.Designer.cs">
       <DependentUpon>FormAboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddNewFrame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddNewFrame.Designer.cs">
+      <DependentUpon>FormAddNewFrame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddNewGlass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddNewGlass.Designer.cs">
+      <DependentUpon>FormAddNewGlass.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -155,11 +172,20 @@
     <EmbeddedResource Include="DockContentCratesGlass.resx">
       <DependentUpon>DockContentCratesGlass.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockContentInputs.resx">
+      <DependentUpon>DockContentInputs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockContentLogConsole.resx">
       <DependentUpon>DockContentLogConsole.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAboutBox.resx">
       <DependentUpon>FormAboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddNewFrame.resx">
+      <DependentUpon>FormAddNewFrame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddNewGlass.resx">
+      <DependentUpon>FormAddNewGlass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

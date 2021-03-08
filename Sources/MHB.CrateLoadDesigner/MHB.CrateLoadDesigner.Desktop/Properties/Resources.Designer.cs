@@ -79,6 +79,15 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Brand already exists.
+        /// </summary>
+        internal static string IDS_BRANDALREADYEXISTS {
+            get {
+                return ResourceManager.GetString("IDS_BRANDALREADYEXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Content.
         /// </summary>
         internal static string IDS_CONTENT {
@@ -124,11 +133,47 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dimensions exceed max value.
+        /// </summary>
+        internal static string IDS_DIMENSIONSEXCEEDSMAXVALUE {
+            get {
+                return ResourceManager.GetString("IDS_DIMENSIONSEXCEEDSMAXVALUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dimension &gt; 0 !.
+        /// </summary>
+        internal static string IDS_DIMENSIONSHOULDEXCEEDZERO {
+            get {
+                return ResourceManager.GetString("IDS_DIMENSIONSHOULDEXCEEDZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dimension exceed maximim value (&lt;{0}).
+        /// </summary>
+        internal static string IDS_DIMENSIONSHOULDNOTEXCEEDVALUE {
+            get {
+                return ResourceManager.GetString("IDS_DIMENSIONSHOULDNOTEXCEEDVALUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dimensions inner.
         /// </summary>
         internal static string IDS_DIMENSIONSINNER {
             get {
                 return ResourceManager.GetString("IDS_DIMENSIONSINNER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dimensions ought to be positive.
+        /// </summary>
+        internal static string IDS_DIMENSIONSNONZERO {
+            get {
+                return ResourceManager.GetString("IDS_DIMENSIONSNONZERO", resourceCulture);
             }
         }
         
@@ -156,6 +201,15 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         internal static string IDS_IMAGE {
             get {
                 return ResourceManager.GetString("IDS_IMAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brand field can not be empty.
+        /// </summary>
+        internal static string IDS_INVALIDBRAND {
+            get {
+                return ResourceManager.GetString("IDS_INVALIDBRAND", resourceCulture);
             }
         }
         
@@ -219,6 +273,15 @@ namespace MHB.CrateLoadDesigner.Desktop.Properties {
         internal static string IDS_PAYLOAD {
             get {
                 return ResourceManager.GetString("IDS_PAYLOAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready.
+        /// </summary>
+        internal static string IDS_READY {
+            get {
+                return ResourceManager.GetString("IDS_READY", resourceCulture);
             }
         }
         

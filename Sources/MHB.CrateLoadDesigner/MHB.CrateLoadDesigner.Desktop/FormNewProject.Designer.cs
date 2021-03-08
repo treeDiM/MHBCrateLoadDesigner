@@ -38,6 +38,8 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitHoriz = new System.Windows.Forms.SplitContainer();
+            this.cbGlassType = new System.Windows.Forms.ComboBox();
+            this.lbGlassType = new System.Windows.Forms.Label();
             this.tbProjectNumber = new System.Windows.Forms.TextBox();
             this.lbProjectNr = new System.Windows.Forms.Label();
             this.tbProjectName = new System.Windows.Forms.TextBox();
@@ -53,8 +55,6 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.gridCratesGlass = new SourceGrid.Grid();
             this.tabPageContainers = new System.Windows.Forms.TabPage();
             this.gridContainers = new SourceGrid.Grid();
-            this.lbGlassType = new System.Windows.Forms.Label();
-            this.cbGlassType = new System.Windows.Forms.ComboBox();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitHoriz)).BeginInit();
             this.splitHoriz.Panel1.SuspendLayout();
@@ -167,6 +167,30 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.splitHoriz.Size = new System.Drawing.Size(800, 428);
             this.splitHoriz.SplitterDistance = 73;
             this.splitHoriz.TabIndex = 6;
+            // 
+            // cbGlassType
+            // 
+            this.cbGlassType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGlassType.FormattingEnabled = true;
+            this.cbGlassType.Items.AddRange(new object[] {
+            "Double Glass - Tempered",
+            "Double Glass - Laminated",
+            "Triple Glass - Tempered",
+            "Triple Glass - Laminated"});
+            this.cbGlassType.Location = new System.Drawing.Point(494, 34);
+            this.cbGlassType.Name = "cbGlassType";
+            this.cbGlassType.Size = new System.Drawing.Size(183, 21);
+            this.cbGlassType.TabIndex = 10;
+            this.cbGlassType.SelectedIndexChanged += new System.EventHandler(this.OnGlassTypeChanged);
+            // 
+            // lbGlassType
+            // 
+            this.lbGlassType.AutoSize = true;
+            this.lbGlassType.Location = new System.Drawing.Point(431, 37);
+            this.lbGlassType.Name = "lbGlassType";
+            this.lbGlassType.Size = new System.Drawing.Size(56, 13);
+            this.lbGlassType.TabIndex = 9;
+            this.lbGlassType.Text = "Glass type";
             // 
             // tbProjectNumber
             // 
@@ -332,30 +356,6 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.gridContainers.TabIndex = 0;
             this.gridContainers.TabStop = true;
             this.gridContainers.ToolTipText = "";
-            // 
-            // lbGlassType
-            // 
-            this.lbGlassType.AutoSize = true;
-            this.lbGlassType.Location = new System.Drawing.Point(431, 37);
-            this.lbGlassType.Name = "lbGlassType";
-            this.lbGlassType.Size = new System.Drawing.Size(56, 13);
-            this.lbGlassType.TabIndex = 9;
-            this.lbGlassType.Text = "Glass type";
-            // 
-            // cbGlassType
-            // 
-            this.cbGlassType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbGlassType.FormattingEnabled = true;
-            this.cbGlassType.Items.AddRange(new object[] {
-            "Double Glass - Tempered",
-            "Double Glass - Laminated",
-            "Triple Glass - Tempered",
-            "Triple Glass - Laminated"});
-            this.cbGlassType.Location = new System.Drawing.Point(494, 34);
-            this.cbGlassType.Name = "cbGlassType";
-            this.cbGlassType.Size = new System.Drawing.Size(183, 21);
-            this.cbGlassType.TabIndex = 10;
-            this.cbGlassType.SelectedIndexChanged += new System.EventHandler(this.OnGlassTypeChanged);
             // 
             // FormNewProject
             // 

@@ -35,7 +35,7 @@
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="Project">
+  <xs:element name="ProjectRoot">
     <xs:complexType>
       <xs:sequence>
         <xs:element name="ListFrames" minOccurs="1" maxOccurs="1">
