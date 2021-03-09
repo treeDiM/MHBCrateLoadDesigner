@@ -12,6 +12,7 @@ using treeDiM.StackBuilder.Graphics;
 
 using MHB.CrateLoadDesigner.Engine;
 using MHB.CrateLoadDesigner.Desktop.Properties;
+using System.ComponentModel;
 #endregion
 
 namespace MHB.CrateLoadDesigner.Desktop
@@ -32,11 +33,21 @@ namespace MHB.CrateLoadDesigner.Desktop
             FillLBoxCrates();
             Project.SolutionUpdated += new Project.DelegateSolutionUpdated(OnSolutionUpdated);
         }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            Project.SolutionUpdated -= new Project.DelegateSolutionUpdated(OnSolutionUpdated);
+
+            Main?.RemoveForm(this);
+        }
         #endregion
 
         #region List box
         private void FillLBoxCrates()
         {
+            // clear content
+            lbCrates.Items.Clear();
+
             // loop on crates
             foreach (var crate in Project.ListCrateFrame)
             {
@@ -111,7 +122,7 @@ namespace MHB.CrateLoadDesigner.Desktop
                 var sb = new StringBuilder();
                 foreach (var item in layer.ContentDict)
                     sb.AppendLine($"{item.Key.Brand} (* {item.Value})");
-                gridLayers[iIndex, iCol++] =  new SourceGrid.Cells.Cell(sb.ToString()) { View = viewNormal };
+                gridLayers[iIndex, iCol++] = new SourceGrid.Cells.Cell(sb.ToString()) { View = viewNormal };
 
             }
             GridFinalize(gridLayers);
@@ -203,6 +214,7 @@ namespace MHB.CrateLoadDesigner.Desktop
 
         #region Data members
         public Project Project { get; set; }
+        public FormMain Main { get; set; }
         protected ILog _log = LogManager.GetLogger(typeof(DockContentCratesFrame));
         #endregion
     }

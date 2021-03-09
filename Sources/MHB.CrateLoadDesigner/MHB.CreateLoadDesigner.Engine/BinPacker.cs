@@ -28,7 +28,7 @@ namespace MHB.CrateLoadDesigner.Engine
                         BinPack = new GuillotineBinPack(),
                         Option = new GuillotineBinPack.Option() { Merge = true,
                         FreeRectChoice = GuillotineBinPack.FreeRectChoiceHeuristic.RectBestAreaFit,
-                        GuillotineSplit = GuillotineBinPack.GuillotineSplitHeuristic.SplitLongerAxis },
+                        GuillotineSplit = GuillotineBinPack.GuillotineSplitHeuristic.SplitMaximizeArea },
                         Algorithm = "Guillotine"
                     },
                     new BinPackPair()

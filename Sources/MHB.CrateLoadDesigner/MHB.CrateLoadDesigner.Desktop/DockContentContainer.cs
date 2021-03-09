@@ -8,6 +8,7 @@ using log4net;
 using treeDiM.StackBuilder.Graphics;
 
 using MHB.CrateLoadDesigner.Engine;
+using System.ComponentModel;
 #endregion
 
 namespace MHB.CrateLoadDesigner.Desktop
@@ -33,6 +34,11 @@ namespace MHB.CrateLoadDesigner.Desktop
             {
                 _log.Error(ex.ToString());
             }
+        }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            Main?.RemoveForm(this);
         }
         #endregion
 
@@ -100,6 +106,7 @@ namespace MHB.CrateLoadDesigner.Desktop
 
         #region Data members
         public Project Project { get; set; }
+        public FormMain Main { get; set; }
         protected static ILog _log = LogManager.GetLogger(typeof(DockContentContainer));
         #endregion
 

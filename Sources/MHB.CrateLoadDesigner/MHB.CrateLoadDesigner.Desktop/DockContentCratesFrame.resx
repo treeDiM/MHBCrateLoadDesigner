@@ -139,7 +139,7 @@
     <value>0, 0</value>
   </data>
   <data name="lbCrates.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 450</value>
+    <value>150, 450</value>
   </data>
   <data name="lbCrates.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -148,7 +148,7 @@
     <value>lbCrates</value>
   </data>
   <data name="&gt;&gt;lbCrates.Type" xml:space="preserve">
-    <value>MHB.CrateLoadDesigner.Desktop.ListBoxCratesFrame, MHB.CrateLoadDesigner.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>MHB.CrateLoadDesigner.Desktop.ListBoxCratesFrame, MHB.CrateLoadDesigner.Desktop, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lbCrates.Parent" xml:space="preserve">
     <value>splitContainerVert.Panel1</value>
@@ -343,7 +343,7 @@
     <value>0, 0</value>
   </data>
   <data name="pbCrate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>596, 236</value>
+    <value>646, 235</value>
   </data>
   <data name="pbCrate.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>AutoSize</value>
@@ -370,7 +370,7 @@
     <value>0, 0</value>
   </data>
   <data name="gridCrate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>596, 236</value>
+    <value>646, 235</value>
   </data>
   <data name="gridCrate.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -400,10 +400,10 @@
     <value>1</value>
   </data>
   <data name="splitContainerCrateSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>596, 299</value>
+    <value>646, 299</value>
   </data>
   <data name="splitContainerCrateSummary.SplitterDistance" type="System.Int32, mscorlib">
-    <value>59</value>
+    <value>60</value>
   </data>
   <data name="splitContainerCrateSummary.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -439,7 +439,7 @@
     <value>0, 0</value>
   </data>
   <data name="gridLayers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>596, 147</value>
+    <value>646, 147</value>
   </data>
   <data name="gridLayers.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -469,7 +469,7 @@
     <value>1</value>
   </data>
   <data name="splitContainerHoriz1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>596, 450</value>
+    <value>646, 450</value>
   </data>
   <data name="splitContainerHoriz1.SplitterDistance" type="System.Int32, mscorlib">
     <value>299</value>
@@ -505,7 +505,7 @@
     <value>800, 450</value>
   </data>
   <data name="splitContainerVert.SplitterDistance" type="System.Int32, mscorlib">
-    <value>200</value>
+    <value>150</value>
   </data>
   <data name="splitContainerVert.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

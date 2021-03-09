@@ -58,6 +58,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             // splitContainerVert
             // 
             this.splitContainerVert.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerVert.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerVert.Location = new System.Drawing.Point(0, 0);
             this.splitContainerVert.Name = "splitContainerVert";
             // 
@@ -69,7 +70,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             // 
             this.splitContainerVert.Panel2.Controls.Add(this.splitContainerHoriz);
             this.splitContainerVert.Size = new System.Drawing.Size(800, 450);
-            this.splitContainerVert.SplitterDistance = 266;
+            this.splitContainerVert.SplitterDistance = 150;
             this.splitContainerVert.TabIndex = 0;
             // 
             // lbCrates
@@ -81,7 +82,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.lbCrates.ItemHeight = 150;
             this.lbCrates.Location = new System.Drawing.Point(0, 0);
             this.lbCrates.Name = "lbCrates";
-            this.lbCrates.Size = new System.Drawing.Size(266, 450);
+            this.lbCrates.Size = new System.Drawing.Size(150, 450);
             this.lbCrates.TabIndex = 0;
             this.lbCrates.SelectedIndexChanged += new System.EventHandler(this.OnSelectedCrateChanged);
             // 
@@ -99,13 +100,14 @@ namespace MHB.CrateLoadDesigner.Desktop
             // splitContainerHoriz.Panel2
             // 
             this.splitContainerHoriz.Panel2.Controls.Add(this.gridCrate);
-            this.splitContainerHoriz.Size = new System.Drawing.Size(530, 450);
+            this.splitContainerHoriz.Size = new System.Drawing.Size(646, 450);
             this.splitContainerHoriz.SplitterDistance = 290;
             this.splitContainerHoriz.TabIndex = 0;
             // 
             // splitContainerCrate
             // 
             this.splitContainerCrate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerCrate.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerCrate.Location = new System.Drawing.Point(0, 0);
             this.splitContainerCrate.Name = "splitContainerCrate";
             this.splitContainerCrate.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -121,8 +123,8 @@ namespace MHB.CrateLoadDesigner.Desktop
             // splitContainerCrate.Panel2
             // 
             this.splitContainerCrate.Panel2.Controls.Add(this.pbCrate);
-            this.splitContainerCrate.Size = new System.Drawing.Size(530, 290);
-            this.splitContainerCrate.SplitterDistance = 67;
+            this.splitContainerCrate.Size = new System.Drawing.Size(646, 290);
+            this.splitContainerCrate.SplitterDistance = 60;
             this.splitContainerCrate.TabIndex = 1;
             // 
             // lbCrateDimsOuterValue
@@ -175,7 +177,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.pbCrate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbCrate.Location = new System.Drawing.Point(0, 0);
             this.pbCrate.Name = "pbCrate";
-            this.pbCrate.Size = new System.Drawing.Size(530, 219);
+            this.pbCrate.Size = new System.Drawing.Size(646, 226);
             this.pbCrate.TabIndex = 0;
             this.pbCrate.TabStop = false;
             this.pbCrate.SizeChanged += new System.EventHandler(this.OnPbCrateResized);
@@ -188,7 +190,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.gridCrate.Name = "gridCrate";
             this.gridCrate.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.gridCrate.SelectionMode = SourceGrid.GridSelectionMode.Row;
-            this.gridCrate.Size = new System.Drawing.Size(530, 156);
+            this.gridCrate.Size = new System.Drawing.Size(646, 156);
             this.gridCrate.TabIndex = 0;
             this.gridCrate.TabStop = true;
             this.gridCrate.ToolTipText = "";

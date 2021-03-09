@@ -36,20 +36,23 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMIExit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMIOutputs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMITableOfContents = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMIWindow = new System.Windows.Forms.ToolStripMenuItem();
-            this.inputsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cratesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.containersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMIInputs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMIFrameCrates = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMIGlassCrates = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMIContainers = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.outputFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripMITableOfContents = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,6 +84,8 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.newToolStripMenuItem,
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.closeToolStripMenuItem,
             this.toolStripSeparator1,
             this.toolStripMIExit});
             this.toolStripMIFile.Name = "toolStripMIFile";
@@ -108,6 +113,18 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.OnFileSave);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(104, 6);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.CloseAllForms);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -128,6 +145,13 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.toolStripMIOutputs.Size = new System.Drawing.Size(62, 20);
             this.toolStripMIOutputs.Text = "Outputs";
             // 
+            // toolStripMITableOfContents
+            // 
+            this.toolStripMITableOfContents.Name = "toolStripMITableOfContents";
+            this.toolStripMITableOfContents.Size = new System.Drawing.Size(164, 22);
+            this.toolStripMITableOfContents.Text = "Table of contents";
+            this.toolStripMITableOfContents.Click += new System.EventHandler(this.OnGenerateTableOfContents);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -139,38 +163,48 @@ namespace MHB.CrateLoadDesigner.Desktop
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.aboutToolStripMenuItem.Text = "About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.OnAbout);
             // 
             // toolStripMIWindow
             // 
             this.toolStripMIWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inputsToolStripMenuItem,
-            this.cratesToolStripMenuItem,
-            this.containersToolStripMenuItem});
+            this.toolStripMIInputs,
+            this.toolStripMIFrameCrates,
+            this.toolStripMIGlassCrates,
+            this.toolStripMIContainers});
             this.toolStripMIWindow.Name = "toolStripMIWindow";
             this.toolStripMIWindow.Size = new System.Drawing.Size(63, 20);
             this.toolStripMIWindow.Text = "Window";
             // 
-            // inputsToolStripMenuItem
+            // toolStripMIInputs
             // 
-            this.inputsToolStripMenuItem.Name = "inputsToolStripMenuItem";
-            this.inputsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.inputsToolStripMenuItem.Text = "Inputs";
+            this.toolStripMIInputs.Name = "toolStripMIInputs";
+            this.toolStripMIInputs.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMIInputs.Text = "Inputs";
+            this.toolStripMIInputs.Click += new System.EventHandler(this.ShowFormInputs);
             // 
-            // cratesToolStripMenuItem
+            // toolStripMIFrameCrates
             // 
-            this.cratesToolStripMenuItem.Name = "cratesToolStripMenuItem";
-            this.cratesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cratesToolStripMenuItem.Text = "Crates";
-            this.cratesToolStripMenuItem.Click += new System.EventHandler(this.OnShowCrates);
+            this.toolStripMIFrameCrates.Name = "toolStripMIFrameCrates";
+            this.toolStripMIFrameCrates.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMIFrameCrates.Text = "Frame crates";
+            this.toolStripMIFrameCrates.Click += new System.EventHandler(this.ShowFormFrameCrates);
             // 
-            // containersToolStripMenuItem
+            // toolStripMIGlassCrates
             // 
-            this.containersToolStripMenuItem.Name = "containersToolStripMenuItem";
-            this.containersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.containersToolStripMenuItem.Text = "Containers";
+            this.toolStripMIGlassCrates.Name = "toolStripMIGlassCrates";
+            this.toolStripMIGlassCrates.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMIGlassCrates.Text = "Glass crates";
+            this.toolStripMIGlassCrates.Click += new System.EventHandler(this.ShowFormGlassCrates);
+            // 
+            // toolStripMIContainers
+            // 
+            this.toolStripMIContainers.Name = "toolStripMIContainers";
+            this.toolStripMIContainers.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMIContainers.Text = "Containers";
+            this.toolStripMIContainers.Click += new System.EventHandler(this.ShowFormContainers);
             // 
             // openFileDialog
             // 
@@ -183,13 +217,6 @@ namespace MHB.CrateLoadDesigner.Desktop
             // outputFileDialog
             // 
             this.outputFileDialog.Filter = "Microsoft Excel (*.xlsx)|*.xlsx";
-            // 
-            // toolStripMITableOfContents
-            // 
-            this.toolStripMITableOfContents.Name = "toolStripMITableOfContents";
-            this.toolStripMITableOfContents.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMITableOfContents.Text = "Table of contents";
-            this.toolStripMITableOfContents.Click += new System.EventHandler(this.OnGenerateTableOfContents);
             // 
             // FormMain
             // 
@@ -228,10 +255,13 @@ namespace MHB.CrateLoadDesigner.Desktop
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMIExit;
         private System.Windows.Forms.ToolStripMenuItem toolStripMIWindow;
-        private System.Windows.Forms.ToolStripMenuItem inputsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cratesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem containersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMIInputs;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMIFrameCrates;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMIContainers;
         private System.Windows.Forms.ToolStripMenuItem toolStripMITableOfContents;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMIGlassCrates;
     }
 }
 

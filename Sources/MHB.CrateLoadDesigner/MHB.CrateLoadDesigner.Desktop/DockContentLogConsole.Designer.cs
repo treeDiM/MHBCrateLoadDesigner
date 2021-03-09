@@ -70,7 +70,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             this.richTextBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxLog.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxLog.Name = "richTextBoxLog";
-            this.richTextBoxLog.Size = new System.Drawing.Size(800, 135);
+            this.richTextBoxLog.Size = new System.Drawing.Size(584, 41);
             this.richTextBoxLog.TabIndex = 1;
             this.richTextBoxLog.Text = "";
             // 
@@ -78,8 +78,10 @@ namespace MHB.CrateLoadDesigner.Desktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 135);
+            this.ClientSize = new System.Drawing.Size(584, 41);
             this.Controls.Add(this.richTextBoxLog);
+            this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom;
+            this.HideOnClose = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DockContentLogConsole";

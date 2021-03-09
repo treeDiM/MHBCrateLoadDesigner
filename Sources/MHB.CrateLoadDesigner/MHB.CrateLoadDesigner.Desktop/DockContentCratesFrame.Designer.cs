@@ -61,6 +61,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             // splitContainerVert
             // 
             resources.ApplyResources(this.splitContainerVert, "splitContainerVert");
+            this.splitContainerVert.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerVert.Name = "splitContainerVert";
             // 
             // splitContainerVert.Panel1
@@ -94,6 +95,7 @@ namespace MHB.CrateLoadDesigner.Desktop
             // splitContainerCrateSummary
             // 
             resources.ApplyResources(this.splitContainerCrateSummary, "splitContainerCrateSummary");
+            this.splitContainerCrateSummary.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerCrateSummary.Name = "splitContainerCrateSummary";
             // 
             // splitContainerCrateSummary.Panel1

@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using System.Reflection;
 using System.IO;
+using System.Collections.Generic;
 
 using WeifenLuo.WinFormsUI.Docking;
 using log4net;
@@ -43,8 +44,9 @@ namespace MHB.CrateLoadDesigner.Desktop
                 dockPanel.LoadFromXml(configFile, _deserializeDockContent);
             dockPanel.ResumeLayout(true, true);
 
-
             ShowLogConsole();
+
+            UpdateCaption();
         }
         private void DoSplash()
         {
@@ -130,24 +132,54 @@ namespace MHB.CrateLoadDesigner.Desktop
             var form = new FormNewProject();
             if (DialogResult.OK == form.ShowDialog())
             {
+                CloseAllForms(sender, e);
+
                 project = form.Proj;
                 project?.GenerateSolution();
-                OnShowCrates(sender, e);
+                OnShowForms(sender, e);
             }
-            Text = $"MHB Crate load designer - {project?.Name}";
+            UpdateCaption();
         }
 
-        private void OnShowCrates(object sender, EventArgs e)
+        private void OnShowForms(object sender, EventArgs e)
         {
-            var formInputs = new DockContentInputs() { Project = project };
+            var formInputs = new DockContentInputs() { Project = project, Main = this };
             formInputs.Show(dockPanel, DockState.Document);
-            var formCratesFrame = new DockContentCratesFrame() { Project = project };
-            formCratesFrame.Show(dockPanel, DockState.Document);
-            var formCratesGlass = new DockContentCratesGlass() { Project = project };
-            formCratesGlass.Show(dockPanel, DockState.Document);
-            var formContainer = new DockContentContainer() { Project = project };
-            formContainer.Show(dockPanel, DockState.Document);
+            Forms.Add(formInputs);
+            if (project.ListCrateFrame.Count > 0)
+            {
+                var formCratesFrame = new DockContentCratesFrame() { Project = project, Main = this };
+                formCratesFrame.Show(dockPanel, DockState.Document);
+                Forms.Add(formCratesFrame);
+            }
+            if (project.ListCrateGlass.Count > 0)
+            {
+                var formCratesGlass = new DockContentCratesGlass() { Project = project, Main = this };
+                formCratesGlass.Show(dockPanel, DockState.Document);
+                Forms.Add(formCratesGlass);
+            }
+            if (project.ListContainers.Count > 0)
+            {
+                var formContainer = new DockContentContainer() { Project = project, Main = this };
+                formContainer.Show(dockPanel, DockState.Document);
+                Forms.Add(formContainer);
+            }
         }
+        private void CloseAllForms(object sender, EventArgs e)
+        {
+            while (Forms.Count > 0)
+            {
+                Forms[0].Close();
+                Forms.RemoveAt(0);
+            }
+            project = null;
+        }
+        
+        public void RemoveForm(DockContent child)
+        {
+            Forms.Remove(child);
+        }
+
         private void OnFileOpen(object sender, EventArgs e)
         {
             if (DialogResult.OK == openFileDialog.ShowDialog())
@@ -180,11 +212,49 @@ namespace MHB.CrateLoadDesigner.Desktop
                 _log.Error(ex.ToString());
             }
         }
+        private void ShowFormInputs(object sender, EventArgs e) => OpenForm(typeof(DockContentInputs));
+        private void ShowFormFrameCrates(object sender, EventArgs e) => OpenForm(typeof(DockContentCratesFrame));
+        private void ShowFormGlassCrates(object sender, EventArgs e) => OpenForm(typeof(DockContentCratesGlass));
+        private void ShowFormContainers(object sender, EventArgs e) => OpenForm(typeof(DockContentContainer));
+
+        private void OpenForm(Type t)
+        {
+            bool activated = false;
+            foreach (var dockContent in Forms)
+            {
+                if (dockContent.GetType() == t)
+                {
+                    dockContent.Activate();
+                    activated = true;
+                    break;
+                }
+            }
+            if (!activated)
+            {
+                DockContent form = null;
+                if (t == typeof(DockContentInputs))
+                    form = new DockContentInputs() { Project = project, Main = this };
+                else if (t == typeof(DockContentCratesFrame))
+                    form = new DockContentCratesFrame() { Project = project, Main = this };
+                else if (t == typeof(DockContentCratesGlass))
+                    form = new DockContentCratesGlass() { Project = project, Main = this };
+                else if (t == typeof(DockContentContainer))
+                    form = new DockContentContainer() { Project = project, Main = this };
+                else
+                    throw new Exception("Unexpected form type!");
+                form.Show(dockPanel, DockState.Document);
+                Forms.Add(form);
+            }
+        }
         #endregion
 
         #region Caption
         private void UpdateCaption()
-        { 
+        {
+            toolStripMIInputs.Enabled = project != null;
+            toolStripMIFrameCrates.Enabled = project != null;
+            toolStripMIGlassCrates.Enabled = project != null;
+            toolStripMIContainers.Enabled = project != null;
             Text = project == null? "MHB crate load designer" : $"MHB crate load designer - {project?.Name}";
         }
         #endregion
@@ -199,11 +269,10 @@ namespace MHB.CrateLoadDesigner.Desktop
         #region Private members
         private DockContentLogConsole _logConsole;
         private DeserializeDockContent _deserializeDockContent;
-        private Project project = new Project();
+        private Project project;
+        private List<DockContent> Forms = new List<DockContent>();
         private ILog _log = LogManager.GetLogger(typeof(FormMain));
 
         #endregion
-
-
     }
 }

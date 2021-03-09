@@ -73,8 +73,8 @@ namespace MHB.CrateLoadDesigner.Desktop
             // 
             // tabFrames
             // 
-            this.tabFrames.Controls.Add(this.toolStripFrames);
             this.tabFrames.Controls.Add(this.gridFrames);
+            this.tabFrames.Controls.Add(this.toolStripFrames);
             this.tabFrames.Location = new System.Drawing.Point(4, 22);
             this.tabFrames.Name = "tabFrames";
             this.tabFrames.Padding = new System.Windows.Forms.Padding(3);
@@ -116,23 +116,21 @@ namespace MHB.CrateLoadDesigner.Desktop
             // 
             // gridFrames
             // 
-            this.gridFrames.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridFrames.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridFrames.EnableSort = true;
-            this.gridFrames.Location = new System.Drawing.Point(0, 29);
+            this.gridFrames.Location = new System.Drawing.Point(3, 28);
             this.gridFrames.Name = "gridFrames";
             this.gridFrames.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
-            this.gridFrames.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.gridFrames.Size = new System.Drawing.Size(792, 395);
+            this.gridFrames.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            this.gridFrames.Size = new System.Drawing.Size(786, 393);
             this.gridFrames.TabIndex = 0;
             this.gridFrames.TabStop = true;
             this.gridFrames.ToolTipText = "";
             // 
             // tabGlass
             // 
-            this.tabGlass.Controls.Add(this.toolStripGlass);
             this.tabGlass.Controls.Add(this.gridGlass);
+            this.tabGlass.Controls.Add(this.toolStripGlass);
             this.tabGlass.Location = new System.Drawing.Point(4, 22);
             this.tabGlass.Name = "tabGlass";
             this.tabGlass.Padding = new System.Windows.Forms.Padding(3);
@@ -174,12 +172,13 @@ namespace MHB.CrateLoadDesigner.Desktop
             // 
             // gridGlass
             // 
+            this.gridGlass.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridGlass.EnableSort = true;
-            this.gridGlass.Location = new System.Drawing.Point(0, 33);
+            this.gridGlass.Location = new System.Drawing.Point(3, 28);
             this.gridGlass.Name = "gridGlass";
             this.gridGlass.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
-            this.gridGlass.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.gridGlass.Size = new System.Drawing.Size(792, 391);
+            this.gridGlass.SelectionMode = SourceGrid.GridSelectionMode.Row;
+            this.gridGlass.Size = new System.Drawing.Size(786, 393);
             this.gridGlass.TabIndex = 0;
             this.gridGlass.TabStop = true;
             this.gridGlass.ToolTipText = "";

@@ -8,6 +8,7 @@ using SourceGrid;
 
 using MHB.CrateLoadDesigner.Engine;
 using MHB.CrateLoadDesigner.Desktop.Properties;
+using System.ComponentModel;
 #endregion
 
 namespace MHB.CrateLoadDesigner.Desktop
@@ -31,6 +32,12 @@ namespace MHB.CrateLoadDesigner.Desktop
             FillGridCrateFrames();
             FillGridCrateGlass();
             FillGridContainers();
+        }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+
+            Main?.RemoveForm(this);
         }
         #endregion
 
@@ -235,6 +242,10 @@ namespace MHB.CrateLoadDesigner.Desktop
         }
         private void OnRemoveFrame(object sender, EventArgs e)
         {
+            var region = gridFrames.Selection.GetSelectionRegion();
+            int[] indexes = region.GetRowsIndex();
+            if (indexes.Length == 0 || indexes[0] < 1) return;
+            Project.RemoveFrame(indexes[0]-1);
             FillGridFrames();
         }
         private void OnAddGlass(object sender, EventArgs e)
@@ -248,12 +259,17 @@ namespace MHB.CrateLoadDesigner.Desktop
         }
         private void OnRemoveGlass(object sender, EventArgs e)
         {
+            var region = gridGlass.Selection.GetSelectionRegion();
+            int[] indexes = region.GetRowsIndex();
+            if (indexes.Length == 0 || indexes[0] < 1) return;
+            Project.RemoveGlass(indexes[0] - 1);
             FillGridGlass();
         }
         #endregion
 
         #region Data members
         public Project Project { get; set; }
+        public FormMain Main { get; set; }
         #endregion
 
 

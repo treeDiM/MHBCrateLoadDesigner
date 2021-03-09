@@ -11,6 +11,7 @@ using treeDiM.StackBuilder.Graphics;
 
 using MHB.CrateLoadDesigner.Engine;
 using MHB.CrateLoadDesigner.Desktop.Properties;
+using System.ComponentModel;
 #endregion
 
 namespace MHB.CrateLoadDesigner.Desktop
@@ -30,8 +31,17 @@ namespace MHB.CrateLoadDesigner.Desktop
             FillLBoxCrates();
             Project.SolutionUpdated += new Project.DelegateSolutionUpdated(OnSolutionUpdated);
         }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            Main.RemoveForm(this);
+            Project.SolutionUpdated -= new Project.DelegateSolutionUpdated(OnSolutionUpdated);
+        }
+
         private void FillLBoxCrates()
         {
+            // clear content
+            lbCrates.Items.Clear();
             // loop on crates
             foreach (var crate in Project.ListCrateGlass)
             {
@@ -184,6 +194,7 @@ namespace MHB.CrateLoadDesigner.Desktop
 
         #region Data members
         public Project Project { get; set; }
+        public FormMain Main { get; set; }
         protected ILog _log = LogManager.GetLogger(typeof(DockContentCratesGlass));
         #endregion
 
