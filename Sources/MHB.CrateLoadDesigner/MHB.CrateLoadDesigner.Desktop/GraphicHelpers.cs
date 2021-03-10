@@ -155,12 +155,18 @@ namespace MHB.CrateLoadDesigner.Desktop
             uint pickId = 0;
             foreach (var cp in container.CratePositions)
             {
-                var box = new Box(pickId++, cp.Crate.OuterDimensions.X, cp.Crate.OuterDimensions.Y, cp.Crate.OuterDimensions.Z)
+                double  z = 0.0;
+                foreach (var crate in cp.CrateList)
                 {
-                    BoxPosition = new BoxPosition(new Vector3D(cp.Position.X, cp.Position.Y, 0.0), LengthAxis(cp.Orientation), WidthAxis(cp.Orientation))
-                };
-                box.SetAllFacesColor(Color.Beige);
-                boxes.Add(box);
+                    var box = new Box(pickId++, crate.OuterDimensions.X, crate.OuterDimensions.Y, crate.OuterDimensions.Z)
+                    {
+                        BoxPosition = new BoxPosition(new Vector3D(cp.Position.X, cp.Position.Y, z), LengthAxis(cp.Orientation), WidthAxis(cp.Orientation))
+                    };
+                    box.SetAllFacesColor(Color.Beige);
+                    boxes.Add(box);
+
+                    z += crate.OuterDimensions.Z;
+                }
             }
             return boxes;
         }

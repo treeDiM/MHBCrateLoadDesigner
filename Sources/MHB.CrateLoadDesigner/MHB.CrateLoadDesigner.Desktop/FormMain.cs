@@ -168,10 +168,7 @@ namespace MHB.CrateLoadDesigner.Desktop
         private void CloseAllForms(object sender, EventArgs e)
         {
             while (Forms.Count > 0)
-            {
                 Forms[0].Close();
-                Forms.RemoveAt(0);
-            }
             project = null;
         }
         

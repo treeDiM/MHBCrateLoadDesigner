@@ -82,11 +82,8 @@
       <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
     </UI>
   </Product>
-
 	<Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
 		</ComponentGroup>
-	</Fragment>
- 
- 
+	</Fragment> 
 </Wix>

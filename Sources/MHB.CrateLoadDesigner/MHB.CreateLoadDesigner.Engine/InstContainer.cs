@@ -24,6 +24,14 @@ namespace MHB.CrateLoadDesigner.Engine
         private string LastAlgorithmUsed { get; set; }
         public bool PackCrate(InstCrate crate)
         {
+            // can existing crate position accept crate as topCrate
+            foreach (var cp in CratePositions)
+            {
+                if (cp.AcceptCrateOnTop(crate, InnerDimensions.Z))
+                    return true;
+            }
+
+            // try and inser new crate position
             var rects = new List<Rect>();
             string algorithm = string.Empty;
             double efficiency = 0.0;
@@ -38,8 +46,21 @@ namespace MHB.CrateLoadDesigner.Engine
 
             if (BinPacker.Pack(BinWidth, BinHeight, RectSizes(crate), ref rects, ref efficiency, ref algorithm))
             {
-                var crates = CratePositions.Select(item => item.Crate).ToList();
+                // build list of base crates + top crates
+                var crates = CratePositions.Select(item => item.Crate0).ToList();
                 crates.Add(crate);
+
+                var topCrates = new List<InstCrate>();
+                foreach (var cp in CratePositions)
+                {
+                    if (cp.CrateList.Count > 1)
+                    {
+                        for (int i = 1; i < cp.CrateList.Count; ++i)
+                            topCrates.Add(cp.CrateList[i]);
+                    }
+                }
+
+                // clear crate positions
                 CratePositions.Clear();
 
                 LastAlgorithmUsed = algorithm;
@@ -64,6 +85,21 @@ namespace MHB.CrateLoadDesigner.Engine
                         throw new Exception($"Pack failed for crate ({rect.Width}, {rect.Height})");
                     CratePositions.Add(cp);
                 }
+
+                foreach (var topCrate in topCrates)
+                {
+                    bool packed = false;
+                    foreach (var cp in CratePositions)
+                    {
+                        if (cp.AcceptCrateOnTop(topCrate, InnerDimensions.Z))
+                        {
+                            packed = true;
+                            break;
+                        }
+                    }
+                    if (!packed)
+                        throw new Exception($"Failed to (re)pack top crate {topCrate.ID}");
+                }
                 return true;
             }
             return false;
@@ -73,7 +109,7 @@ namespace MHB.CrateLoadDesigner.Engine
             var rectSizes = new List<RectSize>();
             // current crate(s)
             foreach (var cp in CratePositions)
-                rectSizes.Add(new RectSize((int)cp.Crate.OuterDimensions.X, (int)cp.Crate.OuterDimensions.Y));
+                rectSizes.Add(new RectSize((int)cp.Crate0.OuterDimensions.X, (int)cp.Crate0.OuterDimensions.Y));
             // insert new crate
             rectSizes.Add(new RectSize((int)crate.OuterDimensions.X, (int)crate.OuterDimensions.Y));
 
